@@ -9,6 +9,8 @@ import android.util.Log;
 import com.lvgou.qdd.R;
 import com.lvgou.qdd.http.VolleyRequest;
 
+import java.util.logging.Logger;
+
 abstract class BaseActivity extends AppCompatActivity {
     protected VolleyRequest request;
 
@@ -19,7 +21,7 @@ abstract class BaseActivity extends AppCompatActivity {
             setContentView(R.layout.activity_base);
             childImpl(savedInstanceState);
         }catch (Exception e){
-
+            Log.i("exception",e.toString());
         }
 
 
