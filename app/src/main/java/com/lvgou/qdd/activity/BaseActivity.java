@@ -3,6 +3,7 @@ package com.lvgou.qdd.activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
@@ -11,7 +12,7 @@ import com.lvgou.qdd.http.VolleyRequest;
 
 import java.util.logging.Logger;
 
-abstract class BaseActivity extends AppCompatActivity {
+abstract class BaseActivity extends FragmentActivity {
     protected VolleyRequest request;
 
     @Override
