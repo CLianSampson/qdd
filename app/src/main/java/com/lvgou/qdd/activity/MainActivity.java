@@ -90,12 +90,14 @@ public class MainActivity extends BaseActivity implements RequestCallback,View.O
             @Override
             public void onClick(View view) {
                 resideMenu.openMenu(ResideMenu.DIRECTION_LEFT);
+                resideMenu.setBackground(R.drawable.menu_background);
             }
         });
         findViewById(R.id.title_bar_right_menu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 resideMenu.openMenu(ResideMenu.DIRECTION_RIGHT);
+                resideMenu.setBackground(R.drawable.icon_home);
             }
         });
     }
