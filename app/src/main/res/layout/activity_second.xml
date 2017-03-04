@@ -9,9 +9,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.lvgou.qdd.activity.SecondActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_red_dark"/>
+    <include
+        android:id="@+id/nav"
+        layout="@layout/navigation_xml"/>
+
 
 </RelativeLayout>

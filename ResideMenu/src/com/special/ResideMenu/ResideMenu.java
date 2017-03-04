@@ -11,6 +11,7 @@ import android.view.*;
 import android.view.animation.AnimationUtils;
 import android.widget.*;
 
+import com.lvgou.qdd.view.UserIconView;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
@@ -255,6 +256,17 @@ public class ResideMenu extends FrameLayout {
         } else {
             this.rightMenuItems.add(menuItem);
             layoutRightMenu.addView(menuItem);
+        }
+    }
+
+    //add to test by me
+    public  void addUserIcon(UserIconView userIconView,int direction){
+        if (direction == DIRECTION_LEFT) {
+//            this.leftMenuItems.add(userIconView);
+            layoutLeftMenu.addView(userIconView);
+        } else {
+//            this.rightMenuItems.add(userIconView);
+            layoutRightMenu.addView(userIconView);
         }
     }
 

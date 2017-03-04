@@ -12,6 +12,7 @@ import com.lvgou.qdd.fragment.HomeFragment;
 import com.lvgou.qdd.fragment.ProfileFragment;
 import com.lvgou.qdd.fragment.SettingsFragment;
 import com.lvgou.qdd.http.RequestCallback;
+import com.lvgou.qdd.view.UserIconView;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
 
@@ -26,6 +27,8 @@ public class MainActivity extends BaseActivity implements RequestCallback,View.O
     private ResideMenuItem itemProfile;
     private ResideMenuItem itemCalendar;
     private ResideMenuItem itemSettings;
+
+    private UserIconView userIconView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,27 +64,36 @@ public class MainActivity extends BaseActivity implements RequestCallback,View.O
         // attach to current activity;
         resideMenu = new ResideMenu(this);
         resideMenu.setUse3D(true);
-        resideMenu.setBackground(R.drawable.menu_background);
+        resideMenu.setBackground(R.drawable.menu);
         resideMenu.attachToActivity(this);
         resideMenu.setMenuListener(menuListener);
         //valid scale factor is between 0.0f and 1.0f. leftmenu'width is 150dip.
         resideMenu.setScaleValue(0.6f);
 
         // create menu items;
-        itemHome     = new ResideMenuItem(this, R.drawable.icon_home,     "Home");
-        itemProfile  = new ResideMenuItem(this, R.drawable.icon_profile,  "Profile");
-        itemCalendar = new ResideMenuItem(this, R.drawable.icon_calendar, "Calendar");
-        itemSettings = new ResideMenuItem(this, R.drawable.icon_settings, "Settings");
+        itemHome     = new ResideMenuItem(this, R.drawable.menu,     "Home");
+        itemProfile  = new ResideMenuItem(this, R.drawable.menu,  "Profile");
+        itemCalendar = new ResideMenuItem(this, R.drawable.menu, "Calendar");
+        itemSettings = new ResideMenuItem(this, R.drawable.menu, "Settings");
+
+        ResideMenuItem test = new ResideMenuItem(this,R.drawable.menu,"test");
+
+        userIconView = new UserIconView(this);
 
         itemHome.setOnClickListener(this);
         itemProfile.setOnClickListener(this);
         itemCalendar.setOnClickListener(this);
         itemSettings.setOnClickListener(this);
 
+        resideMenu.addUserIcon(userIconView, ResideMenu.DIRECTION_LEFT);
+
+
         resideMenu.addMenuItem(itemHome, ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemProfile, ResideMenu.DIRECTION_LEFT);
         resideMenu.addMenuItem(itemCalendar, ResideMenu.DIRECTION_RIGHT);
         resideMenu.addMenuItem(itemSettings, ResideMenu.DIRECTION_RIGHT);
+
+        resideMenu.addMenuItem(test, ResideMenu.DIRECTION_LEFT);
 
         // You can disable a direction by setting ->
         // resideMenu.setSwipeDirectionDisable(ResideMenu.DIRECTION_RIGHT);
@@ -90,14 +102,14 @@ public class MainActivity extends BaseActivity implements RequestCallback,View.O
             @Override
             public void onClick(View view) {
                 resideMenu.openMenu(ResideMenu.DIRECTION_LEFT);
-                resideMenu.setBackground(R.drawable.menu_background);
+                resideMenu.setBackground(R.drawable.menu);
             }
         });
         findViewById(R.id.title_bar_right_menu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 resideMenu.openMenu(ResideMenu.DIRECTION_RIGHT);
-                resideMenu.setBackground(R.drawable.icon_home);
+                resideMenu.setBackground(R.drawable.menu);
             }
         });
     }
@@ -111,17 +123,24 @@ public class MainActivity extends BaseActivity implements RequestCallback,View.O
     @Override
     public void onClick(View view) {
 
+        Log.i("info","button click..........");
+
         if (view == itemHome){
-            changeFragment(new HomeFragment());
+//            changeFragment(new HomeFragment());
+            Intent intent = new Intent(this,SecondActivity.class);
+            startActivity(intent);
         }else if (view == itemProfile){
             changeFragment(new ProfileFragment());
         }else if (view == itemCalendar){
             changeFragment(new CalendarFragment());
         }else if (view == itemSettings){
             changeFragment(new SettingsFragment());
+        }else if (view == userIconView){
+            Intent intent = new Intent(this,SecondActivity.class);
+            startActivity(intent);
         }
 
-        resideMenu.closeMenu();
+//        resideMenu.closeMenu();
     }
 
     private ResideMenu.OnMenuListener menuListener = new ResideMenu.OnMenuListener() {
