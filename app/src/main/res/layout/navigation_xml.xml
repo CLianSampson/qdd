@@ -6,24 +6,25 @@
 
     <Button
         android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_gravity="left|center"
+        android:layout_height="match_parent"
         android:layout_marginLeft="12dp"
         android:text="back"
+        android:gravity="center"
         android:id="@+id/leftButton" />
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@android:color/holo_red_dark"
         android:text="xiaoxi"
         android:textSize="30sp"
         android:layout_marginLeft="64dp"
+        android:gravity="center"
         android:id="@+id/middleMessage" />
 
     <Button
         android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_height="match_parent"
         android:layout_gravity="right"
         android:layout_marginRight="12dp"
         android:id="@+id/rightButton"/>
