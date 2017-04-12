@@ -23,7 +23,7 @@
             <Button
                     android:layout_width="28dp"
                     android:layout_height="28dp"
-                    android:background="@drawable/menu"
+                    android:background="@mipmap/menu"
                     android:id="@+id/title_bar_left_menu"
                     android:layout_gravity="left|center_vertical"
                     android:layout_marginLeft="10dp"/>
@@ -40,7 +40,7 @@
             <Button
                     android:layout_width="28dp"
                     android:layout_height="28dp"
-                    android:background="@drawable/menu"
+                    android:background="@mipmap/menu"
                     android:id="@+id/title_bar_right_menu"
                     android:layout_gravity="right|center_vertical"
                     android:layout_marginRight="10dp"/>

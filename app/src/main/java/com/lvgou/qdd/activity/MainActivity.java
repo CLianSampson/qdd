@@ -64,19 +64,19 @@ public class MainActivity extends BaseActivity implements RequestCallback,View.O
         // attach to current activity;
         resideMenu = new ResideMenu(this);
         resideMenu.setUse3D(true);
-        resideMenu.setBackground(R.drawable.menu);
+        resideMenu.setBackground(R.mipmap.menu);
         resideMenu.attachToActivity(this);
         resideMenu.setMenuListener(menuListener);
         //valid scale factor is between 0.0f and 1.0f. leftmenu'width is 150dip.
         resideMenu.setScaleValue(0.6f);
 
         // create menu items;
-        itemHome     = new ResideMenuItem(this, R.drawable.menu,     "Home");
-        itemProfile  = new ResideMenuItem(this, R.drawable.menu,  "Profile");
-        itemCalendar = new ResideMenuItem(this, R.drawable.menu, "Calendar");
-        itemSettings = new ResideMenuItem(this, R.drawable.menu, "Settings");
+        itemHome     = new ResideMenuItem(this, R.mipmap.menu,     "Home");
+        itemProfile  = new ResideMenuItem(this, R.mipmap.menu,  "Profile");
+        itemCalendar = new ResideMenuItem(this, R.mipmap.menu, "Calendar");
+        itemSettings = new ResideMenuItem(this, R.mipmap.menu, "Settings");
 
-        ResideMenuItem test = new ResideMenuItem(this,R.drawable.menu,"test");
+        ResideMenuItem test = new ResideMenuItem(this,R.mipmap.menu,"test");
 
         userIconView = new UserIconView(this);
 
@@ -102,14 +102,14 @@ public class MainActivity extends BaseActivity implements RequestCallback,View.O
             @Override
             public void onClick(View view) {
                 resideMenu.openMenu(ResideMenu.DIRECTION_LEFT);
-                resideMenu.setBackground(R.drawable.menu);
+                resideMenu.setBackground(R.mipmap.menu);
             }
         });
         findViewById(R.id.title_bar_right_menu).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 resideMenu.openMenu(ResideMenu.DIRECTION_RIGHT);
-                resideMenu.setBackground(R.drawable.menu);
+                resideMenu.setBackground(R.mipmap.menu);
             }
         });
     }

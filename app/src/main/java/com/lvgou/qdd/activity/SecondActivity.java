@@ -2,6 +2,7 @@ package com.lvgou.qdd.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextPaint;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -34,13 +35,15 @@ public class SecondActivity extends AppCompatActivity {
 //        navigtionView.setRightButtonImage(R.drawable.icon_calendar);
 
         leftButton = (Button)findViewById(R.id.leftButton);
-        leftButton.setBackgroundResource(R.drawable.menu);
+//        leftButton.setBackgroundResource(R.mipmap.menu);
 
         middleText = (TextView)findViewById(R.id.middleMessage);
-        middleText.setText("我的列表");
+//        middleText.setText("我的列表");
+        TextPaint tp = middleText.getPaint();
+        tp.setFakeBoldText(true);
 
         rightButton = (Button)findViewById(R.id.rightButton);
-        rightButton.setBackgroundResource(R.drawable.menu);
+//        rightButton.setBackgroundResource(R.mipmap.menu);
 
         setListener();
 
