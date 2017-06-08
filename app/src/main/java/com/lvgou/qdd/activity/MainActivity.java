@@ -38,7 +38,8 @@ public class MainActivity extends BaseActivity implements RequestCallback,View.O
     @Override
     protected void childImpl(Bundle savedInstanceState) {
 //        setContentView(R.layout.activity_main);
-        setContentView(R.layout.main);
+//        setContentView(R.layout.main);
+        setContentView(R.layout.activity_second);
 
         mContext = this;
         setUpMenu();
@@ -168,10 +169,6 @@ public class MainActivity extends BaseActivity implements RequestCallback,View.O
     public ResideMenu getResideMenu(){
         return resideMenu;
     }
-
-
-
-
 
 
     @Override
