@@ -60,11 +60,19 @@
     </LinearLayout>
 
     <View
-        android:layout_width=""
-        android:layout_marginTop="10dp"
+        android:id="@+id/firstPageSepreate"
+        android:layout_below="@+id/navState"
+        android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:background="#aa000000" />
+
+    <ListView
+        android:layout_below="@+id/firstPageSepreate"
+        android:id="@+id/firstPageListView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+    </ListView>
 
 </RelativeLayout>

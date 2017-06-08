@@ -1,15 +1,23 @@
 package com.lvgou.qdd.activity;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextPaint;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.lvgou.qdd.R;
+import com.lvgou.qdd.model.SignatureFirstPage;
 import com.lvgou.qdd.view.NavigtionView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -20,6 +28,11 @@ public class SecondActivity extends AppCompatActivity {
     private  Button rightButton;
 
     private TextView middleText;
+
+    private ListView firstPageListView;
+
+    private List<SignatureFirstPage> signatureFirstPageList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +60,8 @@ public class SecondActivity extends AppCompatActivity {
 
         setListener();
 
+        setListView();
+
     }
 
 
@@ -58,8 +73,28 @@ public class SecondActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private  void setListView(){
+        firstPageListView = (ListView)findViewById(R.id.firstPageListView);
+
+        signatureFirstPageList = new ArrayList<>();
+        signatureFirstPageList.add(new SignatureFirstPage("chenlian"));
+        signatureFirstPageList.add(new SignatureFirstPage("chenlian"));
+        signatureFirstPageList.add(new SignatureFirstPage("chenlian"));
+
+        // 这里ListView的适配器选用ArrayAdapter，ListView中每一项的布局选用系统的simple_list_item_1。
+        ArrayAdapter<SignatureFirstPage> adapter = new ArrayAdapter<SignatureFirstPage>(this, android.R.layout.simple_list_item_1, signatureFirstPageList);
+        firstPageListView.setAdapter(adapter);
 
 
 
+        // 通过一个实现OnItemClickListener接口的匿名类的onItemClick方法来处理ListView中每一项的点击事件。
+        firstPageListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.i("test click","gggg");
+            }
+        });
     }
 }
