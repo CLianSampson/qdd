@@ -6,6 +6,18 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 添加volley权限 -->
 
+    <!-- 支持多种分辨率 ，以便正确获取屏幕宽度，高度，像素密度，dpi等
+        研究之后发现，若没有设定多分辨率支持的话，
+        Android系统会将240x320的低密度（120）尺寸转换为中等密度（160）对应的尺寸，
+        这样的话就大大影响了程序的编码。所以，需要在工程的AndroidManifest.xml文件中，加入supports-screens节点
+    -->
+    <supports-screens
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:resizeable="true"
+        android:anyDensity="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

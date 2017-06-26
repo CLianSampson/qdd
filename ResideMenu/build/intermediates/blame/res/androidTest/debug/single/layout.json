@@ -1,18 +1,38 @@
 [
     {
-        "merged": "/Users/apple/Desktop/qdd-android/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/layout/residemenu_custom_right_scrollview.xml",
-        "source": "/Users/apple/Desktop/qdd-android/qdd/ResideMenu/build/intermediates/bundles/debug/res/layout/residemenu_custom_right_scrollview.xml"
-    },
-    {
-        "merged": "/Users/apple/Desktop/qdd-android/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/layout/residemenu_item.xml",
-        "source": "/Users/apple/Desktop/qdd-android/qdd/ResideMenu/build/intermediates/bundles/debug/res/layout/residemenu_item.xml"
-    },
-    {
         "merged": "/Users/apple/Desktop/qdd-android/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/layout/residemenu_custom_left_scrollview.xml",
         "source": "/Users/apple/Desktop/qdd-android/qdd/ResideMenu/build/intermediates/bundles/debug/res/layout/residemenu_custom_left_scrollview.xml"
     },
     {
+        "merged": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/layout/residemenu_item.xml",
+        "source": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/bundles/debug/res/layout/residemenu_item.xml"
+    },
+    {
+        "merged": "/Users/apple/Desktop/qdd-android/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/layout/residemenu_custom_right_scrollview.xml",
+        "source": "/Users/apple/Desktop/qdd-android/qdd/ResideMenu/build/intermediates/bundles/debug/res/layout/residemenu_custom_right_scrollview.xml"
+    },
+    {
+        "merged": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/layout/residemenu_custom_left_scrollview.xml",
+        "source": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/bundles/debug/res/layout/residemenu_custom_left_scrollview.xml"
+    },
+    {
         "merged": "/Users/apple/Desktop/qdd-android/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/layout/residemenu_custom.xml",
         "source": "/Users/apple/Desktop/qdd-android/qdd/ResideMenu/build/intermediates/bundles/debug/res/layout/residemenu_custom.xml"
+    },
+    {
+        "merged": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/layout/user_icon.xml",
+        "source": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/bundles/debug/res/layout/user_icon.xml"
+    },
+    {
+        "merged": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/layout/residemenu_custom.xml",
+        "source": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/bundles/debug/res/layout/residemenu_custom.xml"
+    },
+    {
+        "merged": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/layout/residemenu_custom_right_scrollview.xml",
+        "source": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/bundles/debug/res/layout/residemenu_custom_right_scrollview.xml"
+    },
+    {
+        "merged": "/Users/apple/Desktop/qdd-android/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/layout/residemenu_item.xml",
+        "source": "/Users/apple/Desktop/qdd-android/qdd/ResideMenu/build/intermediates/bundles/debug/res/layout/residemenu_item.xml"
     }
 ]

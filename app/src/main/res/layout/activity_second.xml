@@ -13,59 +13,14 @@
         android:id="@+id/nav"
         layout="@layout/navigation_xml"/>
 
-    <LinearLayout
-        android:id="@+id/navState"
-        android:layout_below="@+id/nav"
-        android:layout_width="match_parent"
-        android:layout_height="40dp">
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:maxLines="1"
-            android:hint="待我签署"
-            android:singleLine="false"
-            android:gravity="center"
-            android:textSize="12sp"
-            android:textColor="@color/systemBlue"/>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_weight="1"
-            android:layout_height="fill_parent"
-            android:text="待别人签署"
-            android:gravity="center"
-            android:textSize="12sp"
-            android:textColor="@color/systemGray"/>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:text="已完成"
-            android:gravity="center"
-            android:textSize="12sp"
-            android:textColor="@color/systemGray"/>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:text="过期未签署"
-            android:gravity="center"
-            android:textSize="12sp"
-            android:textColor="@color/systemGray"/>
-
-    </LinearLayout>
+    <include android:id="@+id/navState"
+        layout="@layout/nav_state" />
 
     <View
         android:id="@+id/firstPageSepreate"
         android:layout_below="@+id/navState"
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:background="#aa000000" />
 
     <ListView

@@ -24,12 +24,15 @@ public final class R {
         public static final int sv_menu_holder=0x7f050002;
         public static final int sv_right_menu=0x7f050005;
         public static final int tv_title=0x7f050008;
+        public static final int userIcon=0x7f050009;
+        public static final int userphone=0x7f05000a;
     }
     public static final class layout {
         public static final int residemenu_custom=0x7f030000;
         public static final int residemenu_custom_left_scrollview=0x7f030001;
         public static final int residemenu_custom_right_scrollview=0x7f030002;
         public static final int residemenu_item=0x7f030003;
+        public static final int user_icon=0x7f030004;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
