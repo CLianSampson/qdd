@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/nav">
+
+
+    <TableRow>
+        <Button
+            android:id="@+id/waitForMeButton"
+            android:text="待我签署"
+            android:layout_weight="1"
+            android:textColor="@color/systemBlue"
+            android:background="@drawable/shape_nav_indicator"
+            />
+
+        <Button
+            android:id="@+id/waitOtherButton"
+            android:text="待别人签署"
+            android:layout_weight="1"
+            android:background="@drawable/shape_nav_no_indicator"
+            />
+
+        <Button
+            android:id="@+id/completeButton"
+            android:text="已完成"
+            android:layout_weight="1"
+            android:background="@drawable/shape_nav_no_indicator"
+            />
+
+        <Button
+            android:id="@+id/timeOutButton"
+            android:text="过期未签署"
+            android:layout_weight="1"
+            android:background="@drawable/shape_nav_no_indicator"
+            />
+    </TableRow>
+
+
+
+
+</TableLayout>

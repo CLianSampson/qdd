@@ -7,14 +7,15 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.lvgou.qdd.activity.SecondActivity">
+    tools:context="com.lvgou.qdd.activity.HomeActivity">
 
     <include
         android:id="@+id/nav"
         layout="@layout/navigation_xml"/>
 
     <include android:id="@+id/navState"
-        layout="@layout/table_nav_state" />
+        layout="@layout/table_nav_state"
+        />
 
     <View
         android:id="@+id/firstPageSepreate"

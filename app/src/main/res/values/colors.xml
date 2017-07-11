@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="systemBlue">#003366</color>
     <color name="systemGray">#666666</color>
+    <color name="systemWhite">#FFFFFF</color>
 </resources>
