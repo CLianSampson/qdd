@@ -1,18 +1,10 @@
 [
     {
-        "merged": "/Users/apple/Desktop/qdd-android/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ic_launcher.png",
-        "source": "/Users/apple/Desktop/qdd-android/qdd/ResideMenu/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ic_launcher.png"
-    },
-    {
         "merged": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/shadow.png",
         "source": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/bundles/debug/res/drawable-hdpi-v4/shadow.png"
     },
     {
         "merged": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ic_launcher.png",
         "source": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ic_launcher.png"
-    },
-    {
-        "merged": "/Users/apple/Desktop/qdd-android/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/shadow.png",
-        "source": "/Users/apple/Desktop/qdd-android/qdd/ResideMenu/build/intermediates/bundles/debug/res/drawable-hdpi-v4/shadow.png"
     }
 ]

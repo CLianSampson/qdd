@@ -6,4 +6,5 @@
     <color name="systemBlue">#003366</color>
     <color name="systemGray">#666666</color>
     <color name="systemWhite">#FFFFFF</color>
+    <color name="systemBlack">#000000</color>
 </resources>

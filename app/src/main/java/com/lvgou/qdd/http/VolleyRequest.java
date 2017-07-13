@@ -17,7 +17,7 @@ public class VolleyRequest {
 
     private RequestQueue mQueue;
 
-    private  final  static String url = "http://192.168.1.228:8080/LiveVideo/chenlian";
+    public   static String url = "http://192.168.1.228:8080/LiveVideo/chenlian";
 
     public void setCallback(RequestCallback callback){
         this.callback=callback;
