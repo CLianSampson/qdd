@@ -326,7 +326,7 @@ public class MainActivity extends BaseActivity implements RequestCallback,View.O
     protected  void netRequest(){
         super.netRequest();
         request.setCallback(this);
-        request.getMethod(getApplicationContext());
+        request.getRequest(getApplicationContext());
     }
 
     @Override

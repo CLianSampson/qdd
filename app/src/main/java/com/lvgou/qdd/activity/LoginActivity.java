@@ -1,13 +1,19 @@
 package com.lvgou.qdd.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.lvgou.qdd.R;
+import com.lvgou.qdd.http.RequestCallback;
+import com.lvgou.qdd.http.URLConst;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener{
+import java.util.HashMap;
+import java.util.Map;
+
+public class LoginActivity extends BaseActivity implements View.OnClickListener,RequestCallback {
     private  static String TAG = "LoginActivity";
 
     private  EditText accoutEditText;
@@ -64,14 +70,32 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
 
     private  void  login(){
-        String account = accoutEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
 
-
+        netRequest();
     }
 
     @Override
     protected void netRequest() {
         super.netRequest();
+        String account = accoutEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+
+        Map<String,String> map = new HashMap<>();
+        map.put("username",account);
+        map.put("password",password);
+
+        request.url = URLConst.URL_LOGIN;
+        request.setCallback(this);
+        request.psotRequest(getApplicationContext(),map);
+    }
+
+    public  void sucess(Object object){
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public  void fail(Object object){
+
     }
 }
