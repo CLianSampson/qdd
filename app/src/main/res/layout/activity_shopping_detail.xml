@@ -95,7 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/systemGrayBackgroung">
+        android:background="@color/systemGrayBackground">
 
         <TextView
             android:id="@+id/ShoppingDetailActivity_rmb"

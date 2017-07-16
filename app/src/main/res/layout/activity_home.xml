@@ -9,8 +9,6 @@
         android:id="@+id/nav"
         layout="@layout/navigation_xml"/>
 
-
-
     <include android:id="@+id/navState"
         layout="@layout/table_nav_state"
         />

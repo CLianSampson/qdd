@@ -13,7 +13,7 @@
         <item name="windowNoTitle">true</item>
 
         <!-- 状态栏颜色 -->
-        <item name="colorPrimary">@color/systemGrayBackgroung</item>
+        <item name="colorPrimary">@color/systemGrayBackground</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
