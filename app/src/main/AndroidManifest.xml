@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lvgou.qdd">
+          package="com.lvgou.qdd">
 
     <!-- 添加volley权限 -->
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <!-- 添加volley权限 -->
 
 
@@ -18,7 +18,7 @@
         android:largeScreens="true"
         android:normalScreens="true"
         android:resizeable="true"
-        android:smallScreens="true" />
+        android:smallScreens="true"/>
 
     <application
         android:allowBackup="true"
@@ -30,17 +30,21 @@
         <!-- android:theme="@style/AppTheme"> -->
         <!-- 设置不显示app标题栏 -->
 
+        <activity android:name=".activity.HomeActivity"/>
+        <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SecondActivity" />
-        <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.HomeActivity" />
-        <activity android:name=".activity.LoginActivity"></activity>
+        <activity android:name=".activity.shopping.ShoppingActivity">
+        </activity>
+        <activity android:name=".activity.shopping.ShoppingDetailActivity">
+        </activity>
+        <activity android:name=".activity.shopping.PayActivity">
+        </activity>
     </application>
 
 </manifest>

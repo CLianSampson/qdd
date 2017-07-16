@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lvgou.qdd.activity.shopping.ShoppingActivity">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:layout_width="match_parent"
+                 android:layout_height="48dp">
+
+        <Button
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/ic_arrow_back"
+            android:id="@+id/ShoppingActivity_backButton" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="购买套餐"
+            android:layout_marginLeft="72dp"
+            android:layout_marginTop="12dp"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:id="@+id/middleMessage" />
+    </FrameLayout>
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:background="@color/systemGrayBackgroung"
+        android:text="我的套餐"
+        android:textSize="13sp"
+        android:paddingLeft="15dp"
+        android:paddingTop="5dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="47dp">
+
+        <TextView
+            android:id="@+id/ShoppingActivity_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="套餐类型:  个人套餐A"
+            android:textSize="13sp"
+            android:paddingLeft="20dp"
+            android:paddingTop="22dp"/>
+
+        <TextView
+            android:id="@+id/ShoppingActivity_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="有效期:  永久"
+            android:textSize="11sp"
+            android:textColor="#414141"
+            android:paddingRight="20dp"
+            android:layout_alignParentRight="true"
+            android:paddingTop="22dp"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/systemGrayBackgroung"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="47dp">
+
+        <TextView
+            android:id="@+id/ShoppingActivity_totalTimes"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="总次数: 10次"
+            android:textSize="12sp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/ShoppingActivity_remianTimes"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="剩余次数:  10次"
+            android:textSize="12sp"
+            android:layout_toRightOf="@+id/ShoppingActivity_totalTimes"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/systemGrayBackgroung"
+        android:text="购买套餐"
+        android:textSize="13sp"
+        android:paddingLeft="15dp"
+        android:paddingTop="20dp"/>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/ShoppingActivity_pull_to_refresh_listview"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+
+        android:cacheColorHint="#00000000"
+        android:divider="#19000000"
+        android:dividerHeight="1dp"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:smoothScrollbar="true" >
+
+
+
+
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+
+
+
+</LinearLayout>

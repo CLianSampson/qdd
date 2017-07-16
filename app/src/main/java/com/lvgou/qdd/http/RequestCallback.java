@@ -5,7 +5,7 @@ package com.lvgou.qdd.http;
  */
 public interface RequestCallback {
 
-    public  void sucess(Object object);
+    public  void sucess(String response);
 
-    public  void fail(Object object);
+    public  void fail(String response);
 }

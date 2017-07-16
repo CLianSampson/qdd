@@ -6,14 +6,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.alibaba.fastjson.JSON;
 import com.lvgou.qdd.R;
 import com.lvgou.qdd.http.RequestCallback;
 import com.lvgou.qdd.http.URLConst;
+import com.lvgou.qdd.util.Logger;
+import com.lvgou.qdd.util.StorageUtil;
+import com.lvgou.qdd.util.TokenUtil;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener,RequestCallback {
+
+public class LoginActivity extends BaseActivity implements View.OnClickListener {
     private  static String TAG = "LoginActivity";
 
     private  EditText accoutEditText;
@@ -21,6 +26,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private  Button loginButton;
     private  Button registerButton;
     private  Button forgetpasswordButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,22 +86,42 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         String account = accoutEditText.getText().toString();
         String password = passwordEditText.getText().toString();
 
-        Map<String,String> map = new HashMap<>();
+        final Map<String,String> map = new HashMap<>();
         map.put("username",account);
         map.put("password",password);
 
+        map.put("username","18771098004");
+        map.put("password","123456");
+
         request.url = URLConst.URL_LOGIN;
-        request.setCallback(this);
-        request.psotRequest(getApplicationContext(),map);
+        request.setCallback(new RequestCallback() {
+            @Override
+            public void sucess(String response) {
+                Logger.getInstance(getApplicationContext()).info("登录返回");
+                Map<String,Object> responseMap = JSON.parseObject(response,new HashMap<String,String>().getClass());
+
+                Map<String,String> data = (Map<String, String>) responseMap.get("data");
+
+                String token = data.get("token");
+
+                Logger.getInstance(getApplicationContext()).info("token is :"  + token);
+
+                StorageUtil.storeData(getApplicationContext(),StorageUtil.TOKEN,token);
+
+                TokenUtil.token = token;
+
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
+            @Override
+            public void fail(String object) {
+
+            }
+        });
+        request.postRequest(getApplicationContext(),map);
     }
 
-    public  void sucess(Object object){
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
-        finish();
-    }
 
-    public  void fail(Object object){
-
-    }
 }

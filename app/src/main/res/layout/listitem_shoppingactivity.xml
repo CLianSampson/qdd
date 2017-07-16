@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="68dp">
+
+    
+    <TextView
+        android:id="@+id/ShoppingActivity_lsit_times"
+        android:layout_marginTop="9dp"
+        android:layout_marginLeft="21dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="500/10次"
+        android:gravity="center"
+        android:background="@drawable/button_radius"/>
+
+
+    <TextView
+        android:id="@+id/ShoppingActivity_lsit_type"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginTop="9dp"
+        android:layout_toRightOf="@+id/ShoppingActivity_lsit_times"
+        android:layout_marginLeft="10dp"
+        android:text="个人套餐A"
+        android:textSize="12sp"
+
+        android:gravity="center"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/ShoppingActivity_lsit_content"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_below="@+id/ShoppingActivity_lsit_type"
+        android:layout_toRightOf="@+id/ShoppingActivity_lsit_times"
+        android:layout_marginLeft="10dp"
+        android:text="购买标准化电子合同签约服务..."
+        android:textSize="9sp"
+        android:gravity="center"/>
+
+
+
+
+</RelativeLayout>

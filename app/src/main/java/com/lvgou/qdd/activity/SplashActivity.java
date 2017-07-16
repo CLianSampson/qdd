@@ -3,11 +3,14 @@ package com.lvgou.qdd.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 
 import com.lvgou.qdd.R;
+import com.lvgou.qdd.util.StorageUtil;
+import com.lvgou.qdd.util.StringUtil;
+import com.lvgou.qdd.util.TokenUtil;
 
-public class SplashActivity extends BaseActivity {
-
+public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +36,18 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void enterHomeActivity() {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        finish();
+        String token = StorageUtil.getData(getApplicationContext(),StorageUtil.TOKEN);
+        TokenUtil.token = token;
+        if (StringUtil.isNullOrBlank(token)){
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }else {
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+
     }
-
-
-
 }

@@ -2,17 +2,16 @@ package com.lvgou.qdd.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.lvgou.qdd.R;
 import com.lvgou.qdd.http.VolleyRequest;
 
-import java.util.logging.Logger;
 
-abstract class BaseActivity extends FragmentActivity {
+public abstract class BaseActivity extends FragmentActivity {
     protected VolleyRequest request;
 
     @Override
@@ -70,5 +69,12 @@ abstract class BaseActivity extends FragmentActivity {
         }).show();//在按键响应事件中显示此对话框
 
 
+    }
+
+
+    protected void gotoLoginActivity(){
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
