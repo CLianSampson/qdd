@@ -1,8 +1,10 @@
 package com.lvgou.qdd.activity.shopping;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -47,6 +49,8 @@ public class ShoppingActivity extends BaseActivity {
 
     private int pageNo = 0;
 
+    private  LinkedList<Shopping.Good> rawList; //用来存放原始数据，用于点击item，获取数据
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +77,6 @@ public class ShoppingActivity extends BaseActivity {
         durationTextView = (TextView) findViewById(R.id.ShoppingActivity_duration);
         totalTimesTextView =(TextView) findViewById(R.id.ShoppingActivity_totalTimes);
         remainTimesTextView = (TextView) findViewById(R.id.ShoppingActivity_remianTimes);
-
 
 
         pullToRefreshListView = (PullToRefreshListView) findViewById(R.id.ShoppingActivity_pull_to_refresh_listview);
@@ -105,9 +108,37 @@ public class ShoppingActivity extends BaseActivity {
 
         pullToRefreshListView.setAdapter(adapter);
 
+        setListItemClickEvent();
+
         netRequest();
 
     }
+
+    private  void  setListItemClickEvent(){
+        pullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Map<String,Object> map = goodList.get((int) id);
+//
+//                Intent intent = new Intent(getApplicationContext(),ShoppingDetailActivity.class);
+//                intent.putExtra("good",JSON.toJSONString(map));
+//                startActivity(intent);
+
+
+                Shopping.Good good = rawList.get((int) id);
+                Intent intent = new Intent(getApplicationContext(),ShoppingDetailActivity.class);
+                intent.putExtra("good",JSON.toJSONString(good));
+
+                Logger.getInstance(getApplicationContext()).info("json str is :" + JSON.toJSONString(good));
+
+                Logger.getInstance(getApplicationContext()).info("raw good is :"+good);
+
+                startActivity(intent);
+
+            }
+        });
+    }
+
 
     protected  void  netRequest(){
         super.netRequest();
@@ -141,6 +172,12 @@ public class ShoppingActivity extends BaseActivity {
                 totalTimesTextView.setText(totaltimes);
                 remainTimesTextView.setText(remianTimes);
 
+                if (rawList == null){
+                    rawList = new LinkedList<Shopping.Good>();
+                }
+
+                rawList.addAll(shopping.getGoods());
+
                 setListView(shopping.getGoods());
 
             }
@@ -161,19 +198,20 @@ public class ShoppingActivity extends BaseActivity {
         for (Shopping.Good good : list) {
             Map<String,Object> map = new  HashMap<String, Object>();
 
-            int price = Integer.valueOf(good.getPrice())/100;
+            float price =  Float.valueOf(good.getPrice())/100;
 
 
             map.put("times","" + price + "元" + "/" + good.getNum() + "次");
             map.put("type",good.getName());
             map.put("content",good.getContents());
 
+            map.put("goodId",good.getId());
+
             if (null == goodList){
                 goodList = new LinkedList<>();
             }
             goodList.addLast(map);
         }
-
 
 
         //通知程序数据集已经改变，如果不做通知，那么将不会刷新mListItems的集合

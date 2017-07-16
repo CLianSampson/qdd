@@ -114,7 +114,7 @@
     <com.handmark.pulltorefresh.library.PullToRefreshListView
         android:id="@+id/ShoppingActivity_pull_to_refresh_listview"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="fill_parent"
 
         android:cacheColorHint="#00000000"
         android:divider="#19000000"
@@ -124,9 +124,6 @@
         android:footerDividersEnabled="false"
         android:headerDividersEnabled="false"
         android:smoothScrollbar="true" >
-
-
-
 
     </com.handmark.pulltorefresh.library.PullToRefreshListView>
 

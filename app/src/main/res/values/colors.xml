@@ -7,5 +7,6 @@
     <color name="systemGray">#666666</color>
     <color name="systemWhite">#FFFFFF</color>
     <color name="systemBlack">#000000</color>
-    <color name="systemGrayBackgroung">#F7F7F7</color>
+    <color name="systemGrayBackgroung">#CCCCCC</color>
+    <color name="systemRed">#FF0000</color>
 </resources>

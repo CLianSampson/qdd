@@ -65,7 +65,7 @@ public class Shopping {
                 '}';
     }
 
-    public  class Good{
+    public static class Good{
         private  String id;
 
         private  String name;
@@ -75,6 +75,10 @@ public class Shopping {
         private  String price;
 
         private  String num;
+
+        public  Good(){
+            //解决fastjson的问题
+        }
 
         public String getId() {
             return id;

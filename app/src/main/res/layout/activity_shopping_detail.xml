@@ -1,10 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.lvgou.qdd.activity.shopping.ShoppingDetailActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:id="@+id/ShoppingDetailActivity_nav"
+                 android:layout_width="match_parent"
+                 android:layout_height="48dp">
+
+        <Button
+            android:id="@+id/ShoppingDetailActivity_backButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/ic_arrow_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="套餐详情"
+            android:layout_marginLeft="72dp"
+            android:layout_marginTop="12dp"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:id="@+id/middleMessage" />
+    </FrameLayout>
+    
+    <ImageView
+        android:id="@+id/ShoppingDetailActivity_image"
+        android:layout_below="@+id/ShoppingDetailActivity_nav"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@color/systemGray"/>
+
+    <RelativeLayout
+        android:id="@+id/ShoppingDetailActivity_type_and_duration"
+        android:layout_below="@+id/ShoppingDetailActivity_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37.5dp">
+
+        <TextView
+            android:id="@+id/ShoppingDetailActivity_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="套餐类型: 个人套餐A"
+            android:layout_marginLeft="20dp"
+            android:textSize="13sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/ShoppingDetailActivity_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="有效期: 永久"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:textSize="11sp"
+            android:gravity="center"
+            android:textColor="@color/systemRed"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/ShoppingDetailActivity_totalTimes"
+        android:layout_below="@+id/ShoppingDetailActivity_type_and_duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="总次数: 10次"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="29dp"
+        android:textSize="13sp"/>
+
+    <TextView
+        android:id="@+id/ShoppingDetailActivity_content"
+        android:layout_below="@+id/ShoppingDetailActivity_totalTimes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="11dp"
+        android:lineSpacingExtra="8dp"
+        android:paddingRight="20dp"
+        android:text="产品介绍: 购买标准化电子合同签约服务，该套餐可以签约发合同一次。有效期时间为永久"
+        android:textSize="13sp"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/systemGrayBackgroung">
+
+        <TextView
+            android:id="@+id/ShoppingDetailActivity_rmb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="¥ "
+            android:textSize="15sp"
+            android:textColor="@color/systemRed"
+            android:layout_marginLeft="16dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/ShoppingDetailActivity_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="100"
+            android:textSize="19sp"
+            android:textColor="@color/systemRed"
+            android:layout_toRightOf="@+id/ShoppingDetailActivity_rmb"
+            android:layout_marginLeft="10dp"/>
+
+        <Button
+            android:id="@+id/ShoppingDetailActivity_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:text="立即购买"
+            android:textSize="15sp"
+            android:textColor="@color/systemWhite"
+            android:background="@drawable/shoppingdetailactivity_shape"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
