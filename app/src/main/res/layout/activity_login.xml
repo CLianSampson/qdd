@@ -88,7 +88,7 @@
         android:text="登录"
         android:textSize="18sp"
         android:textColor="@color/systemWhite"
-        android:background="@color/systemBlue"/>
+        android:background="@drawable/button_radius_background"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

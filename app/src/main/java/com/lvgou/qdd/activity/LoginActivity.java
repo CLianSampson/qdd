@@ -91,7 +91,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         map.put("password",password);
 
         map.put("username","18771098004");
-        map.put("password","123456");
+        map.put("password","1234567");
 
         request.url = URLConst.URL_LOGIN;
         request.setCallback(new RequestCallback() {

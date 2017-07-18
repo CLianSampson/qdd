@@ -82,8 +82,4 @@ public class ShoppingDetailActivity extends BaseActivity {
 
 
     }
-
-
-
-
 }
