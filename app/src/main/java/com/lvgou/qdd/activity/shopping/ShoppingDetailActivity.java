@@ -11,6 +11,8 @@ import com.lvgou.qdd.R;
 import com.lvgou.qdd.activity.BaseActivity;
 import com.lvgou.qdd.model.Shopping;
 
+import java.text.DecimalFormat;
+
 public class ShoppingDetailActivity extends BaseActivity {
 
     private Button backButoon;
@@ -60,6 +62,7 @@ public class ShoppingDetailActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),PayActivity.class);
+                intent.putExtra("price",priceTextView.getText());
                 startActivity(intent);
             }
         });
@@ -73,12 +76,17 @@ public class ShoppingDetailActivity extends BaseActivity {
         String type = "套餐类型: " + good.getName();
         String totalTimes = "总次数: " + good.getNum() + "次";
         String content = good.getContents();
-        String prcie = ""+Float.valueOf(good.getPrice())/100;
+
+        float price=Float.valueOf(good.getPrice())/100;
+        DecimalFormat decimalFormat=new DecimalFormat("0.00");//构造方法的字符格式这里如果小数不足2位,会以0补足.
+        String priceStr = decimalFormat.format(price);//format 返回的是字符串
+
+//        String prcie = ""+Float.valueOf(good.getPrice())/100;
 
         typeTextView.setText(type);
         totalTimesTextView.setText(totalTimes);
         contentTextView.setText(content);
-        priceTextView.setText(prcie);
+        priceTextView.setText(priceStr);
 
 
     }

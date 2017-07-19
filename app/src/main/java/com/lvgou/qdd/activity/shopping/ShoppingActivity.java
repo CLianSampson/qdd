@@ -21,6 +21,7 @@ import com.lvgou.qdd.model.Shopping;
 import com.lvgou.qdd.util.Logger;
 import com.lvgou.qdd.util.TokenUtil;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -198,10 +199,11 @@ public class ShoppingActivity extends BaseActivity {
         for (Shopping.Good good : list) {
             Map<String,Object> map = new  HashMap<String, Object>();
 
-            float price =  Float.valueOf(good.getPrice())/100;
+            float price=Float.valueOf(good.getPrice())/100;
+            DecimalFormat decimalFormat=new DecimalFormat("0.00");//构造方法的字符格式这里如果小数不足2位,会以0补足.
+            String priceStr = decimalFormat.format(price);//format 返回的是字符串
 
-
-            map.put("times","" + price + "元" + "/" + good.getNum() + "次");
+            map.put("times","" + priceStr + "元" + "/" + good.getNum() + "次");
             map.put("type",good.getName());
             map.put("content",good.getContents());
 

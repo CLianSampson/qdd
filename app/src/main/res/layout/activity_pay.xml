@@ -38,6 +38,7 @@
 
 
     <TextView
+        android:id="@+id/PayActivity_price"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:textSize="14sp"
@@ -70,30 +71,31 @@
         android:layout_height="48.5dp">
 
         <ImageView
-            android:id="@+id/wechat"
+            android:id="@+id/alipay"
             android:layout_width="28.5dp"
             android:layout_height="28.5dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
-            android:src="@drawable/wechat"
+            android:src="@drawable/alipay"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/wechat"
+            android:layout_toRightOf="@+id/alipay"
             android:layout_marginLeft="15dp"
             android:layout_centerVertical="true"
             android:text="支付宝"
             android:textSize="13sp"/>
         
         <Button
+            android:id="@+id/PayActivity_alipay"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
             android:layout_centerVertical="true"
-            android:background="@drawable/pay_unchoose"/>
+            android:background="@drawable/pay_choose"/>
 
     </RelativeLayout>
 
@@ -125,12 +127,13 @@
             android:textSize="13sp"/>
 
         <Button
+            android:id="@+id/PayActivity_wechet"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
             android:layout_centerVertical="true"
-            android:background="@drawable/pay_choose"/>
+            android:background="@drawable/pay_unchoose"/>
 
     </RelativeLayout>
 
@@ -140,6 +143,7 @@
         android:background="@color/systemGray"/>
 
     <Button
+        android:id="@+id/PayActivity_confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="89dp"
