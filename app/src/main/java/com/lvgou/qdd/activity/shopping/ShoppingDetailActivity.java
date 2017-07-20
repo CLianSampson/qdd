@@ -9,11 +9,18 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.lvgou.qdd.R;
 import com.lvgou.qdd.activity.BaseActivity;
+import com.lvgou.qdd.http.RequestCallback;
+import com.lvgou.qdd.http.URLConst;
 import com.lvgou.qdd.model.Shopping;
+import com.lvgou.qdd.util.Logger;
+import com.lvgou.qdd.util.TokenUtil;
 
 import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ShoppingDetailActivity extends BaseActivity {
+    private String goodId; //商品 id
 
     private Button backButoon;
 
@@ -61,9 +68,7 @@ public class ShoppingDetailActivity extends BaseActivity {
         buyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),PayActivity.class);
-                intent.putExtra("price",priceTextView.getText());
-                startActivity(intent);
+               getOrderId();
             }
         });
 
@@ -72,6 +77,8 @@ public class ShoppingDetailActivity extends BaseActivity {
         String str = intent.getStringExtra("good");
 
         Shopping.Good good = JSON.parseObject(str,Shopping.Good.class);
+
+        goodId = good.getId();
 
         String type = "套餐类型: " + good.getName();
         String totalTimes = "总次数: " + good.getNum() + "次";
@@ -89,5 +96,33 @@ public class ShoppingDetailActivity extends BaseActivity {
         priceTextView.setText(priceStr);
 
 
+    }
+
+    private void  getOrderId(){
+        super.netRequest();
+        String url = URLConst.URL_GET_ORDERID + TokenUtil.token + "/id/" +  goodId;
+        request.url = url;
+
+        request.setCallback(new RequestCallback() {
+            @Override
+            public void sucess(String response) {
+                Logger.getInstance(getApplicationContext()).info("获取订单id: " + response);
+
+                Map<String,String> map = JSON.parseObject(response,new HashMap<String,String>().getClass());
+                String orderId = map.get("orderid");
+
+                Intent intent = new Intent(getApplicationContext(),PayActivity.class);
+                intent.putExtra("price",priceTextView.getText());
+                intent.putExtra("orderId",orderId);
+                startActivity(intent);
+            }
+
+            @Override
+            public void fail(String response) {
+
+            }
+        });
+
+        request.getRequest(getApplicationContext());
     }
 }

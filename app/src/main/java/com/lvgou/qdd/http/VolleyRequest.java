@@ -109,4 +109,35 @@ public class VolleyRequest {
         mQueue.add(request);
     }
 
+    //针对支付宝单独一个接口
+    public  void aliPayPost(final Context context, final Map<String,String> params){
+        mQueue = Volley.newRequestQueue(context);
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                Logger.getInstance(context).info(response);
+
+                //支付宝返回的是字符串
+                callback.sucess(response);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Logger.getInstance(context).error(error.toString());
+
+                ToastUtil.showToast(context,error.toString());
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+
+                return params;
+            }
+        };
+
+
+        mQueue.add(request);
+    }
 }

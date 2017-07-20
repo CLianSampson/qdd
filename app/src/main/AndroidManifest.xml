@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 支付宝支付相关权限-->
 
+
     <!--
          支持多种分辨率 ，以便正确获取屏幕宽度，高度，像素密度，dpi等
         研究之后发现，若没有设定多分辨率支持的话，
@@ -54,14 +55,28 @@
         </activity>
         <activity android:name=".activity.shopping.ShoppingDetailActivity">
         </activity>
+        <activity android:name=".activity.shopping.PayActivity">
+        </activity>
+
+        <!-- 支付宝支付相关权限-->
         <activity
-            android:name=".activity.shopping.PayActivity"
+            android:name="com.alipay.sdk.app.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:exported="false"
             android:screenOrientation="behind"
-            android:windowSoftInputMode="adjustResize|stateHidden"
-            >
+            android:windowSoftInputMode="adjustResize|stateHidden" >
         </activity>
+        <activity
+            android:name="com.alipay.sdk.app.H5AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
+        <!-- 支付宝支付相关权限-->
+
     </application>
+
+
 
 </manifest>
