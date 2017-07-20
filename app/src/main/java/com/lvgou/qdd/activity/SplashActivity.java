@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
-import com.lvgou.qdd.R;
 import com.lvgou.qdd.util.StorageUtil;
 import com.lvgou.qdd.util.StringUtil;
 import com.lvgou.qdd.util.TokenUtil;
@@ -15,12 +14,13 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        setTheme(R.style.SplashTheme);
         childImpl(savedInstanceState);
     }
 
     protected  void childImpl(Bundle savedInstanceState){
 
-        setContentView(R.layout.activity_splash);
+//        setContentView(R.layout.activity_splash);
 
         //Android对UI主线程开启了实时监听，
         // Activity Manager和WindowManager系统服务一旦监听到主线程超过10秒没有响应操作，就会抛出ANR，
