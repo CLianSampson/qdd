@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.lvgou.qdd.activity.HomeActivity">
 
     <include
@@ -13,18 +14,19 @@
         layout="@layout/table_nav_state"
         />
 
-    <View
-        android:id="@+id/firstPageSepreate"
-        android:layout_below="@+id/navState"
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/HomeActivity_pull_to_refresh_listview"
         android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#aa000000" />
+        android:layout_height="fill_parent"
+        android:fadingEdge="none"
+        android:divider="#00000000"
+        android:dividerHeight="0dip"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:smoothScrollbar="true">
 
-    <ListView
-        android:layout_below="@+id/firstPageSepreate"
-        android:id="@+id/firstPageListView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent" >
-    </ListView>
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
-</RelativeLayout>
+
+</LinearLayout>

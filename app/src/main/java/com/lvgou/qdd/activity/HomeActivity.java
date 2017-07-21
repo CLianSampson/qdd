@@ -5,14 +5,31 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.lvgou.qdd.R;
 import com.lvgou.qdd.activity.shopping.ShoppingActivity;
+import com.lvgou.qdd.http.RequestCallback;
 import com.lvgou.qdd.http.URLConst;
+import com.lvgou.qdd.model.Sign;
+import com.lvgou.qdd.util.DateUtil;
+import com.lvgou.qdd.util.Logger;
+import com.lvgou.qdd.util.TokenUtil;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener{
@@ -33,6 +50,16 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
 
     private Button timeOutButton;
 
+    private int orderStatus;  //1：待我签署 2：待他人签署 3：已完成 4：过期未签署
+
+    private PullToRefreshListView pullToRefreshListView;
+
+    private LinkedList<Map<String,Object>> signList;
+
+    private SimpleAdapter adapter;
+
+    private int pageNo = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,13 +71,12 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
         setContentView(R.layout.activity_home);
 
         mContext = this;
+
+        orderStatus = 1;
         setButton();
         setUpMenu();
-//        if( savedInstanceState == null )
-//            changeFragment(new HomeFragment());
+        setPullToRefreshListView();
 
-
-        netRequest();
 
     }
 
@@ -78,6 +104,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
 
       switch (view.getId()){
           case R.id.waitForMeButton:
+              orderStatus = 1;
+
               //设置背景
               waitForMeButton.setBackgroundResource(R.drawable.shape_nav_indicator);
 
@@ -94,6 +122,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
 
               break;
           case R.id.waitOtherButton:
+              orderStatus = 2;
+
               waitOtherButton.setBackgroundResource(R.drawable.shape_nav_indicator);
 
               waitForMeButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
@@ -110,6 +140,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
               break;
 
           case R.id.completeButton:
+              orderStatus = 3;
+
               completeButton.setBackgroundResource(R.drawable.shape_nav_indicator);
 
               waitOtherButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
@@ -125,6 +157,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
 
               break;
           case R.id.timeOutButton:
+              orderStatus = 4;
+
               timeOutButton.setBackgroundResource(R.drawable.shape_nav_indicator);
 
               waitOtherButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
@@ -142,6 +176,17 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
 
       }
 
+
+    }
+
+    private void  changeOrderStatus(){
+        pageNo = 0;
+        signList.clear();
+        //通知程序数据集已经改变，如果不做通知，那么将不会刷新mListItems的集合
+        adapter.notifyDataSetChanged();
+        // Call onRefreshComplete when the list has been refreshed.
+        pullToRefreshListView.onRefreshComplete();
+        netRequest();
 
     }
 
@@ -194,13 +239,13 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
             @Override
             public void onClick(View view) {
                 resideMenu.openMenu(ResideMenu.DIRECTION_LEFT);
-                //                resideMenu.setBackground(R.mipmap.menu);
+                //resideMenu.setBackground(R.mipmap.menu);
             }
         });
         findViewById(R.id.rightButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resideMenu.openMenu(ResideMenu.DIRECTION_RIGHT);
+//                resideMenu.openMenu(ResideMenu.DIRECTION_RIGHT);
                 //                resideMenu.setBackground(R.mipmap.menu);
             }
         });
@@ -228,11 +273,138 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
 
 
 
-    protected void  netRequest() {
-        super.netRequest();
-        request.url = URLConst.URL_REGISTER;
+    private void setPullToRefreshListView(){
+        pullToRefreshListView = (PullToRefreshListView) findViewById(R.id.HomeActivity_pull_to_refresh_listview);
+        //        pullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);//两端刷新
+        //        pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);//上拉刷新
+        pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);//下拉刷新
+        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                refreshView.getLoadingLayoutProxy().setRefreshingLabel("正在加载");
+                refreshView.getLoadingLayoutProxy().setPullLabel("上拉加载更多");
+                refreshView.getLoadingLayoutProxy().setReleaseLabel("释放开始加载");
 
-//        MessageQueue
+                netRequest();
+            }
+        });
+
+        signList = new LinkedList<Map<String,Object>>();
+
+        adapter = new SimpleAdapter(this, //没什么解释
+                signList,//数据来源
+                R.layout.listitem_homeacitcity,//ListItem的XML实现
+
+                //动态数组与ListItem对应的子项
+                new String[] {"signName","state","sendPerson","sendtime","duration"},
+
+                //ListItem的XML文件里面的两个TextView ID
+                new int[] {R.id.HomeAcitivity_signName,R.id.HomeAcitivity_state,R.id.HomeAcitivity_sendPerson,R.id.HomeAcitivity_sendTime
+                ,R.id.HomeAcitivity_duration});
+
+        pullToRefreshListView.setAdapter(adapter);
+
+        setListItemClickEvent();
+
+        netRequest();
+    }
+
+    private  void  setListItemClickEvent(){
+        pullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
+    }
+
+    protected void  netRequest(){
+        super.netRequest();
+
+        pageNo++;
+
+        request.url = URLConst.URL_LIST_SIGN + TokenUtil.token;
+        request.setCallback(new RequestCallback() {
+            @Override
+            public void sucess(String response) {
+                Logger.getInstance(getApplicationContext()).info("获取合同列表成功");
+
+                Map<String,Object> map = JSON.parseObject(response,new HashMap<String,Object>().getClass());
+
+                Map<String,Object> data = (Map<String, Object>) map.get("data");
+                List<Sign> listJson =  (List<Sign> )data.get("contract");
+
+                Logger.getInstance(getApplicationContext()).info("list is :" + listJson);
+
+                List<Sign> list = JSON.parseArray(JSON.toJSON(listJson).toString(),Sign.class);
+
+                setListView(list);
+
+
+            }
+
+            @Override
+            public void fail(String response) {
+                gotoLoginActivity();
+            }
+        });
+        Logger.getInstance(getApplicationContext()).info("获取合同列表的url is ："  + request.url);
+        request.getRequest(getApplicationContext());
+
+    }
+
+
+    private  void  setListView(List<Sign> list) {
+
+        for (Sign sign : list) {
+            Map<String,Object> map = new  HashMap<String, Object>();
+
+            //1：待我签署 2：待他人签署 3：已完成 4：过期未签署
+            String status = null;
+            switch (orderStatus){
+                case 1:
+                    status = "待我签署";
+                    break;
+                case 2:
+                    status = "待他人签署";
+                    break;
+                case 3:
+                    status = "已完成";
+                    break;
+                case 4:
+                    status = "过期未签署";
+                    break;
+                default:
+                    break;
+
+            }
+
+            Date createTime = DateUtil.stringToDateFormat(sign.getStime(),DateUtil.TIME_NORMAL_FORMAT);
+            Date endTime = DateUtil.stringToDateFormat(sign.getEtime(),DateUtil.TIME_NORMAL_FORMAT);
+            long timeInterval = DateUtil.getTimeStamp(endTime) - DateUtil.getTimeStamp(createTime);
+            long day =  timeInterval/(24*60*60*1000);
+
+            String[] mapKey =  new String[] {"signName","state","sendPerson","sendtime","duration"};
+            map.put(mapKey[0],"合同名称: " + sign.getTitle());
+            map.put(mapKey[1],status);
+            map.put(mapKey[2],"发送人: " + sign.getSendname());
+            map.put(mapKey[3],"发送时间: " + sign.getStime());
+            map.put(mapKey[4],"签约有效期: "+day+"天");
+            map.put("signId",sign.getId());
+
+
+
+            if (null == signList){
+                signList = new LinkedList<>();
+            }
+            signList.addLast(map);
+        }
+
+
+        //通知程序数据集已经改变，如果不做通知，那么将不会刷新mListItems的集合
+        adapter.notifyDataSetChanged();
+        // Call onRefreshComplete when the list has been refreshed.
+        pullToRefreshListView.onRefreshComplete();
 
     }
 }

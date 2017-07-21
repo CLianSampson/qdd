@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="127dp"
+    android:background="@color/systemGrayBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="117dp"
+        android:background="@drawable/button_radius_withoutborder"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:id="@+id/HomeAcitivity_signName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="合同名称: 仲裁委"
+            android:layout_marginTop="22dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="13sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/HomeAcitivity_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="待我签署"
+            android:textSize="13sp"
+            android:textColor="@color/systemRed"/>
+
+        <TextView
+            android:id="@+id/sepreate"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_below="@+id/HomeAcitivity_state"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/systemGrayBackground"/>
+
+        <TextView
+            android:id="@+id/HomeAcitivity_sendPerson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sepreate"
+            android:layout_marginTop="15dp"
+            android:text="发送人: 18771098004"
+            android:layout_marginLeft="10dp"
+            android:textSize="11sp"/>
+
+        <TextView
+            android:id="@+id/HomeAcitivity_sendTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/HomeAcitivity_sendPerson"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="发送时间: 2017-07-20 15:15:30"
+            android:textSize="11sp"/>
+
+        <TextView
+            android:id="@+id/HomeAcitivity_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/HomeAcitivity_sendPerson"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:text="签约有效期: 15天"
+            android:textSize="13sp"/>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
