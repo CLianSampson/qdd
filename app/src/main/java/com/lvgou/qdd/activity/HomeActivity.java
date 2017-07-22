@@ -105,6 +105,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
       switch (view.getId()){
           case R.id.waitForMeButton:
               orderStatus = 1;
+              changeOrderStatus();
 
               //设置背景
               waitForMeButton.setBackgroundResource(R.drawable.shape_nav_indicator);
@@ -123,6 +124,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
               break;
           case R.id.waitOtherButton:
               orderStatus = 2;
+              changeOrderStatus();
 
               waitOtherButton.setBackgroundResource(R.drawable.shape_nav_indicator);
 
@@ -141,6 +143,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
 
           case R.id.completeButton:
               orderStatus = 3;
+              changeOrderStatus();
 
               completeButton.setBackgroundResource(R.drawable.shape_nav_indicator);
 
@@ -158,6 +161,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
               break;
           case R.id.timeOutButton:
               orderStatus = 4;
+              changeOrderStatus();
 
               timeOutButton.setBackgroundResource(R.drawable.shape_nav_indicator);
 
@@ -381,7 +385,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
 
             Date createTime = DateUtil.stringToDateFormat(sign.getStime(),DateUtil.TIME_NORMAL_FORMAT);
             Date endTime = DateUtil.stringToDateFormat(sign.getEtime(),DateUtil.TIME_NORMAL_FORMAT);
-            long timeInterval = DateUtil.getTimeStamp(endTime) - DateUtil.getTimeStamp(createTime);
+            long timeInterval = endTime.getTime() - createTime.getTime();
             long day =  timeInterval/(24*60*60*1000);
 
             String[] mapKey =  new String[] {"signName","state","sendPerson","sendtime","duration"};
