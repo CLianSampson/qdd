@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/MessageListActivity_read_picture"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:src="@drawable/message_unread"
+        />
+
+    <TextView
+        android:id="@+id/MessageListActivity_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/MessageListActivity_read_picture"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="15dp"
+        android:text="签多多电子章上线了"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/MessageListActivity_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/MessageListActivity_title"
+        android:layout_marginTop="13dp"
+        android:layout_toRightOf="@+id/MessageListActivity_read_picture"
+        android:layout_marginLeft="15dp"
+        android:text="一键签约，多终端同步，提升工作效率..."
+        android:textSize="14sp"
+        android:textColor="#888888"/>
+
+    <TextView
+        android:id="@+id/MessageListActivity_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:text="今天10:00"
+        android:textSize="10sp"
+        android:textColor="#B4B4B4"/>
+
+</RelativeLayout>

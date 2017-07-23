@@ -15,6 +15,7 @@ import com.alibaba.fastjson.JSON;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.lvgou.qdd.R;
+import com.lvgou.qdd.activity.message.MessageListActivity;
 import com.lvgou.qdd.activity.shopping.ShoppingActivity;
 import com.lvgou.qdd.http.RequestCallback;
 import com.lvgou.qdd.http.URLConst;
@@ -251,6 +252,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
             public void onClick(View view) {
 //                resideMenu.openMenu(ResideMenu.DIRECTION_RIGHT);
                 //                resideMenu.setBackground(R.mipmap.menu);
+
+                Intent intent = new Intent(getApplicationContext(),MessageListActivity.class);
+                startActivity(intent);
             }
         });
 
