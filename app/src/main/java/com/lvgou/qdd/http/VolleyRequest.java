@@ -1,12 +1,15 @@
 package com.lvgou.qdd.http;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
 
 import com.alibaba.fastjson.JSON;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.lvgou.qdd.util.Logger;
@@ -139,5 +142,28 @@ public class VolleyRequest {
 
 
         mQueue.add(request);
+    }
+
+    public void downPicture(final Context context, ImageView imageView,String url){
+        mQueue = Volley.newRequestQueue(context);
+
+        ImageLoader imageLoader = new ImageLoader(mQueue, new ImageLoader.ImageCache() {
+            @Override
+            public void putBitmap(String url, Bitmap bitmap) {
+            }
+
+            @Override
+            public Bitmap getBitmap(String url) {
+                return null;
+            }
+        });
+
+        //第二和第三个参数分别设置默认图片  和 加载失败的参数
+        //ImageLoader.ImageListener listener = ImageLoader.getImageListener(imageView,
+//                R.drawable.message_read, R.drawable.message_unread);
+        ImageLoader.ImageListener listener = ImageLoader.getImageListener(imageView,
+                0, 0);
+
+        imageLoader.get(url,listener);
     }
 }

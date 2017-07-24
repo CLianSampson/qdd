@@ -46,7 +46,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="23dp"
             android:layout_centerHorizontal="true"
-            android:text="今天10:00"
             android:textColor="#B4B4B4"
             android:textSize="11sp"/>
 
@@ -54,7 +53,7 @@
             android:id="@+id/MessageDetailActivity_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/messageDetail"
+            android:src="@drawable/message_detail"
             android:layout_below="@+id/MessageDetailActivity_time"
             android:layout_marginTop="13dp"
             android:layout_marginLeft="15dp"/>
@@ -62,22 +61,41 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_below="@+id/MessageDetailActivity_time"
             android:layout_marginTop="13dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="15dp"
             android:layout_toRightOf="@+id/MessageDetailActivity_icon"
             android:layout_marginLeft="10dp"
-            android:background="#ECECEC">
+            android:background="@drawable/button_radius_withoutborder_gray_backgroung">
 
             <TextView
+                android:id="@+id/MessageDetailActivity_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="签多多电子章上线了"
+
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="14dp"
                 android:textSize="16sp"
+                android:paddingBottom="10dp"
                 />
-            
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:background="#C3CACF"/>
+
+            <TextView
+                android:id="@+id/MessageDetailActivity_contnt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingBottom="15dp"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"/>
+
 
         </LinearLayout>
         

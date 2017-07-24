@@ -1,5 +1,6 @@
 package com.lvgou.qdd.activity.message;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -88,7 +89,11 @@ public class MessageListActivity extends BaseActivity {
         pullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Message message = messageList.get(position);
 
+                Intent intent = new Intent(getApplicationContext(),MessageDetailActivity.class);
+                intent.putExtra("messageId",message.getId());
+                startActivity(intent);
             }
         });
     }
@@ -125,7 +130,7 @@ public class MessageListActivity extends BaseActivity {
                 gotoLoginActivity();
             }
         });
-        Logger.getInstance(getApplicationContext()).info("获取合同列表的url is ："  + request.url);
+        Logger.getInstance(getApplicationContext()).info("获取消息列表的url is ："  + request.url);
         request.getRequest(getApplicationContext());
     }
 

@@ -17,6 +17,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.lvgou.qdd.R;
 import com.lvgou.qdd.activity.message.MessageListActivity;
 import com.lvgou.qdd.activity.shopping.ShoppingActivity;
+import com.lvgou.qdd.activity.sign.SignShowActivity;
 import com.lvgou.qdd.http.RequestCallback;
 import com.lvgou.qdd.http.URLConst;
 import com.lvgou.qdd.model.Sign;
@@ -321,7 +322,10 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
         pullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                String signId = (String) signList.get(position).get("signId");
+                Intent intent = new Intent(getApplicationContext(), SignShowActivity.class);
+                intent.putExtra("signId",signId);
+                startActivity(intent);
             }
         });
     }
@@ -389,8 +393,12 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
 
             Date createTime = DateUtil.stringToDateFormat(sign.getStime(),DateUtil.TIME_NORMAL_FORMAT);
             Date endTime = DateUtil.stringToDateFormat(sign.getEtime(),DateUtil.TIME_NORMAL_FORMAT);
-            long timeInterval = endTime.getTime() - createTime.getTime();
-            long day =  timeInterval/(24*60*60*1000);
+            long day = 0;
+            if (null!=createTime && null!=endTime){
+                long timeInterval = endTime.getTime() - createTime.getTime();
+                day =  timeInterval/(24*60*60*1000);
+
+            }
 
             String[] mapKey =  new String[] {"signName","state","sendPerson","sendtime","duration"};
             map.put(mapKey[0],"合同名称: " + sign.getTitle());
