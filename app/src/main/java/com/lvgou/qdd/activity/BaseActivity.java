@@ -57,7 +57,6 @@ public abstract class BaseActivity extends FragmentActivity {
 
 
             @Override
-
             public void onClick(DialogInterface dialog, int which) {//响应事件
 
                 // TODO Auto-generated method stub
@@ -68,7 +67,6 @@ public abstract class BaseActivity extends FragmentActivity {
 
         }).show();//在按键响应事件中显示此对话框
 
-
     }
 
 
@@ -76,5 +74,10 @@ public abstract class BaseActivity extends FragmentActivity {
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

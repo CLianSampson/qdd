@@ -322,10 +322,11 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
         pullToRefreshListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String signId = (String) signList.get(position).get("signId");
+                String signId = (String) signList.get((int) id).get("signId");
                 Intent intent = new Intent(getApplicationContext(), SignShowActivity.class);
                 intent.putExtra("signId",signId);
-                startActivity(intent);
+                intent.putExtra("orderStatus",orderStatus);
+                startActivityForResult(intent,0001);
             }
         });
     }
@@ -335,7 +336,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
 
         pageNo++;
 
-        request.url = URLConst.URL_LIST_SIGN + TokenUtil.token;
+        request.url = URLConst.URL_LIST_SIGN + TokenUtil.token + "?status=" + orderStatus + "&p=" + pageNo;
         request.setCallback(new RequestCallback() {
             @Override
             public void sucess(String response) {
@@ -351,8 +352,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
                 List<Sign> list = JSON.parseArray(JSON.toJSON(listJson).toString(),Sign.class);
 
                 setListView(list);
-
-
             }
 
             @Override
@@ -421,6 +420,16 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
         adapter.notifyDataSetChanged();
         // Call onRefreshComplete when the list has been refreshed.
         pullToRefreshListView.onRefreshComplete();
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        //反向回调成功
+        Logger.getInstance(getApplicationContext()).info("反向回调成功");
+        pageNo=0;
+        signList.clear();
+        netRequest();
     }
 }

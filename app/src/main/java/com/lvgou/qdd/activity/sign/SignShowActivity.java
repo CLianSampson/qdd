@@ -1,9 +1,14 @@
 package com.lvgou.qdd.activity.sign;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -12,6 +17,7 @@ import com.lvgou.qdd.activity.BaseActivity;
 import com.lvgou.qdd.http.RequestCallback;
 import com.lvgou.qdd.http.URLConst;
 import com.lvgou.qdd.util.Logger;
+import com.lvgou.qdd.util.ToastUtil;
 import com.lvgou.qdd.util.TokenUtil;
 
 import java.util.HashMap;
@@ -20,10 +26,13 @@ import java.util.List;
 import java.util.Map;
 
 public class SignShowActivity extends BaseActivity {
+    private BaseActivity activity;
 
     private String signId;
 
     private Button backButton;
+
+    private Button signDetailButton;
 
     private TextView navTitle;
 
@@ -33,9 +42,15 @@ public class SignShowActivity extends BaseActivity {
 
     private LinkedList<Object> linkedList;
 
-    private Button refuseButton;
+    private Button refuseButton;  //驳回按钮
 
-    private Button signButton;
+    private Button signButton;  //签署按钮
+
+    private View sepreateView; //分割线
+
+    private Button cancelSignButton;  //撤销按钮
+
+    private int orderStatus;  //1：待我签署 2：待他人签署 3：已完成 4：过期未签署
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +62,37 @@ public class SignShowActivity extends BaseActivity {
     protected void childImpl(Bundle savedInstanceState) {
         setContentView(R.layout.activity_sign_show);
 
+        //获取合同id
+        signId = getIntent().getStringExtra("signId");
+        orderStatus = getIntent().getIntExtra("orderStatus",1); //如果不存在则用默认值1
+
+        setView();
+
+        setListView();
+
+        netRequest();
+    }
+
+
+    private void setView(){
         backButton = (Button) findViewById(R.id.SignShowActivity_backButton);
+        signDetailButton = (Button) findViewById(R.id.SignShowActivity_messageDetail);
         navTitle = (TextView) findViewById(R.id.SignShowActivity_middleMessage);
         listView = (ListView)findViewById(R.id.SignShowActivity_listView);
 
+        signDetailButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),SignDetailActivity.class);
+                intent.putExtra("signId",signId);
+                startActivity(intent);
+            }
+        });
+
         refuseButton = (Button) findViewById(R.id.SignShowActivity_refuseButton);
         signButton = (Button) findViewById(R.id.SignShowActivity_signbutton);
+        sepreateView = findViewById(R.id.SignShowActivity_sepreate);
+        cancelSignButton = (Button) findViewById(R.id.SignShowActivity_cancel_sign_button);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,16 +104,46 @@ public class SignShowActivity extends BaseActivity {
         refuseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setAlertView("hello " ,"world");
+                //添加驳回弹窗
+                setAlertView("确定","取消");
             }
         });
 
-        //获取合同id
-        signId = getIntent().getStringExtra("signId");
+        cancelSignButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //添加驳回弹窗
+                setAlertView("确定","取消");
+            }
+        });
 
-        setListView();
+        final RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.SignShowActivity_layout);
+        final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.SignShowActivity_linerlayout);
+        switch (orderStatus){
+            case 1:
+                //待我签署
+                relativeLayout.removeView(cancelSignButton);
+                break;
+            case 2:
+                //待别人签署
+                relativeLayout.removeView(linearLayout);
+                relativeLayout.removeView(sepreateView);
+                break;
+            case 3:
+                //已完成
+                relativeLayout.removeView(cancelSignButton);
+                relativeLayout.removeView(linearLayout);
+                relativeLayout.removeView(sepreateView);
+                break;
+            case 4:
+                //过期未签署
+                relativeLayout.removeView(cancelSignButton);
+                relativeLayout.removeView(linearLayout);
+                relativeLayout.removeView(sepreateView);
+                break;
 
-        netRequest();
+        }
+
     }
 
     private void setListView(){
@@ -110,6 +180,54 @@ public class SignShowActivity extends BaseActivity {
         });
 
         request.getRequest(getApplicationContext());
-
     }
+
+    protected void  setAlertView(String confirm , String cancel){
+        new AlertDialog.Builder(this).setTitle(null)//设置对话框标题
+                .setMessage("是否驳回？")//设置显示的内容
+                .setPositiveButton(confirm, new DialogInterface.OnClickListener() {
+                    //添加确定按钮
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {//确定按钮的响应事件
+                        //驳回合同
+                        refuse();
+                    }
+                }).setNegativeButton(cancel,new DialogInterface.OnClickListener() {
+                    //添加返回按钮
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {//响应事件
+
+                }
+
+        }).show();//在按键响应事件中显示此对话框
+    }
+
+    //驳回合同
+    private void  refuse(){
+        super.netRequest();
+
+        request.url = URLConst.URL_REFUSE_SIGN + TokenUtil.token +"/id/" + signId;
+        request.setCallback(new RequestCallback() {
+            @Override
+            public void sucess(String response) {
+                Logger.getInstance(getApplicationContext()).info("获取合同展示成功");
+
+                Map<String,Object> map = JSON.parseObject(response,new HashMap<String,Object>().getClass());
+
+                ToastUtil.showToast(getApplicationContext(),(String) map.get("info"));
+                Intent intent = new Intent();
+                setResult(0002,intent);
+                finish();
+            }
+
+            @Override
+            public void fail(String response) {
+                gotoLoginActivity();
+            }
+        });
+        Logger.getInstance(getApplicationContext()).info("驳回合同：" + request.url);
+        request.getRequest(getApplicationContext());
+    }
+
+    //取消合同
 }

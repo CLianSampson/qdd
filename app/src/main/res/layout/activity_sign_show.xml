@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lvgou.qdd.activity.sign.SignShowActivity">
+    tools:context="com.lvgou.qdd.activity.sign.SignShowActivity"
+    android:id="@+id/SignShowActivity_layout">
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                  android:id="@+id/SignShowActivity_nav"
@@ -37,7 +38,7 @@
             android:layout_gravity="right"
             android:layout_marginRight="16dp"
             android:layout_marginTop="12dp"
-            android:background="@drawable/message_read"/>
+            android:background="@drawable/sign_detail"/>
     </FrameLayout>
 
     <View
@@ -57,7 +58,10 @@
         android:dividerHeight="0dip"  >
     </ListView>
 
+
+    <!--  以下为驳回撤销按钮     -->
     <LinearLayout
+        android:id="@+id/SignShowActivity_linerlayout"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
@@ -85,6 +89,7 @@
     </LinearLayout>
 
     <View
+        android:id="@+id/SignShowActivity_sepreate"
         android:layout_width="3dp"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
@@ -92,5 +97,19 @@
         android:layout_centerHorizontal="true"
         android:background="@color/systemWhite">
     </View>
+    <!--  以下为驳回撤销按钮     -->
+
+
+
+    <Button
+        android:id="@+id/SignShowActivity_cancel_sign_button"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="@color/systemBlue"
+        android:text="撤销"
+        android:textColor="@color/systemWhite"
+        android:textSize="17sp"/>
 
 </RelativeLayout>

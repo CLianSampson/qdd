@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.lvgou.qdd.activity.sign.SignDetailActivity"
+    android:background="@color/systemGrayBackground">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:id="@+id/SignDetailActivity_nav"
+                 android:layout_width="match_parent"
+                 android:layout_height="48dp"
+                 android:background="@color/systemWhite">
+
+        <Button
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/ic_arrow_back"
+            android:id="@+id/SignDetailActivity_backButton" />
+
+        <TextView
+            android:id="@+id/SignDetailActivity_middleMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="详情"
+            android:textColor="@color/systemBlack"
+            android:layout_marginLeft="72dp"
+            android:layout_marginTop="12dp"
+            android:textSize="20sp"
+            android:gravity="center"/>
+    </FrameLayout>
+
+    <View
+        android:id="@+id/sepreate"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@+id/SignDetailActivity_nav"
+        android:background="@color/systemGrayBackground">
+    </View>
+
+    <RelativeLayout
+        android:id="@+id/SignDetailActivity_upper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sepreate"
+        android:background="@color/systemWhite">
+
+        <ImageView
+            android:id="@+id/SignDetailActivity_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/sign_detail_send"/>
+
+        <TextView
+            android:id="@+id/SignDetailActivity_send_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/SignDetailActivity_send"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="14dp"
+            android:text="合同发送方: 136 6666 6666"
+            android:textColor="@color/systemBlack"
+            />
+
+        <TextView
+            android:id="@+id/SignDetailActivity_send_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/SignDetailActivity_send"
+            android:layout_marginLeft="11dp"
+            android:layout_below="@+id/SignDetailActivity_send_phone"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="14dp"
+            android:text="邮箱: 448169133@qq.com"
+            android:textColor="@color/systemBlack"
+            />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/SignDetailActivity_under_sepreate"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_below="@+id/SignDetailActivity_upper"
+        android:background="@color/systemGrayBackground" />
+
+
+    <RelativeLayout
+        android:id="@+id/SignDetailActivity_under"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SignDetailActivity_under_sepreate"
+        android:background="@color/systemWhite">
+
+        <ImageView
+            android:id="@+id/SignDetailActivity_receive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/sign_detail_receiver"/>
+
+        <TextView
+            android:id="@+id/SignDetailActivity_to_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/SignDetailActivity_receive"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="14dp"
+            android:text="合同接受方: 136 6666 6666"
+            android:textColor="@color/systemBlack"
+            />
+
+        <TextView
+            android:id="@+id/SignDetailActivity_to_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/SignDetailActivity_receive"
+            android:layout_marginLeft="11dp"
+            android:layout_below="@+id/SignDetailActivity_to_phone"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="14dp"
+            android:text="邮箱: 123456789@qq.com"
+            android:textColor="@color/systemBlack"
+            />
+    </RelativeLayout>
+
+
+</RelativeLayout>
