@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lvgou.qdd.activity.signature.SignatureListActivity">
+
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:id="@+id/SignShowActivity_nav"
+                 android:layout_width="match_parent"
+                 android:layout_height="48dp">
+
+        <Button
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/ic_arrow_back"
+            android:id="@+id/SignatureListActivity_backButton" />
+
+        <TextView
+            android:id="@+id/SignShowActivity_middleMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的签名"
+            android:layout_marginLeft="72dp"
+            android:layout_marginTop="12dp"
+            android:textSize="20sp"
+            android:textColor="@color/systemBlack"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/SignatureListActivity_addSignature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="16dp"
+            android:text="添加签章"
+            android:textSize="13sp"
+            android:background="@color/systemWhite"/>
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/systemGrayBackground"></View>
+
+
+    <ListView
+        android:id="@+id/SignatureListActivity_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+
+</LinearLayout>

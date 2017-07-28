@@ -18,6 +18,7 @@ import com.lvgou.qdd.R;
 import com.lvgou.qdd.activity.message.MessageListActivity;
 import com.lvgou.qdd.activity.shopping.ShoppingActivity;
 import com.lvgou.qdd.activity.sign.SignShowActivity;
+import com.lvgou.qdd.activity.signature.SignatureListActivity;
 import com.lvgou.qdd.http.RequestCallback;
 import com.lvgou.qdd.http.URLConst;
 import com.lvgou.qdd.model.Sign;
@@ -101,6 +102,11 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
       if (view == shopping){
           Intent intent = new Intent(getApplicationContext(), ShoppingActivity.class);
           startActivity(intent);
+          return;
+      }
+
+      if (view == mySignature){
+          startActivity(new Intent(getApplicationContext(), SignatureListActivity.class));
           return;
       }
 
@@ -422,6 +428,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
         pullToRefreshListView.onRefreshComplete();
     }
 
+
+    //反向回调传值
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

@@ -82,6 +82,10 @@
         </activity>
         <activity android:name=".activity.sign.SignDetailActivity">
         </activity>
+        <activity android:name=".activity.signature.SignatureListActivity">
+        </activity>
+        <activity android:name=".activity.signature.AddSignatureActivity">
+        </activity>
     </application>
 
 </manifest>
