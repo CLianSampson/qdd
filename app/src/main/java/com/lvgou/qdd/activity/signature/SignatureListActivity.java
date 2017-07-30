@@ -3,9 +3,7 @@ package com.lvgou.qdd.activity.signature;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -16,7 +14,6 @@ import com.lvgou.qdd.R;
 import com.lvgou.qdd.activity.BaseActivity;
 import com.lvgou.qdd.http.RequestCallback;
 import com.lvgou.qdd.http.URLConst;
-import com.lvgou.qdd.http.VolleyRequest;
 import com.lvgou.qdd.util.Logger;
 import com.lvgou.qdd.util.TokenUtil;
 
@@ -61,6 +58,7 @@ public class SignatureListActivity extends BaseActivity {
         addSignatureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                startActivity(new Intent(getApplicationContext(),AddSignatureActivity.class));
                 startActivity(new Intent(getApplicationContext(),AddSignatureActivity.class));
             }
         });
@@ -81,32 +79,8 @@ public class SignatureListActivity extends BaseActivity {
         adapter = new SignatureAdapter(getApplicationContext(),personalList,enterpriseList,this);
         listView.setAdapter(adapter);
 
-//        setListitemOnclick();
-
     }
 
-    private void  setListitemOnclick(){
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.i("^^^^^^^^^^^^^^","click");
-
-                final  int index = position;
-                Button deleteButton = (Button) view.findViewById(R.id.SignatureListActivity_delete_button);
-                if (position == 1){
-                    deleteButton.setVisibility(View.INVISIBLE);
-                }
-                deleteButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-//                        deleteSignature((((Map<String,String>) (personalList.get(index-1)))).get("id"));
-                    }
-                });
-            }
-        });
-    }
 
     @Override
     protected void netRequest() {
@@ -142,34 +116,6 @@ public class SignatureListActivity extends BaseActivity {
         request.getRequest(getApplicationContext());
     }
 
-    private  void  deleteSignature(String signatureId){
-        VolleyRequest request = new VolleyRequest();
 
-        request.url = URLConst.URL_DELETE_SLGNATURE + TokenUtil.token + "/signid/" + signatureId;
-        request.setCallback(new RequestCallback() {
-            @Override
-            public void sucess(String response) {
-                Logger.getInstance(getApplicationContext()).info("删除签章成功");
-
-                Map<String,Object> map = JSON.parseObject(response,new HashMap<String,Object>().getClass());
-
-                Map<String,Object> data = (Map<String, Object>) map.get("data");
-
-                enterpriseList.clear();
-                personalList.clear();
-                adapter.notifyDataSetChanged();
-
-                netRequest();
-
-            }
-
-            @Override
-            public void fail(String response) {
-
-            }
-        });
-        Logger.getInstance(getApplicationContext()).info("删除签章：" + request.url);
-        request.getRequest(getApplicationContext());
-    }
 
 }

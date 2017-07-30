@@ -166,4 +166,8 @@ public class VolleyRequest {
 
         imageLoader.get(url,listener);
     }
+
+    public void uploadPicture(){
+
+    }
 }
