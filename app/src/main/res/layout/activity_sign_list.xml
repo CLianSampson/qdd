@@ -10,7 +10,7 @@
 
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                 android:id="@+id/SignShowActivity_nav"
+                 android:id="@+id/SignatureListActivity_nav"
                  android:layout_width="match_parent"
                  android:layout_height="48dp">
 
@@ -40,8 +40,8 @@
             android:layout_gravity="right"
             android:layout_marginRight="16dp"
             android:text="添加签章"
-            android:textSize="13sp"
-            android:background="@color/systemWhite"/>
+            android:gravity="right|center_vertical"
+            android:textSize="13sp"/>
     </FrameLayout>
 
     <View
@@ -53,6 +53,9 @@
     <ListView
         android:id="@+id/SignatureListActivity_listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent"
+        android:divider="#00000000"
+        android:dividerHeight="0dip"
+        android:listSelector="@android:color/transparent" ></ListView>
 
 </LinearLayout>
