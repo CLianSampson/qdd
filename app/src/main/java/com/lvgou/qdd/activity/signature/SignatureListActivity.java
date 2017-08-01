@@ -59,7 +59,9 @@ public class SignatureListActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 //                startActivity(new Intent(getApplicationContext(),AddSignatureActivity.class));
-                startActivity(new Intent(getApplicationContext(),AddSignatureActivity.class));
+
+
+                startActivityForResult(new Intent(getApplicationContext(),AddSignatureActivity.class),1004);
             }
         });
         //设置button背景色为透明
@@ -116,6 +118,17 @@ public class SignatureListActivity extends BaseActivity {
         request.getRequest(getApplicationContext());
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        Logger.getInstance(getApplicationContext()).info("+++++++++++++++++++++++++++,activity ");
 
+        //重新加载
+        enterpriseList.clear();
+        personalList.clear();
+        adapter.notifyDataSetChanged();
+
+        netRequest();
+    }
 }

@@ -7,7 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -22,6 +21,7 @@ import com.lvgou.qdd.R;
 import com.lvgou.qdd.activity.BaseActivity;
 import com.lvgou.qdd.http.upload.ResponseListener;
 import com.lvgou.qdd.http.upload.UploadApi;
+import com.lvgou.qdd.util.Logger;
 
 public class AddSignatureActivity extends BaseActivity {
 
@@ -193,7 +193,9 @@ public class AddSignatureActivity extends BaseActivity {
 
     @Override
     protected void netRequest() {
-        Bitmap bitmap = ((BitmapDrawable)imageSign.getDrawable()).getBitmap();
+//        Bitmap bitmap = ((BitmapDrawable)imageSign.getDrawable()).getBitmap();
+        Bitmap bitmap = mView.cachebBitmap;
+        Logger.getInstance(getApplicationContext()).info("手写签名的数据是: "  + bitmap);
         UploadApi.uploadImg(bitmap,new ResponseListener<String>() {
             @Override
             public void onErrorResponse(VolleyError error) {

@@ -116,7 +116,8 @@ public class SignatureAdapter extends BaseAdapter {
 
             ImageView icon = (ImageView) convertView.findViewById(R.id.SignatureListActivity_listitem_icon);
             String url = URLConst.URL_COMMON + ((Map<String,String>) enterpriseList.get(position-personalList.size()-2)).get("path");
-            VolleyRequest request = new VolleyRequest();request.downPicture(mContext,icon,url);
+            VolleyRequest request = new VolleyRequest();
+            request.downPicture(mContext,icon,url);
 
             Button deleteButton = (Button) convertView.findViewById(R.id.SignatureListActivity_delete_button);
             deleteButton.setVisibility(View.INVISIBLE);

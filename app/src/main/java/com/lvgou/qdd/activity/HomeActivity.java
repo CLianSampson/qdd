@@ -15,6 +15,7 @@ import com.alibaba.fastjson.JSON;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.lvgou.qdd.R;
+import com.lvgou.qdd.activity.contact.ContactListActivity;
 import com.lvgou.qdd.activity.message.MessageListActivity;
 import com.lvgou.qdd.activity.shopping.ShoppingActivity;
 import com.lvgou.qdd.activity.sign.SignShowActivity;
@@ -107,6 +108,11 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
 
       if (view == mySignature){
           startActivity(new Intent(getApplicationContext(), SignatureListActivity.class));
+          return;
+      }
+
+      if (view == contact){
+          startActivity(new Intent(getApplicationContext(), ContactListActivity.class));
           return;
       }
 

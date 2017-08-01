@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/systemGrayBackground"
+    tools:context="com.lvgou.qdd.activity.contact.AddContactActivity">
+
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:layout_width="match_parent"
+                 android:layout_height="48dp"
+                 android:background="@color/systemWhite"
+                 android:id="@+id/AddContactActivity_nav">
+
+        <Button
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/ic_arrow_back"
+            android:id="@+id/AddContactActivity_backButton" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="添加"
+            android:layout_marginLeft="72dp"
+            android:layout_marginTop="12dp"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/systemBlack"
+            android:id="@+id/middleMessage" />
+    </FrameLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/AddContactActivity_cao"
+        android:layout_width="match_parent"
+        android:layout_height="144dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/AddContactActivity_nav"
+        android:background="@color/systemWhite">
+
+        <ImageView
+            android:id="@+id/AddContactActivity_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginBottom="21dp"
+            android:src="@drawable/user"/>
+
+
+        <View
+            android:id="@+id/AddContactActivity_seperate"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/systemGrayBackground"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@+id/AddContactActivity_icon"
+            android:orientation="horizontal"
+            android:layout_marginLeft="62dp"></View>
+
+
+        <TextView
+            android:id="@+id/AddContactActivity_account"
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:layout_toRightOf="@+id/AddContactActivity_icon"
+            android:layout_marginLeft="62dp"
+            android:text="账号   136 6666 6666"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_above="@+id/AddContactActivity_seperate"
+            />
+
+        <TextView
+            android:id="@+id/AddContactActivity_name"
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:layout_toRightOf="@+id/AddContactActivity_icon"
+            android:layout_marginLeft="62dp"
+            android:text="名称   448169133@qq.com"
+            android:gravity="center"
+            android:layout_below="@+id/AddContactActivity_seperate"
+            />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/AddContactActivity_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="添加联系人"
+        android:layout_below="@+id/AddContactActivity_cao"
+        android:layout_marginTop="82dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/button_radius_background"
+        android:textColor="@color/systemWhite"
+        android:textSize="17sp"/>
+
+</RelativeLayout>
