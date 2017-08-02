@@ -75,6 +75,7 @@ public class ContactListActivity extends BaseActivity {
             public void onClick(View v) {
                 String edit  = editText.getText().toString();
                 if (StringUtil.isNullOrBlank(edit)){
+                    list.clear();
                     for (Map<String,String> temp: rawList) {
                         list.add(temp);
                     }

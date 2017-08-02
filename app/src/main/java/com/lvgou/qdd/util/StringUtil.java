@@ -15,7 +15,9 @@ public class StringUtil {
             return  true;
         }
 
-
+        if (string.equals("")){
+            return  true;
+        }
 
         return  false;
     }

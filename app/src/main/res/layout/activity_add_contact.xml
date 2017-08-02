@@ -36,71 +36,22 @@
     </FrameLayout>
 
 
-
-    <RelativeLayout
-        android:id="@+id/AddContactActivity_cao"
-        android:layout_width="match_parent"
-        android:layout_height="144dp"
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/AddContactActivity_nav"
-        android:background="@color/systemWhite">
-
-        <ImageView
-            android:id="@+id/AddContactActivity_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="21dp"
-            android:layout_marginBottom="21dp"
-            android:src="@drawable/user"/>
-
-
-        <View
-            android:id="@+id/AddContactActivity_seperate"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/systemGrayBackground"
-            android:layout_centerInParent="true"
-            android:layout_toRightOf="@+id/AddContactActivity_icon"
-            android:orientation="horizontal"
-            android:layout_marginLeft="62dp"></View>
-
-
-        <TextView
-            android:id="@+id/AddContactActivity_account"
-            android:layout_width="wrap_content"
-            android:layout_height="72dp"
-            android:layout_toRightOf="@+id/AddContactActivity_icon"
-            android:layout_marginLeft="62dp"
-            android:text="账号   136 6666 6666"
-            android:textSize="18sp"
-            android:gravity="center"
-            android:layout_above="@+id/AddContactActivity_seperate"
-            />
-
-        <TextView
-            android:id="@+id/AddContactActivity_name"
-            android:layout_width="wrap_content"
-            android:layout_height="72dp"
-            android:layout_toRightOf="@+id/AddContactActivity_icon"
-            android:layout_marginLeft="62dp"
-            android:text="名称   448169133@qq.com"
-            android:gravity="center"
-            android:layout_below="@+id/AddContactActivity_seperate"
-            />
-    </RelativeLayout>
-
-    <Button
-        android:id="@+id/AddContactActivity_add"
-        android:layout_width="match_parent"
+    <!--
+    <fragment
+        android:id="@+id/fragment_have_contact"
+        android:name="com.lvgou.qdd.activity.contact.HaveContactFragment"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="添加联系人"
-        android:layout_below="@+id/AddContactActivity_cao"
-        android:layout_marginTop="82dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/button_radius_background"
-        android:textColor="@color/systemWhite"
-        android:textSize="17sp"/>
+        android:layout_below="@+id/AddContactActivity_nav"
+        tools:layout="@layout/fragment_have_contact"/>
+    -->
+
+    <fragment
+        android:id="@+id/fragment_no_contact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:name="com.lvgou.qdd.activity.contact.NoContactFragment"
+        android:layout_below="@+id/AddContactActivity_nav"
+        tools:layout="@layout/fragment_no_contact"/>
 
 </RelativeLayout>

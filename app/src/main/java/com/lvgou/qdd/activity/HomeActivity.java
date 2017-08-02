@@ -17,6 +17,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.lvgou.qdd.R;
 import com.lvgou.qdd.activity.contact.ContactListActivity;
 import com.lvgou.qdd.activity.message.MessageListActivity;
+import com.lvgou.qdd.activity.order.OrderListActivity;
 import com.lvgou.qdd.activity.shopping.ShoppingActivity;
 import com.lvgou.qdd.activity.sign.SignShowActivity;
 import com.lvgou.qdd.activity.signature.SignatureListActivity;
@@ -113,6 +114,11 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
 
       if (view == contact){
           startActivity(new Intent(getApplicationContext(), ContactListActivity.class));
+          return;
+      }
+
+      if (view == myOrder){
+          startActivity(new Intent(getApplicationContext(), OrderListActivity.class));
           return;
       }
 

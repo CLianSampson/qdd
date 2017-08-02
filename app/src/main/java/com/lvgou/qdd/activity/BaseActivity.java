@@ -70,7 +70,7 @@ public abstract class BaseActivity extends FragmentActivity {
     }
 
 
-    protected void gotoLoginActivity(){
+    public void gotoLoginActivity(){
         Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
         finish();

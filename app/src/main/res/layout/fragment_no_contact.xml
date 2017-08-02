@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/systemGrayBackground"
+             tools:context="com.lvgou.qdd.activity.contact.NoContactFragment">
+
+
+
+        <RelativeLayout
+            android:id="@+id/AddContactActivity_upper"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="7dp"
+            android:background="@color/systemWhite">
+
+            <EditText
+                android:id="@+id/AddContactActivity_edit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="请输入个人手机号/企业邮箱账号"
+                android:textSize="14sp"
+                android:paddingLeft="50dp"
+                android:layout_marginLeft="10dp"
+                android:background="@null"/>
+
+            <!--
+            <Button
+                android:id="@+id/AddContactActivity_search"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/search"/>
+
+            <Button
+                android:id="@+id/AddContactActivity_delete"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/delete"/>
+            -->
+            <Button
+                android:id="@+id/AddContactActivity_search"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/search"/>
+
+        </RelativeLayout>
+
+
+
+        <TextView
+            android:id="@+id/AddContactActivity_no_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/AddContactActivity_upper"
+            android:text="该用户不存在"
+            android:textSize="15sp"
+            android:layout_marginTop="27dp"
+            android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
