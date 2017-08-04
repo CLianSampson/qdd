@@ -8,7 +8,7 @@
     tools:context="com.lvgou.qdd.activity.order.OrderListActivity">
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                 android:id="@+id/SignDetailActivity_nav"
+                 android:id="@+id/OrderListActivity_nav"
                  android:layout_width="match_parent"
                  android:layout_height="48dp"
                  android:background="@color/systemWhite">
@@ -32,5 +32,54 @@
             android:textSize="20sp"
             android:gravity="center"/>
     </FrameLayout>
+
+    <View
+        android:id="@+id/OrderListActivity_upper_sepreate"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/OrderListActivity_nav"
+        android:background="@color/systemGrayBackground"></View>
+
+    <TableLayout android:id="@+id/OrderListActivity_table"
+                 xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_below="@+id/OrderListActivity_upper_sepreate"
+                 android:background="@color/systemWhite">
+
+
+        <TableRow>
+            <Button
+                android:id="@+id/OrderListActivity_all"
+                android:text="全部"
+                android:layout_weight="1"
+                android:textColor="@color/systemBlue"
+                android:background="@drawable/shape_nav_indicator"
+                />
+
+            <Button
+                android:id="@+id/OrderListActivity_not_pay"
+                android:text="未支付"
+                android:layout_weight="1"
+                android:background="@drawable/shape_nav_no_indicator"
+                />
+
+            <Button
+                android:id="@+id/OrderListActivity_have_pay"
+                android:text="已支付"
+                android:layout_weight="1"
+                android:background="@drawable/shape_nav_no_indicator"
+                />
+        </TableRow>
+    </TableLayout>
+
+    <View
+        android:id="@+id/OrderListActivity_under_sepreate"
+        android:layout_width="match_parent"
+        android:layout_height="9dp"
+        android:layout_below="@+id/OrderListActivity_table"
+        android:background="@color/systemGrayBackground"></View>
+
+
 
 </RelativeLayout>

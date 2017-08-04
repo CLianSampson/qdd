@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/systemGrayBackground"
+    android:orientation="vertical"
     tools:context="com.lvgou.qdd.activity.contact.AddContactActivity">
 
 
@@ -35,6 +36,15 @@
             android:id="@+id/middleMessage" />
     </FrameLayout>
 
+    <!-- 用于fragment切换 -->
+    <FrameLayout
+        android:id="@+id/AddContactActivity_fragment_container"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/AddContactActivity_nav">
+    </FrameLayout>
+
 
     <!--
     <fragment
@@ -46,6 +56,7 @@
         tools:layout="@layout/fragment_have_contact"/>
     -->
 
+    <!--
     <fragment
         android:id="@+id/fragment_no_contact"
         android:layout_width="wrap_content"
@@ -53,5 +64,6 @@
         android:name="com.lvgou.qdd.activity.contact.NoContactFragment"
         android:layout_below="@+id/AddContactActivity_nav"
         tools:layout="@layout/fragment_no_contact"/>
+     -->
 
-</RelativeLayout>
+</LinearLayout>

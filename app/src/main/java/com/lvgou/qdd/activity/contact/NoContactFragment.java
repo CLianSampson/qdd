@@ -2,10 +2,8 @@ package com.lvgou.qdd.activity.contact;
 
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -16,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.lvgou.qdd.R;
 import com.lvgou.qdd.activity.BaseActivity;
 import com.lvgou.qdd.http.RequestCallback;
@@ -44,7 +43,7 @@ public class NoContactFragment extends Fragment {
     private CallBackValue callBackValue;
 
     public  interface  CallBackValue{
-        public void doListener(Map map);
+        public void doListener(JSONObject map);
     }
 
     /**
@@ -54,7 +53,8 @@ public class NoContactFragment extends Fragment {
     public void onAttach(Activity activity) {
         // TODO Auto-generated method stub
         super.onAttach(activity);
-        //当前fragment从activity重写了回调接口  得到接口的实例化对象
+        //当前fragment从activity重写了回调接口  得到接口的实例化
+        // 对象
         callBackValue =(CallBackValue) getActivity();
     }
 
@@ -143,14 +143,11 @@ public class NoContactFragment extends Fragment {
                     return;
                 }
 
-                FragmentManager fm = getFragmentManager();
-                FragmentTransaction transaction = fm.beginTransaction();
-                HaveContactFragment haveContactFragment = new HaveContactFragment();
-                transaction.replace(R.id.fragment_no_contact, haveContactFragment);
-                transaction.commit();
+                JSONObject jsonObject = (JSONObject)data.get("res");
+                jsonObject.put("search",editText.getText());
 
                 //利用接口回调传值
-                callBackValue.doListener(new HashMap());
+                callBackValue.doListener(jsonObject);
 
             }
 
@@ -163,9 +160,5 @@ public class NoContactFragment extends Fragment {
         Logger.getInstance(getActivity().getApplicationContext()).info("查找联系人列表：" + request.url);
         request.postRequest(getActivity().getApplicationContext(),map);
     }
-
-
-
-
 
 }

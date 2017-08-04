@@ -1,17 +1,17 @@
 package com.lvgou.qdd.activity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import com.lvgou.qdd.R;
 import com.lvgou.qdd.http.VolleyRequest;
 
 
-public abstract class BaseActivity extends FragmentActivity {
+public abstract class BaseActivity extends Activity {
     protected VolleyRequest request;
 
     @Override
