@@ -13,8 +13,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.lvgou.qdd.R;
 import com.lvgou.qdd.activity.BaseActivity;
 import com.lvgou.qdd.activity.shopping.PayActivity;
+import com.lvgou.qdd.util.DateUtil;
 import com.lvgou.qdd.util.ToastUtil;
 
+import java.util.Date;
 import java.util.LinkedList;
 
 /**
@@ -52,7 +54,7 @@ public class OrderListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = LayoutInflater.from(mContext);
+        final LayoutInflater inflater = LayoutInflater.from(mContext);
         OrderListAdapter.ViewHolder holder = null;
 //        if (convertView == null) {
 //            convertView = inflater.inflate(R.layout.list_item_order_list_activity, null);
@@ -72,7 +74,7 @@ public class OrderListAdapter extends BaseAdapter {
 //            holder = (OrderListAdapter.ViewHolder) convertView.getTag();
 //        }
 
-        JSONObject jsonObject = linkedList.get(position);
+        final JSONObject jsonObject = linkedList.get(position);
         Integer orderStatus = Integer.valueOf(  (String) (jsonObject.get("status")) );
 
         holder = new OrderListAdapter.ViewHolder();
@@ -85,7 +87,10 @@ public class OrderListAdapter extends BaseAdapter {
             holder.gotoPayButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    activity.startActivity(new Intent(mContext, PayActivity.class));
+                    Intent intent = new Intent(mContext, PayActivity.class);
+                    intent.putExtra("price",(Number)jsonObject.get("price")+"");
+                    intent.putExtra("orderId",(String) jsonObject.get("orderid"));
+                    activity.startActivity(intent);
                 }
             });
         }else if ( orderStatus.intValue() == 1){
@@ -107,12 +112,21 @@ public class OrderListAdapter extends BaseAdapter {
         holder.orderTimeTextView = (TextView) convertView.findViewById(R.id.OrderListActivity_order_time);
 
 
-        holder.typeTextView.setText("套餐类型:  " + jsonObject.get("name").toString());
-        holder.priceTextView.setText("价格:  " + jsonObject.get("price").toString());
-        holder.useTimesTextView.setText("可使用次数:  " + jsonObject.get("num").toString());
-        holder.signDurationTextView.setText("签约有效期:  " + jsonObject.get("ctime").toString());
-        holder.orderIdTextView.setText("订单编号:  "+ jsonObject.get("orderid").toString());
-        holder.orderTimeTextView.setText("下单时间:  " + jsonObject.get("ctime").toString());
+        Date createTime = DateUtil.stringToDateFormat((String) jsonObject.get("ctime"),DateUtil.TIME_NORMAL_FORMAT);
+        Date endTime = DateUtil.stringToDateFormat((String) jsonObject.get("etime"),DateUtil.TIME_NORMAL_FORMAT);
+        long day = 0;
+        if (null!=createTime && null!=endTime){
+            long timeInterval = endTime.getTime() - createTime.getTime();
+            day =  timeInterval/(24*60*60*1000);
+
+        }
+
+        holder.typeTextView.setText("套餐类型:  " + (String) jsonObject.get("name"));
+        holder.priceTextView.setText("价格:  " + (Number) jsonObject.get("price") + "元");
+        holder.useTimesTextView.setText("可使用次数:  " + (String) jsonObject.get("num") + "次");
+        holder.signDurationTextView.setText("签约有效期:  " + day + "天");
+        holder.orderIdTextView.setText("订单编号:  " + (String) jsonObject.get("orderid"));
+        holder.orderTimeTextView.setText("下单时间:  " + (String) jsonObject.get("ctime"));
 
 
         return convertView;

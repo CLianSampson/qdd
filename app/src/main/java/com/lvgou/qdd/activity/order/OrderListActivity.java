@@ -79,16 +79,20 @@ public class OrderListActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 allButton.setBackgroundResource(R.drawable.shape_nav_indicator);
-
                 noPayButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
                 havePayButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
 
 
                 //设置字体颜色
                 allButton.setTextColor(getResources().getColorStateList(R.color.systemBlue));
-
                 noPayButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
                 havePayButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
+
+                pageNo=0;
+                orderStatus="2";
+                linkedList.clear();
+                adapter.notifyDataSetChanged();
+                netRequest();
             }
         });
 
@@ -97,15 +101,19 @@ public class OrderListActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 allButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
-
                 noPayButton.setBackgroundResource(R.drawable.shape_nav_indicator);
                 havePayButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
 
                 //设置字体颜色
                 allButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
-
                 noPayButton.setTextColor(getResources().getColorStateList(R.color.systemBlue));
                 havePayButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
+
+                pageNo=0;
+                orderStatus="0";
+                linkedList.clear();
+                adapter.notifyDataSetChanged();
+                netRequest();
             }
         });
 
@@ -113,16 +121,20 @@ public class OrderListActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 allButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
-
                 noPayButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
                 havePayButton.setBackgroundResource(R.drawable.shape_nav_indicator);
 
 
                 //设置字体颜色
                 allButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
-
                 noPayButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
                 havePayButton.setTextColor(getResources().getColorStateList(R.color.systemBlue));
+
+                pageNo=0;
+                orderStatus="1";
+                linkedList.clear();
+                adapter.notifyDataSetChanged();
+                netRequest();
 
             }
         });

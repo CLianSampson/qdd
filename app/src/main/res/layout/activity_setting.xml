@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lvgou.qdd.activity.setting.SettingActivity">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:layout_width="match_parent"
+                 android:layout_height="48dp">
+
+        <Button
+            android:id="@+id/SettingActivity_backButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/ic_arrow_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置"
+            android:layout_marginLeft="72dp"
+            android:layout_marginTop="12dp"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:id="@+id/middleMessage" />
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/systemGrayBackground"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="账户资料"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="#333333"/>
+
+        <Button
+            android:id="@+id/SettingActivity_account"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/arrow"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/systemGrayBackground"/>
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="安全设置"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="#333333"/>
+
+        <Button
+            android:id="@+id/SettingActivity_security"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/arrow"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/systemGrayBackground"/>
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="关于签多多"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="#333333"/>
+
+        <Button
+            android:id="@+id/SettingActivity_about"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/arrow"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/systemGrayBackground"/>
+
+
+    <Button
+        android:id="@+id/SettingActivity_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="退出登录"
+        android:textStyle="bold"
+        android:textColor="@color/systemWhite"
+        android:background="@drawable/button_radius_background"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+
+</LinearLayout>
