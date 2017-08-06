@@ -73,13 +73,22 @@
         </TableRow>
     </TableLayout>
 
+    <!--
     <View
         android:id="@+id/OrderListActivity_under_sepreate"
         android:layout_width="match_parent"
         android:layout_height="9dp"
         android:layout_below="@+id/OrderListActivity_table"
         android:background="@color/systemGrayBackground"></View>
+    -->
 
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/OrderListActivity_listView"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/OrderListActivity_table"
+        >
 
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
 </RelativeLayout>

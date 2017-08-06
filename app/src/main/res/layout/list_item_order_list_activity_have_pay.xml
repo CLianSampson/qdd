@@ -3,8 +3,8 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              >
-    
+    >
+
     <View
         android:layout_width="match_parent"
         android:layout_height="15dp"
@@ -109,26 +109,7 @@
         android:layout_marginTop="16dp"
         android:background="#d1d1d1"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
-
-   <RelativeLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content">
-
-       <Button
-           android:id="@+id/OrderListActivity_goto_pay"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:background="@drawable/button_radius_background"
-           android:text="去付款"
-           android:textColor="@color/systemWhite"
-           android:textSize="13sp"
-           android:layout_marginTop="11.5dp"
-           android:layout_marginBottom="14dp"
-           android:layout_alignParentRight="true"
-           android:layout_marginRight="30dp"
-           />
-
-   </RelativeLayout>
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="5dp"/>
 
 </LinearLayout>
