@@ -37,7 +37,11 @@ public class SplashActivity extends AppCompatActivity {
 
     private void enterHomeActivity() {
         String token = StorageUtil.getData(getApplicationContext(),StorageUtil.TOKEN);
+        String accountFlag  = StorageUtil.getData(getApplicationContext(),StorageUtil.ACCOUNT_FLAG);
+
         TokenUtil.token = token;
+        TokenUtil.account_flag = accountFlag;
+
         if (StringUtil.isNullOrBlank(token)){
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);

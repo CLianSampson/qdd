@@ -50,7 +50,7 @@ public class SettingActivity extends BaseActivity {
         account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),AccountActivity.class));
+                startActivity(new Intent(getApplicationContext(),UserAccountActivity.class));
             }
         });
 

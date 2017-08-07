@@ -7,7 +7,7 @@ import android.widget.Button;
 import com.lvgou.qdd.R;
 import com.lvgou.qdd.activity.BaseActivity;
 
-public class AccountActivity extends BaseActivity {
+public class UserAccountActivity extends BaseActivity {
 
     private Button backButton;
 
@@ -17,17 +17,18 @@ public class AccountActivity extends BaseActivity {
 
     }
 
+
     @Override
     protected void childImpl(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_account);
+        setContentView(R.layout.activity_user_account);
 
-        backButton = (Button) findViewById(R.id.AccountActivity_backButton);
+        backButton = (Button) findViewById(R.id.UserAccountActivity_backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
     }
+
 }

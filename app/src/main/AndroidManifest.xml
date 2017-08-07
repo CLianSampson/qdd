@@ -108,6 +108,10 @@
         </activity>
         <activity android:name=".activity.setting.HelpListActivity">
         </activity>
+        <activity android:name=".activity.setting.SetPasswordActivity">
+        </activity>
+        <activity android:name=".activity.setting.UserAccountActivity">
+        </activity>
     </application>
 
 </manifest>

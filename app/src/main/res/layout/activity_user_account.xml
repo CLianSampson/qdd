@@ -5,15 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lvgou.qdd.activity.setting.AccountActivity">
-
+    android:orientation="vertical"
+    tools:context="com.lvgou.qdd.activity.setting.UserAccountActivity">
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                  android:layout_width="match_parent"
-                 android:layout_height="48dp">
+                 android:layout_height="48dp"
+                 android:background="@color/systemWhite">
 
         <Button
-            android:id="@+id/AccountActivity_backButton"
+            android:id="@+id/UserAccountActivity_backButton"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginLeft="16dp"
@@ -30,5 +31,11 @@
             android:gravity="center"
             android:id="@+id/middleMessage" />
     </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/systemGrayBackground"/>
+
 
 </LinearLayout>

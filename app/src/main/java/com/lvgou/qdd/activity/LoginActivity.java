@@ -12,6 +12,7 @@ import com.lvgou.qdd.http.RequestCallback;
 import com.lvgou.qdd.http.URLConst;
 import com.lvgou.qdd.util.Logger;
 import com.lvgou.qdd.util.StorageUtil;
+import com.lvgou.qdd.util.StringUtil;
 import com.lvgou.qdd.util.TokenUtil;
 
 import java.util.HashMap;
@@ -83,15 +84,15 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @Override
     protected void netRequest() {
         super.netRequest();
-        String account = accoutEditText.getText().toString();
+        final String account = accoutEditText.getText().toString();
         String password = passwordEditText.getText().toString();
 
         final Map<String,String> map = new HashMap<>();
         map.put("username",account);
         map.put("password",password);
 
-        map.put("username","18771098004");
-        map.put("password","1234567");
+//        map.put("username","18771098004");
+//        map.put("password","1234567");
 
         request.url = URLConst.URL_LOGIN;
         request.setCallback(new RequestCallback() {
@@ -107,8 +108,15 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 Logger.getInstance(getApplicationContext()).info("token is :"  + token);
 
                 StorageUtil.storeData(getApplicationContext(),StorageUtil.TOKEN,token);
-
                 TokenUtil.token = token;
+
+                if (StringUtil.isPhoneNum(account)){
+                    StorageUtil.storeData(getApplicationContext(),StorageUtil.ACCOUNT_FLAG,TokenUtil.USER_ACCOUNT);
+                    TokenUtil.account_flag = TokenUtil.USER_ACCOUNT;
+                }else {
+                    StorageUtil.storeData(getApplicationContext(),StorageUtil.ACCOUNT_FLAG,TokenUtil.ENTERPRISE_ACCOUNT);
+                    TokenUtil.account_flag = TokenUtil.ENTERPRISE_ACCOUNT;
+                }
 
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);

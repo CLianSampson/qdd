@@ -14,6 +14,7 @@ public class StorageUtil {
 
     public static  String TOKEN = "tpken";
 
+    public static  String ACCOUNT_FLAG = "account_flag";
 
     public static void storeData(Context context,String key,String data){
        SharedPreferences settings = context.getSharedPreferences(StorageUtil.SHARED_PREFERENCES, context.MODE_PRIVATE);
