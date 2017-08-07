@@ -5,11 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/systemGrayBackground"
     tools:context="com.lvgou.qdd.activity.setting.AboutActivity">
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                  android:layout_width="match_parent"
-                 android:layout_height="48dp">
+                 android:layout_height="48dp"
+                 android:background="@color/systemWhite">
 
         <Button
             android:id="@+id/AboutActivity_backButton"
@@ -29,5 +32,89 @@
             android:gravity="center"
             android:id="@+id/middleMessage" />
     </FrameLayout>
+
+   <ImageView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:src="@drawable/about_logo"
+       android:layout_gravity="center"
+       android:layout_marginTop="28.5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="签多多 V1.0"
+        android:textSize="12sp"
+        android:gravity="center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="29dp"
+        android:background="@color/systemGrayBackground"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@color/systemWhite">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="帮助"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="#333333"/>
+
+        <Button
+            android:id="@+id/AboutActivity_help"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/arrow"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/systemGrayBackground"/>
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@color/systemWhite">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="意见反馈"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="#333333"/>
+
+        <Button
+            android:id="@+id/AboutActivity_comment"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/arrow"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/systemGrayBackground"/>
+
 
 </LinearLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:descendantFocusability="blocksDescendants">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="@color/systemWhite">
+
+        <Button
+            android:id="@+id/HelpListActivity_help"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/arrow"/>
+
+        <TextView
+            android:id="@+id/HelpListActivity_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_toLeftOf="@+id/HelpListActivity_help"
+            android:layout_marginRight="10dp"
+            android:text="帮助"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="#333333"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

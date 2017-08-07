@@ -1,5 +1,6 @@
 package com.lvgou.qdd.activity.setting;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,10 @@ import com.lvgou.qdd.activity.BaseActivity;
 public class AboutActivity extends BaseActivity {
 
     private Button backButton;
+
+    private Button helpButton;
+
+    private Button commentButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,5 +33,26 @@ public class AboutActivity extends BaseActivity {
                 finish();
             }
         });
+
+        helpButton = (Button) findViewById(R.id.AboutActivity_help);
+        helpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),HelpListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        commentButton = (Button) findViewById(R.id.AboutActivity_comment);
+        commentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),CommentActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 }

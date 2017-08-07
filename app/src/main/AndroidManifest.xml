@@ -102,6 +102,12 @@
         </activity>
         <activity android:name=".activity.setting.AboutActivity">
         </activity>
+        <activity android:name=".activity.setting.HelpActivity">
+        </activity>
+        <activity android:name=".activity.setting.CommentActivity">
+        </activity>
+        <activity android:name=".activity.setting.HelpListActivity">
+        </activity>
     </application>
 
 </manifest>
