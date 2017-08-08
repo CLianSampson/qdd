@@ -112,6 +112,10 @@
         </activity>
         <activity android:name=".activity.setting.UserAccountActivity">
         </activity>
+        <activity android:name=".activity.setting.BindMailActivity">
+        </activity>
+        <activity android:name=".activity.setting.BindMailSucessActivity">
+        </activity>
     </application>
 
 </manifest>
