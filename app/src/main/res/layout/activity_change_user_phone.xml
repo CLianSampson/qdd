@@ -79,11 +79,16 @@
         android:background="@color/systemGrayBackground"/>
 
     <com.lvgou.qdd.view.SmsCoeView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
 
     </com.lvgou.qdd.view.SmsCoeView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/sysSepreateColor"/>
 
 
 
