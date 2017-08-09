@@ -55,7 +55,6 @@ public class BindMailSucessActivity extends BaseActivity{
         });
 
 
-
         mailAccount = (TextView) findViewById(R.id.BindMailSucessActivity_mail_account);
         mailAccount.setText(getIntent().getStringExtra("mail"));
 

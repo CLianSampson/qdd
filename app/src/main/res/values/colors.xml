@@ -9,6 +9,11 @@
     <color name="systemGray">#666666</color>
     <color name="systemWhite">#FFFFFF</color>
     <color name="systemBlack">#000000</color>
+
+    <!--  #F5F5F5 -->
     <color name="systemGrayBackground">#CCCCCC</color>
     <color name="systemRed">#FF0000</color>
+
+    <color name="sysSepreateColor">#CCCCCC</color>
+
 </resources>

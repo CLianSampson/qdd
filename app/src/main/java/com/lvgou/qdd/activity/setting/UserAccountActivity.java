@@ -90,7 +90,7 @@ public class UserAccountActivity extends BaseActivity {
                 String name = (String) data.get("name");
                 String account = (String) data.get("idname");
                 String mail = (String) data.get("mail");
-                String phone =(String)  data.get("tel");
+                final String phone =(String)  data.get("tel");
 
 
                 if (TokenUtil.account_flag.equals(TokenUtil.USER_ACCOUNT)){
@@ -136,7 +136,9 @@ public class UserAccountActivity extends BaseActivity {
                     mailTextView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-
+                            Intent intent = new Intent(getApplicationContext(),UserPhoneActivity.class);
+                            intent.putExtra("phone",phone);
+                            startActivity(intent);
                         }
                     });
 

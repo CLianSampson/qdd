@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lvgou.qdd.activity.setting.UserPhoneActivity">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:layout_width="match_parent"
+                 android:layout_height="48dp"
+                 android:background="@color/systemWhite">
+
+        <Button
+            android:id="@+id/UserPhoneActivity_backButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/ic_arrow_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="法人手机号"
+            android:layout_marginLeft="72dp"
+            android:layout_marginTop="12dp"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:id="@+id/middleMessage" />
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/systemGrayBackground"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/systemWhite">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="法人手机号"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="20dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/UserPhoneActivity_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"
+            android:gravity="right|center"
+            />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/sysSepreateColor"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/systemWhite">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更换绑定手机号"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="20dp"
+            android:textSize="15sp"/>
+
+
+        <Button
+            android:id="@+id/UserPhoneActivity_changePhone"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/arrow"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/sysSepreateColor"/>
+
+
+</LinearLayout>
