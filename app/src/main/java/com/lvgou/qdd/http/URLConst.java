@@ -59,6 +59,9 @@ public interface URLConst {
 
     public static String URL_BIND_MAIL="https://www.qiandd.com/mobile/Set/bound_post/token/";//绑定邮箱，发送邮件
 
+    //删除修改手机号（验证验证码） 设置里
+    public static String URL_CHANGE_PHONE="https://www.qiandd.com/mobile/Set/refre_post/token/";
+
 
     public static String URL_LIST_CONTACT="https://www.qiandd.com/mobile/Contacts/index/token/";//联系人列表
 

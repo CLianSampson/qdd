@@ -9,7 +9,15 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.lvgou.qdd.R;
+import com.lvgou.qdd.http.RequestCallback;
+import com.lvgou.qdd.http.URLConst;
+import com.lvgou.qdd.http.VolleyRequest;
+import com.lvgou.qdd.util.Logger;
+import com.lvgou.qdd.util.StringUtil;
+import com.lvgou.qdd.util.ToastUtil;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,11 +28,19 @@ import java.util.TimerTask;
 
 public class SmsCoeView extends RelativeLayout {
 
-    private EditText editText;
+    public String phone;
+
+    public Context context;
 
     private TextView getSmsCodeButton;
 
+    private EditText inputSmsCode;
+
     private  static  int flag = 60;
+
+
+
+
 
     //View类有三个构造方法，你在继承时，至少要覆写其中一个，以便创建你的自定义View。
 //    这三个构造方法分别是一个参数，两个参数和三个参数的。
@@ -39,12 +55,15 @@ public class SmsCoeView extends RelativeLayout {
 
     //见链接   https://zhidao.baidu.com/question/583306960.html
 
-    public SmsCoeView(Context context, AttributeSet attrs) {
+    public SmsCoeView(final Context context, AttributeSet attrs) {
         super(context,attrs);
 
         LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.sms_code, this);
-        editText = (EditText) view.findViewById(R.id.inputSmsCode);
+
+
+        inputSmsCode = (EditText) view.findViewById(R.id.inputSmsCode);
+
         getSmsCodeButton = (TextView) view.findViewById(R.id.getSmsCode);
 
         getSmsCodeButton.setOnClickListener(new OnClickListener() {
@@ -55,6 +74,13 @@ public class SmsCoeView extends RelativeLayout {
                     @Override
                     public void run() {
                         flag--;
+
+                        if (StringUtil.isNullOrBlank(phone)){
+                            ToastUtil.showToast(context,"手机号不能为空");
+                            return;
+                        }
+
+                        netRequest();
 
                         getSmsCodeButton.post(new Runnable() {
                             @Override
@@ -89,8 +115,37 @@ public class SmsCoeView extends RelativeLayout {
             }
         });
 
-
     }
 
+
+    public String getSmsCode(){
+        return inputSmsCode.getText().toString();
+    }
+
+
+    private void netRequest(){
+        VolleyRequest request = new VolleyRequest();
+
+        request.url = URLConst.URL_SMS  + "mobile=" + phone;
+        request.setCallback(new RequestCallback() {
+            @Override
+            public void sucess(String response) {
+                Logger.getInstance(context).info("获取短信验证码成功");
+
+                JSONObject responseData = JSON.parseObject(response,JSONObject.class);
+
+                ToastUtil.showToast(context,"短信验证码已发送");
+
+
+            }
+
+            @Override
+            public void fail(String response) {
+
+            }
+        });
+        Logger.getInstance(context).info("获取短信验证码的url : " + request.url);
+
+    }
 
 }

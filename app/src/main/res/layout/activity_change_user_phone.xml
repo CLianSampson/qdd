@@ -63,7 +63,7 @@
             android:textSize="14sp"
             android:layout_marginLeft="20dp"/>
         <EditText
-            android:id="@+id/login_account"
+            android:id="@+id/ChangeUserPhoneActivity_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="请输入手机号"
@@ -79,6 +79,7 @@
         android:background="@color/systemGrayBackground"/>
 
     <com.lvgou.qdd.view.SmsCoeView
+        android:id="@+id/smsCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

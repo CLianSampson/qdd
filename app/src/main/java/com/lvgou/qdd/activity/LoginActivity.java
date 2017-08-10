@@ -84,18 +84,25 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @Override
     protected void netRequest() {
         super.netRequest();
-        final String account = accoutEditText.getText().toString();
-        String password = passwordEditText.getText().toString();
+
 
         final Map<String,String> map = new HashMap<>();
-        map.put("username",account);
-        map.put("password",password);
+
 
         map.put("username","18771098004");
         map.put("password","123456");
 
 //        map.put("username","wangnanqiao@qiandd.com");
 //        map.put("password","lingxi0502");
+
+
+
+        final String account = accoutEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+
+//        map.put("username",account);
+//        map.put("password",password);
+
 
         request.url = URLConst.URL_LOGIN;
         request.setCallback(new RequestCallback() {
