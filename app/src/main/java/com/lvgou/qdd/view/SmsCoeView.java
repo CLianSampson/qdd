@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.lvgou.qdd.R;
+import com.lvgou.qdd.activity.BaseActivity;
 import com.lvgou.qdd.http.RequestCallback;
 import com.lvgou.qdd.http.URLConst;
 import com.lvgou.qdd.http.VolleyRequest;
@@ -28,9 +29,9 @@ import java.util.TimerTask;
 
 public class SmsCoeView extends RelativeLayout {
 
-    public String phone;
+    public BaseActivity activity;
 
-    public Context context;
+    public String phone;
 
     private TextView getSmsCodeButton;
 
@@ -55,7 +56,7 @@ public class SmsCoeView extends RelativeLayout {
 
     //见链接   https://zhidao.baidu.com/question/583306960.html
 
-    public SmsCoeView(final Context context, AttributeSet attrs) {
+    public SmsCoeView(final Context context, final AttributeSet attrs) {
         super(context,attrs);
 
         LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -69,18 +70,30 @@ public class SmsCoeView extends RelativeLayout {
         getSmsCodeButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Timer timer = new Timer();
+                final Timer timer = new Timer();
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        flag--;
+                        //以下顺序不能改变
+
+                        activity.getSmsCode();
+
+                        Logger.getInstance(activity.getApplicationContext()).info("+++++++++++++++++++++++++++++++++++++++++");
+                        Logger.getInstance(activity.getApplicationContext()).info("+++++++++++++++++++++++++++++++++++++++++  phone is :" + phone );
 
                         if (StringUtil.isNullOrBlank(phone)){
-                            ToastUtil.showToast(context,"手机号不能为空");
+
+                            getSmsCodeButton.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ToastUtil.showToast(activity.getApplicationContext(),"手机号不能为空");
+                                }
+                            });
+
+                            timer.cancel();
                             return;
                         }
 
-                        netRequest();
 
                         getSmsCodeButton.post(new Runnable() {
                             @Override
@@ -92,7 +105,11 @@ public class SmsCoeView extends RelativeLayout {
                             }
                         });
 
+                        if (flag == 60){
+                            getSmsCodeByNet();
+                        }
 
+                        flag--;
 
 
                         if (flag>0){
@@ -110,6 +127,10 @@ public class SmsCoeView extends RelativeLayout {
                         });
 
 
+                        flag = 60;
+                        timer.cancel();
+
+
                     }
                 },1000,1000); //1s后  每隔1s执行一次
             }
@@ -123,19 +144,18 @@ public class SmsCoeView extends RelativeLayout {
     }
 
 
-    private void netRequest(){
+    private void getSmsCodeByNet(){
         VolleyRequest request = new VolleyRequest();
 
         request.url = URLConst.URL_SMS  + "mobile=" + phone;
         request.setCallback(new RequestCallback() {
             @Override
             public void sucess(String response) {
-                Logger.getInstance(context).info("获取短信验证码成功");
+                Logger.getInstance(activity.getApplicationContext()).info("获取短信验证码成功");
 
                 JSONObject responseData = JSON.parseObject(response,JSONObject.class);
 
-                ToastUtil.showToast(context,"短信验证码已发送");
-
+                ToastUtil.showToast(activity.getApplicationContext(),"短信验证码已发送");
 
             }
 
@@ -144,8 +164,8 @@ public class SmsCoeView extends RelativeLayout {
 
             }
         });
-        Logger.getInstance(context).info("获取短信验证码的url : " + request.url);
-
+        Logger.getInstance(activity.getApplicationContext()).info("获取短信验证码的url : " + request.url);
+        request.getRequest(activity.getApplicationContext());
     }
 
 }

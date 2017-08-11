@@ -30,7 +30,7 @@ public abstract class BaseActivity extends Activity {
     protected abstract void childImpl(Bundle savedInstanceState);
 
 
-    protected  void netRequest(){
+    protected void netRequest(){
         request = new VolleyRequest();
     }
 
@@ -79,5 +79,9 @@ public abstract class BaseActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public void getSmsCode(){
+
     }
 }

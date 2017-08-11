@@ -66,11 +66,12 @@ public class ChangeUserPhoneActivity extends BaseActivity {
         phoneInput = (EditText) findViewById(R.id.ChangeUserPhoneActivity_phone);
 
         smsCodeView = (SmsCoeView) findViewById(R.id.smsCode);
-        smsCodeView.context = getApplicationContext();
+        smsCodeView.activity = this;
 
     }
 
 
+    //重新设置手机号
     @Override
     protected void netRequest() {
         super.netRequest();
@@ -99,7 +100,48 @@ public class ChangeUserPhoneActivity extends BaseActivity {
         });
         Logger.getInstance(getApplicationContext()).info("重新绑定手机号：" + request.url);
         request.postRequest(getApplicationContext(),map);
+    }
+
+
+    //获取短信验证码
+    @Override
+    public void getSmsCode(){
+        smsCodeView.phone = phoneInput.getText().toString();
+
+//        smsCodeView.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (StringUtil.isNullOrBlank(phoneInput.getText().toString())){
+//                    ToastUtil.showToast(getApplicationContext(),"手机号不能为空");
+//                    return;
+//                }
+//
+//
+//                VolleyRequest request = new VolleyRequest();
+//
+//                request.url = URLConst.URL_SMS  + "mobile=" + phoneInput.getText().toString();
+//                request.setCallback(new RequestCallback() {
+//                    @Override
+//                    public void sucess(String response) {
+//                        Logger.getInstance(getApplicationContext()).info("获取短信验证码成功");
+//
+//                        JSONObject responseData = JSON.parseObject(response,JSONObject.class);
+//
+//                        ToastUtil.showToast(getApplicationContext(),"短信验证码已发送");
+//
+//                    }
+//
+//                    @Override
+//                    public void fail(String response) {
+//
+//                    }
+//                });
+//                Logger.getInstance(getApplicationContext()).info("获取短信验证码的url : " + request.url);
+//
+//            }
+//        });
 
     }
+
 
 }
