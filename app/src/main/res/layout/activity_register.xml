@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lvgou.qdd.activity.register.RegisterActivity">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:id="@+id/AddSignatureActivity_nav"
+                 android:layout_width="match_parent"
+                 android:layout_height="48dp">
+
+    <Button
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/ic_arrow_back"
+        android:id="@+id/RegisterActivity_backButton" />
+
+    <TextView
+        android:id="@+id/AddSignatureActivity_middleMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="注册"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="12dp"
+        android:textSize="20sp"
+        android:textColor="@color/systemBlack"
+        android:gravity="center"/>
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/sysSepreateColor"></View>
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_below="@+id/nav"
+                 android:background="@color/systemWhite">
+
+        <TableRow>
+            <Button
+                android:id="@+id/waitForMeButton"
+                android:text="个人账户"
+                android:layout_weight="1"
+                android:textColor="@color/systemBlue"
+                android:background="@drawable/shape_nav_indicator"
+                />
+
+            <Button
+                android:id="@+id/waitOtherButton"
+                android:text="企业账号"
+                android:layout_weight="1"
+                android:background="@drawable/shape_nav_no_indicator"
+                />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

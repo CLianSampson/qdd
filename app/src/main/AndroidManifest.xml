@@ -120,6 +120,8 @@
         </activity>
         <activity android:name=".activity.setting.ChangeUserPhoneActivity">
         </activity>
+        <activity android:name=".activity.register.RegisterActivity">
+        </activity>
     </application>
 
 </manifest>

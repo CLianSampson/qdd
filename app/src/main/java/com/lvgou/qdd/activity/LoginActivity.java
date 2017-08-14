@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import com.alibaba.fastjson.JSON;
 import com.lvgou.qdd.R;
+import com.lvgou.qdd.activity.register.RegisterActivity;
 import com.lvgou.qdd.http.RequestCallback;
 import com.lvgou.qdd.http.URLConst;
 import com.lvgou.qdd.util.Logger;
@@ -32,7 +33,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -40,7 +40,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         setContentView(R.layout.activity_login);
         setVIew();
     }
-
 
     private  void  setVIew(){
         accoutEditText = (EditText) findViewById(R.id.login_account);
@@ -52,8 +51,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         loginButton.setOnClickListener(this);
         registerButton.setOnClickListener(this);
         forgetpasswordButton.setOnClickListener(this);
-
     }
+
 
     public void onClick(View v){
         switch (v.getId()){
@@ -61,8 +60,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 login();
                 break;
 
-            case R.id.login_account:
-                login();
+            case R.id.registerButton:
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
                 break;
 
             case R.id.login_password:
@@ -76,8 +75,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
 
-    private  void  login(){
-
+    private void login(){
         netRequest();
     }
 
@@ -85,17 +83,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     protected void netRequest() {
         super.netRequest();
 
-
         final Map<String,String> map = new HashMap<>();
 
-
         map.put("username","18771098004");
-        map.put("password","1234567");
+        map.put("password","123456");
 
 //        map.put("username","wangnanqiao@qiandd.com");
 //        map.put("password","lingxi0502");
-
-
 
         final String account = accoutEditText.getText().toString();
         String password = passwordEditText.getText().toString();
