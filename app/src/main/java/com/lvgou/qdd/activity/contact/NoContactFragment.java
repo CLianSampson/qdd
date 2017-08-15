@@ -111,7 +111,6 @@ public class NoContactFragment extends Fragment {
             }
         });
 
-
         return view;
     }
 

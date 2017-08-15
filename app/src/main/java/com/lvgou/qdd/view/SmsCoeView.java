@@ -29,6 +29,12 @@ import java.util.TimerTask;
 
 public class SmsCoeView extends RelativeLayout {
 
+    public interface ISmsCoeView{
+        public void getSmsCode();
+    }
+
+    public ISmsCoeView callback;
+
     public BaseActivity activity;
 
     public String phone;
@@ -76,7 +82,7 @@ public class SmsCoeView extends RelativeLayout {
                     public void run() {
                         //以下顺序不能改变
 
-                        activity.getSmsCode();
+                        callback.getSmsCode();
 
                         Logger.getInstance(activity.getApplicationContext()).info("+++++++++++++++++++++++++++++++++++++++++");
                         Logger.getInstance(activity.getApplicationContext()).info("+++++++++++++++++++++++++++++++++++++++++  phone is :" + phone );

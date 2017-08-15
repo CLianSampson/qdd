@@ -81,7 +81,5 @@ public abstract class BaseActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void getSmsCode(){
 
-    }
 }

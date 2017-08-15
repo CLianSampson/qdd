@@ -21,7 +21,7 @@ import com.lvgou.qdd.view.SmsCoeView;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ChangeUserPhoneActivity extends BaseActivity {
+public class ChangeUserPhoneActivity extends BaseActivity implements SmsCoeView.ISmsCoeView{
 
     private Button backButton;
 
@@ -67,6 +67,7 @@ public class ChangeUserPhoneActivity extends BaseActivity {
 
         smsCodeView = (SmsCoeView) findViewById(R.id.smsCode);
         smsCodeView.activity = this;
+        smsCodeView.callback = this;
 
     }
 

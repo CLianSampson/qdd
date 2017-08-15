@@ -47,7 +47,6 @@ public class AddContactActivity extends BaseActivity implements NoContactFragmen
         NoContactFragment noContactFragment = new NoContactFragment();
         transaction.add(R.id.AddContactActivity_fragment_container,noContactFragment);
         transaction.commit();
-
     }
 
     @Override

@@ -46,7 +46,7 @@
 
         <TableRow>
             <Button
-                android:id="@+id/waitForMeButton"
+                android:id="@+id/RegisterActivity_user"
                 android:text="个人账户"
                 android:layout_weight="1"
                 android:textColor="@color/systemBlue"
@@ -54,12 +54,26 @@
                 />
 
             <Button
-                android:id="@+id/waitOtherButton"
+                android:id="@+id/RegisterActivity_enterprise"
                 android:text="企业账号"
                 android:layout_weight="1"
                 android:background="@drawable/shape_nav_no_indicator"
                 />
         </TableRow>
     </TableLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/systemGrayBackground"/>
+
+    <!-- 用于fragment切换 -->
+    <FrameLayout
+        android:id="@+id/RegisterActivity_fragment_container"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/systemGrayBackground">
+    </FrameLayout>
 
 </LinearLayout>

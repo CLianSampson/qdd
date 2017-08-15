@@ -67,8 +67,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="请输入手机号"
-            android:textSize="13sp"
+            android:textSize="14sp"
             android:background="@null"
+            android:textColorHint="@color/sysSepreateColor"
             android:layout_marginLeft="20dp"/>
 
     </LinearLayout>
@@ -78,13 +79,33 @@
         android:layout_height="1dp"
         android:background="@color/systemGrayBackground"/>
 
-    <com.lvgou.qdd.view.SmsCoeView
-        android:id="@+id/smsCode"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="验证码"
+            android:textColor="#333333"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="14sp"
+            android:layout_centerVertical="true"/>
 
-    </com.lvgou.qdd.view.SmsCoeView>
+        <com.lvgou.qdd.view.SmsCoeView
+            android:id="@+id/smsCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/left"
+            android:layout_marginLeft="20dp">
+
+        </com.lvgou.qdd.view.SmsCoeView>
+
+    </RelativeLayout>
+
 
     <View
         android:layout_width="match_parent"

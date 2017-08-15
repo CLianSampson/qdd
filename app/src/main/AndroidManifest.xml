@@ -86,8 +86,6 @@
         </activity>
         <activity android:name=".activity.signature.AddSignatureActivity">
         </activity>
-        <activity android:name=".activity.signature.AddSignatureActivity">
-        </activity>
         <activity android:name=".activity.contact.ContactListActivity">
         </activity>
         <activity android:name=".activity.contact.AddContactActivity">
@@ -95,8 +93,6 @@
         <activity android:name=".activity.order.OrderListActivity">
         </activity>
         <activity android:name=".activity.setting.SettingActivity">
-        </activity>
-        <activity android:name=".activity.setting.AccountActivity">
         </activity>
         <activity android:name=".activity.setting.SecurityActivity">
         </activity>
@@ -120,7 +116,8 @@
         </activity>
         <activity android:name=".activity.setting.ChangeUserPhoneActivity">
         </activity>
-        <activity android:name=".activity.register.RegisterActivity">
+        <activity android:name=".activity.register.RegisterActivity"
+                  android:windowSoftInputMode="adjustPan"  >
         </activity>
     </application>
 
