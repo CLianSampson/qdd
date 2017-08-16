@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.lvgou.qdd.activity.HomeActivity">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/systemGrayBackground"
+              tools:context="com.lvgou.qdd.activity.HomeActivity">
 
     <include
         android:id="@+id/nav"
         layout="@layout/navigation_xml"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/systemGrayBackground"/>
 
     <include android:id="@+id/navState"
         layout="@layout/table_nav_state"

@@ -30,6 +30,7 @@ import com.lvgou.qdd.util.Logger;
 import com.lvgou.qdd.util.TokenUtil;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
+import com.special.lvgou.UserIcon;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -217,7 +218,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
         // Call onRefreshComplete when the list has been refreshed.
         pullToRefreshListView.onRefreshComplete();
         netRequest();
-
     }
 
     /********************************** 抽屉效果开始 ************************************************/
@@ -240,10 +240,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
         myOrder = new ResideMenuItem(this, 0, "我的订单");
         settings = new ResideMenuItem(this, 0, "设置");
 
-
-
-
-//                userIconView = new UserIconView(this);
+        UserIcon userIcon = new UserIcon(getApplicationContext(),null);
 
         shopping.setOnClickListener(this);
         mySignature.setOnClickListener(this);
@@ -251,7 +248,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
         myOrder.setOnClickListener(this);
         settings.setOnClickListener(this);
 
-        //        resideMenu.addUserIcon(userIconView, ResideMenu.DIRECTION_LEFT);
+        resideMenu.addUserIcon(userIcon, ResideMenu.DIRECTION_LEFT);
 
 
         resideMenu.addMenuItem(shopping, ResideMenu.DIRECTION_LEFT);
@@ -282,7 +279,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
                 startActivity(intent);
             }
         });
-
     }
 
     @Override

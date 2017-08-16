@@ -9,8 +9,6 @@ int id sv_left_menu 0x7f050003
 int id sv_menu_holder 0x7f050002
 int id sv_right_menu 0x7f050005
 int id tv_title 0x7f050008
-int id userIcon 0x7f050009
-int id userphone 0x7f05000a
 int layout residemenu_custom 0x7f030000
 int layout residemenu_custom_left_scrollview 0x7f030001
 int layout residemenu_custom_right_scrollview 0x7f030002

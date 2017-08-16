@@ -11,8 +11,11 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static int ic_launcher=0x7f020000;
-        public static int shadow=0x7f020001;
+        public static int have_verify=0x7f020000;
+        public static int ic_launcher=0x7f020001;
+        public static int shadow=0x7f020002;
+        public static int un_verify=0x7f020003;
+        public static int user=0x7f020004;
     }
     public static final class id {
         public static int iv_background=0x7f050000;
@@ -24,8 +27,9 @@ public final class R {
         public static int sv_menu_holder=0x7f050002;
         public static int sv_right_menu=0x7f050005;
         public static int tv_title=0x7f050008;
-        public static int userIcon=0x7f050009;
-        public static int userphone=0x7f05000a;
+        public static int userIcon_account=0x7f05000a;
+        public static int userIcon_userIcon=0x7f050009;
+        public static int userIcon_verify_state=0x7f05000b;
     }
     public static final class layout {
         public static int residemenu_custom=0x7f030000;

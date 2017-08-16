@@ -5,17 +5,24 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.os.Build;
 import android.util.DisplayMetrics;
-import android.view.*;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
-import android.widget.*;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-import com.lvgou.qdd.view.UserIconView;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.nineoldandroids.view.ViewHelper;
+import com.special.lvgou.UserIcon;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -259,8 +266,8 @@ public class ResideMenu extends FrameLayout {
         }
     }
 
-    //add to test by me
-    public  void addUserIcon(UserIconView userIconView,int direction){
+    //add to test by chenlian  on 2017-08-16
+    public  void addUserIcon(UserIcon userIconView, int direction){
         if (direction == DIRECTION_LEFT) {
 //            this.leftMenuItems.add(userIconView);
             layoutLeftMenu.addView(userIconView);

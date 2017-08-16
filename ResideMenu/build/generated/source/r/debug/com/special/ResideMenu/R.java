@@ -24,8 +24,6 @@ public final class R {
         public static int sv_menu_holder=0x7f050002;
         public static int sv_right_menu=0x7f050005;
         public static int tv_title=0x7f050008;
-        public static int userIcon=0x7f050009;
-        public static int userphone=0x7f05000a;
     }
     public static final class layout {
         public static int residemenu_custom=0x7f030000;
