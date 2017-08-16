@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import com.alibaba.fastjson.JSON;
 import com.lvgou.qdd.R;
+import com.lvgou.qdd.activity.forgetpassword.ForgetPasswordActivity;
 import com.lvgou.qdd.activity.register.RegisterActivity;
 import com.lvgou.qdd.http.RequestCallback;
 import com.lvgou.qdd.http.URLConst;
@@ -64,8 +65,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
                 break;
 
-            case R.id.login_password:
-                login();
+            case R.id.forgetPasswordButton:
+                startActivity(new Intent(getApplicationContext(), ForgetPasswordActivity.class));
                 break;
 
             default:

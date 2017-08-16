@@ -116,8 +116,17 @@
         </activity>
         <activity android:name=".activity.setting.ChangeUserPhoneActivity">
         </activity>
-        <activity android:name=".activity.register.RegisterActivity"
-                  android:windowSoftInputMode="adjustPan"  >
+        <activity
+            android:name=".activity.register.RegisterActivity"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+        <activity android:name=".activity.forgetpassword.ForgetPasswordActivity">
+        </activity>
+        <activity android:name=".activity.forgetpassword.ForgetAndSetPasswordActivity">
+        </activity>
+        <activity android:name=".activity.forgetpassword.ResetPasswordActivity">
+        </activity>
+        <activity android:name=".activity.forgetpassword.SetPasswordSucessActivity">
         </activity>
     </application>
 
