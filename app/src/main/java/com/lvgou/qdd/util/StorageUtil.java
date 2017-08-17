@@ -16,6 +16,8 @@ public class StorageUtil {
 
     public static  String ACCOUNT_FLAG = "account_flag";
 
+    public static  String VERIFY_STATE = "verify_state";
+
     public static void storeData(Context context,String key,String data){
        SharedPreferences settings = context.getSharedPreferences(StorageUtil.SHARED_PREFERENCES, context.MODE_PRIVATE);
        SharedPreferences.Editor editor = settings.edit();

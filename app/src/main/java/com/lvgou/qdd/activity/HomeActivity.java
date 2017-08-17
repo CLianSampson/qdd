@@ -22,11 +22,16 @@ import com.lvgou.qdd.activity.setting.SettingActivity;
 import com.lvgou.qdd.activity.shopping.ShoppingActivity;
 import com.lvgou.qdd.activity.sign.SignShowActivity;
 import com.lvgou.qdd.activity.signature.SignatureListActivity;
+import com.lvgou.qdd.activity.verify.HaveVerifyActivity;
+import com.lvgou.qdd.activity.verify.UserVerifyActivity;
 import com.lvgou.qdd.http.RequestCallback;
 import com.lvgou.qdd.http.URLConst;
 import com.lvgou.qdd.model.Sign;
+import com.lvgou.qdd.util.Constant;
 import com.lvgou.qdd.util.DateUtil;
 import com.lvgou.qdd.util.Logger;
+import com.lvgou.qdd.util.StorageUtil;
+import com.lvgou.qdd.util.StringUtil;
 import com.lvgou.qdd.util.TokenUtil;
 import com.special.ResideMenu.ResideMenu;
 import com.special.ResideMenu.ResideMenuItem;
@@ -39,7 +44,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class HomeActivity extends BaseActivity implements View.OnClickListener{
+public class HomeActivity extends BaseActivity implements View.OnClickListener ,UserIcon.IUserIcon{
 
     private ResideMenu resideMenu;
     private ResideMenuItem shopping;
@@ -66,6 +71,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
     private SimpleAdapter adapter;
 
     private int pageNo = 0;
+
+    private UserIcon userIcon;
+    private int verifState; //认证状态
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -240,7 +248,20 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
         myOrder = new ResideMenuItem(this, 0, "我的订单");
         settings = new ResideMenuItem(this, 0, "设置");
 
-        UserIcon userIcon = new UserIcon(getApplicationContext(),null);
+        userIcon = new UserIcon(getApplicationContext(),null);
+        userIcon.delegate = this;
+        //获取认证状态
+        String verifyStateStr = StorageUtil.getData(getApplicationContext(),StorageUtil.VERIFY_STATE);
+        if (StringUtil.isNullOrBlank(verifyStateStr)){
+            getVerifyStateByNet();
+        }else {
+            verifState = Integer.valueOf(verifyStateStr).intValue();
+            if (verifState == Constant.HAVE_VERIFY){
+                userIcon.setHaveVerify();
+            }else {
+                userIcon.setUnVerify();
+            }
+        }
 
         shopping.setOnClickListener(this);
         mySignature.setOnClickListener(this);
@@ -448,10 +469,40 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener{
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        //个人认证反向回调
+        if (resultCode== Constant.GO_HOME_ACTIVITY_FROM_VERIFY_ACTIVITY){
+            userIcon.setHaveVerify();
+            verifState = Constant.HAVE_VERIFY;
+
+            //存储认证状态
+            StorageUtil.storeData(getApplicationContext(),StorageUtil.VERIFY_STATE,verifState+"");
+
+            return;
+        }
+
         //反向回调成功
         Logger.getInstance(getApplicationContext()).info("反向回调成功");
         pageNo=0;
         signList.clear();
         netRequest();
     }
+
+    @Override
+    public void gotoVerifyActivity() {
+        if (verifState == Constant.HAVE_VERIFY){
+            //已认证
+            startActivity(new Intent(getApplicationContext(), HaveVerifyActivity.class));
+        }else {
+            //未认证
+            Intent intent = new Intent(getApplicationContext(), UserVerifyActivity.class);
+            startActivityForResult(intent,0);
+        }
+
+    }
+
+    //获取认证状态
+    private void getVerifyStateByNet(){
+
+    }
+
 }

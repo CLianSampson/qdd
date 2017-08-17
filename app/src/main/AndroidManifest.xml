@@ -128,6 +128,12 @@
         </activity>
         <activity android:name=".activity.forgetpassword.SetPasswordSucessActivity">
         </activity>
+        <activity
+            android:name=".activity.verify.UserVerifyActivity"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+        <activity android:name=".activity.verify.HaveVerifyActivity">
+        </activity>
     </application>
 
 </manifest>

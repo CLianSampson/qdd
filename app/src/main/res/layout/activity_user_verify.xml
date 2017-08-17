@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:id="@+id/UserVerifyActivity_parent"
+    tools:context="com.lvgou.qdd.activity.verify.UserVerifyActivity">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:id="@+id/AddSignatureActivity_nav"
+                 android:layout_width="match_parent"
+                 android:layout_height="48dp">
+
+        <Button
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/ic_arrow_back"
+            android:id="@+id/UserVerifyActivity_backButton" />
+
+        <TextView
+            android:id="@+id/AddSignatureActivity_middleMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="实名认证"
+            android:layout_marginLeft="72dp"
+            android:layout_marginTop="12dp"
+            android:textSize="20sp"
+            android:textColor="@color/systemBlack"
+            android:gravity="center"/>
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/systemGrayBackground"
+        android:text="认证方式: 银行卡认证"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/systemWhite">
+        <TextView
+            android:id="@+id/UserVerifyActivity_name_left"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/register_password"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            android:text="姓名"/>
+
+        <EditText
+            android:id="@+id/UserVerifyActivity_name_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/UserVerifyActivity_name_left"
+            android:hint="请输入姓名"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="25dp"
+            android:background="@null"
+            android:textSize="14sp"
+            android:textColorHint="@color/systemGrayBackground"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/sysSepreateColor"/>
+
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/systemWhite">
+        <TextView
+            android:id="@+id/UserVerifyActivity_idNum_left"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/register_password"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            android:text="身份证号"/>
+
+        <EditText
+            android:id="@+id/UserVerifyActivity_idNum__input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/UserVerifyActivity_idNum_left"
+            android:hint="请输入身份证号"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="25dp"
+            android:background="@null"
+            android:textSize="14sp"
+            android:textColorHint="@color/systemGrayBackground"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/sysSepreateColor"/>
+
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/systemWhite">
+        <TextView
+            android:id="@+id/UserVerifyActivity_bank_left"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/register_password"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            android:text="银行卡号"/>
+
+        <EditText
+            android:id="@+id/UserVerifyActivity_bank__input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/UserVerifyActivity_bank_left"
+            android:hint="请输入银行卡号"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="25dp"
+            android:background="@null"
+            android:textSize="14sp"
+            android:textColorHint="@color/systemGrayBackground"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/sysSepreateColor"/>
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/systemWhite">
+        <TextView
+            android:id="@+id/UserVerifyActivity_phone_left"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/register_password"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            android:text="手机号"/>
+
+        <EditText
+            android:id="@+id/UserVerifyActivity_phone__input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/UserVerifyActivity_phone_left"
+            android:hint="请输入手机号"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="25dp"
+            android:background="@null"
+            android:textSize="14sp"
+            android:textColorHint="@color/systemGrayBackground"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/sysSepreateColor"/>
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/systemWhite">
+        <TextView
+            android:id="@+id/UserVerifyActivity_verifycode_left"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/register_password"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            android:text="验  证  码"/>
+
+
+        <com.lvgou.qdd.view.SmsCoeView
+            android:id="@+id/UserVerifyActivity_smsCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/UserVerifyActivity_verifycode_left"
+            android:layout_marginLeft="25dp"></com.lvgou.qdd.view.SmsCoeView>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/sysSepreateColor"/>
+
+
+
+
+    <Button
+        android:id="@+id/UserVerifyActivity_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="提交"
+        android:textSize="15sp"
+        android:textColor="@color/systemWhite"
+        android:background="@drawable/button_radius_background"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="98dp"/>
+
+
+
+
+</LinearLayout>

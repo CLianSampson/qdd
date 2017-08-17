@@ -2,5 +2,17 @@
     {
         "merged": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/ic_launcher.png",
         "source": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/have_verify.png",
+        "source": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/have_verify.png"
+    },
+    {
+        "merged": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/user.png",
+        "source": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/user.png"
+    },
+    {
+        "merged": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/res/merged/androidTest/debug/drawable-xhdpi-v4/un_verify.png",
+        "source": "/Users/yaotaxi/Desktop/qdd/ResideMenu/build/intermediates/bundles/debug/res/drawable-xhdpi-v4/un_verify.png"
     }
 ]

@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher"
-        android:layout_gravity="center"/>
+    <Button
+        android:id="@+id/userIcon_userIcon"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/user"
+        android:layout_gravity="center"
+        />
 
     <TextView
+        android:id="@+id/userIcon_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="187 7109 8004"
-        android:layout_marginTop="20dp"/>
+        android:textSize="15sp"
+        android:layout_marginTop="20dp"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center"/>
+
+    <ImageView
+        android:id="@+id/userIcon_verify_state"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:src="@drawable/un_verify"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"/>
 
 </LinearLayout>

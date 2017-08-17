@@ -28,7 +28,8 @@ public class UserIcon extends LinearLayout {
 
     private TextView account;
 
-    private ImageView verifyState;
+    private ImageView verifyStateImage;
+
 
     public UserIcon(final Context context, final AttributeSet attrs) {
         super(context,attrs);
@@ -40,7 +41,7 @@ public class UserIcon extends LinearLayout {
 
         userIconButton = (Button) view.findViewById(R.id.userIcon_userIcon);
         account = (TextView) view.findViewById(R.id.userIcon_account);
-        verifyState = (ImageView) findViewById(R.id.userIcon_verify_state);
+        verifyStateImage = (ImageView) findViewById(R.id.userIcon_verify_state);
 
         userIconButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -55,11 +56,11 @@ public class UserIcon extends LinearLayout {
     }
 
     public void setHaveVerify(){
-        verifyState.setImageDrawable(getResources().getDrawable(R.drawable.have_verify));
+        verifyStateImage.setImageDrawable(getResources().getDrawable(R.drawable.have_verify));
     }
 
     public void setUnVerify(){
-        verifyState.setImageDrawable(getResources().getDrawable(R.drawable.un_verify));
+        verifyStateImage.setImageDrawable(getResources().getDrawable(R.drawable.un_verify));
     }
 
 }
