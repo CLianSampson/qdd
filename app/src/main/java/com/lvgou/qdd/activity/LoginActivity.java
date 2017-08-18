@@ -113,6 +113,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 Logger.getInstance(getApplicationContext()).info("token is :"  + token);
 
                 StorageUtil.storeData(getApplicationContext(),StorageUtil.TOKEN,token);
+                StorageUtil.storeData(getApplicationContext(),StorageUtil.PHONE,"18771098004");
                 TokenUtil.token = token;
 
                 if (StringUtil.isPhoneNum(account)){

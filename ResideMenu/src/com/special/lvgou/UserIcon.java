@@ -52,7 +52,16 @@ public class UserIcon extends LinearLayout {
     }
 
     public void  setAccount(String account){
-        this.account.setText(account);
+        if (account == null || account.equals(" ")){
+            return;
+        }
+        String one = account.substring(0,3);
+        String two = account.substring(3,7);
+        String three = account.substring(7,account.length());
+
+        String string = one + " " + two + " " + three;
+
+        this.account.setText(string);
     }
 
     public void setHaveVerify(){
@@ -62,5 +71,6 @@ public class UserIcon extends LinearLayout {
     public void setUnVerify(){
         verifyStateImage.setImageDrawable(getResources().getDrawable(R.drawable.un_verify));
     }
+
 
 }

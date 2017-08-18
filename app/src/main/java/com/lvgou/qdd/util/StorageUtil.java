@@ -12,7 +12,9 @@ import java.util.Map;
 public class StorageUtil {
     private static  String SHARED_PREFERENCES = "SharedPreferences";
 
-    public static  String TOKEN = "tpken";
+    public static  String TOKEN = "token";
+
+    public static  String PHONE = "phone";
 
     public static  String ACCOUNT_FLAG = "account_flag";
 

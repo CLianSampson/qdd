@@ -12,6 +12,7 @@ import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.lvgou.qdd.R;
@@ -26,6 +27,7 @@ import com.lvgou.qdd.activity.verify.HaveVerifyActivity;
 import com.lvgou.qdd.activity.verify.UserVerifyActivity;
 import com.lvgou.qdd.http.RequestCallback;
 import com.lvgou.qdd.http.URLConst;
+import com.lvgou.qdd.http.VolleyRequest;
 import com.lvgou.qdd.model.Sign;
 import com.lvgou.qdd.util.Constant;
 import com.lvgou.qdd.util.DateUtil;
@@ -73,7 +75,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
     private int pageNo = 0;
 
     private UserIcon userIcon;
-    private int verifState; //认证状态
+    private int verifyState; //认证状态
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +90,10 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
         mContext = this;
 
         orderStatus = 1;
+
+//        signList = new LinkedList<Map<String,Object>>();
+
+//        setPullToRefreshListView();
         setButton();
         setUpMenu();
         setPullToRefreshListView();
@@ -214,9 +220,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
               break;
 
       }
-
-
     }
+
 
     private void  changeOrderStatus(){
         pageNo = 0;
@@ -255,13 +260,16 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
         if (StringUtil.isNullOrBlank(verifyStateStr)){
             getVerifyStateByNet();
         }else {
-            verifState = Integer.valueOf(verifyStateStr).intValue();
-            if (verifState == Constant.HAVE_VERIFY){
+            verifyState = Integer.valueOf(verifyStateStr).intValue();
+            if (verifyState == Constant.HAVE_VERIFY){
                 userIcon.setHaveVerify();
             }else {
                 userIcon.setUnVerify();
             }
         }
+        //设置账号
+        userIcon.setAccount(StorageUtil.getData(getApplicationContext(),StorageUtil.PHONE));
+
 
         shopping.setOnClickListener(this);
         mySignature.setOnClickListener(this);
@@ -472,10 +480,10 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
         //个人认证反向回调
         if (resultCode== Constant.GO_HOME_ACTIVITY_FROM_VERIFY_ACTIVITY){
             userIcon.setHaveVerify();
-            verifState = Constant.HAVE_VERIFY;
+            verifyState = Constant.HAVE_VERIFY;
 
             //存储认证状态
-            StorageUtil.storeData(getApplicationContext(),StorageUtil.VERIFY_STATE,verifState+"");
+            StorageUtil.storeData(getApplicationContext(),StorageUtil.VERIFY_STATE,verifyState+"");
 
             return;
         }
@@ -489,7 +497,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
 
     @Override
     public void gotoVerifyActivity() {
-        if (verifState == Constant.HAVE_VERIFY){
+        if (verifyState == Constant.HAVE_VERIFY){
             //已认证
             startActivity(new Intent(getApplicationContext(), HaveVerifyActivity.class));
         }else {
@@ -502,7 +510,51 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
 
     //获取认证状态
     private void getVerifyStateByNet(){
+        VolleyRequest request = new VolleyRequest();
 
+        request.url = URLConst.URL_GET_ACCOUNT_INFO + TokenUtil.token;
+        request.setCallback(new RequestCallback() {
+            @Override
+            public void sucess(String response) {
+                Logger.getInstance(getApplicationContext()).info("获取个人信息成功");
+
+                JSONObject jsonObject = JSON.parseObject(response,JSONObject.class);
+
+                JSONObject data = (JSONObject) jsonObject.get("data");
+                int status = (Integer.valueOf((String) data.get("cherk")).intValue());
+                switch (status) {
+                    case 0:
+                        verifyState = Constant.NO_VERIFY;
+                        break;
+
+                    case 1:
+                        verifyState = Constant.UNDER_VERIFYING;
+                        break;
+
+                    case 2:
+                        verifyState = Constant.HAVE_VERIFY;
+                        break;
+
+                    case 3:
+                        verifyState = Constant.NOT_PASS_VERIFY;
+                        break;
+
+                    default:
+                        break;
+                }
+
+                //存储认证状态
+                StorageUtil.storeData(getApplicationContext(),StorageUtil.VERIFY_STATE,verifyState+"");
+
+            }
+
+            @Override
+            public void fail(String response) {
+                gotoLoginActivity();
+            }
+        });
+        Logger.getInstance(getApplicationContext()).info("获取个人信息的url is ："  + request.url);
+        request.getRequest(getApplicationContext());
     }
 
 }

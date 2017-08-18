@@ -16,7 +16,7 @@
         android:id="@+id/userIcon_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="187 7109 8004"
+        android:text=""
         android:textSize="15sp"
         android:layout_marginTop="20dp"
         android:textColor="@android:color/black"
