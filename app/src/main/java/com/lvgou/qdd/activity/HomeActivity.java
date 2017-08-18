@@ -23,6 +23,7 @@ import com.lvgou.qdd.activity.setting.SettingActivity;
 import com.lvgou.qdd.activity.shopping.ShoppingActivity;
 import com.lvgou.qdd.activity.sign.SignShowActivity;
 import com.lvgou.qdd.activity.signature.SignatureListActivity;
+import com.lvgou.qdd.activity.verify.EnterpriseActivity;
 import com.lvgou.qdd.activity.verify.HaveVerifyActivity;
 import com.lvgou.qdd.activity.verify.UserVerifyActivity;
 import com.lvgou.qdd.http.RequestCallback;
@@ -502,8 +503,13 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
             startActivity(new Intent(getApplicationContext(), HaveVerifyActivity.class));
         }else {
             //未认证
-            Intent intent = new Intent(getApplicationContext(), UserVerifyActivity.class);
-            startActivityForResult(intent,0);
+            if (TokenUtil.account_flag == TokenUtil.USER_ACCOUNT){
+                Intent intent = new Intent(getApplicationContext(), UserVerifyActivity.class);
+                startActivityForResult(intent,0);
+            }else {
+                Intent intent = new Intent(getApplicationContext(), EnterpriseActivity.class);
+                startActivityForResult(intent,0);
+            }
         }
 
     }

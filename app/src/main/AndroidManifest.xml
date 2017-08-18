@@ -134,6 +134,8 @@
         </activity>
         <activity android:name=".activity.verify.HaveVerifyActivity">
         </activity>
+        <activity android:name=".activity.verify.EnterpriseActivity">
+        </activity>
     </application>
 
 </manifest>
