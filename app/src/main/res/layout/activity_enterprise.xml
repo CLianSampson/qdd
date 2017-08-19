@@ -1,522 +1,616 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:id="@+id/EnterpriseActivity_scrollView"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context="com.lvgou.qdd.activity.verify.EnterpriseActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
-        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                     android:id="@+id/AddSignatureActivity_nav"
-                     android:layout_width="match_parent"
-                     android:layout_height="48dp">
-
-            <Button
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/ic_arrow_back"
-                android:id="@+id/EnterpriseActivity_backButton" />
-
-            <TextView
-                android:id="@+id/AddSignatureActivity_middleMessage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="实名认证"
-                android:layout_marginLeft="72dp"
-                android:layout_marginTop="12dp"
-                android:textSize="20sp"
-                android:textColor="@color/systemBlack"
-                android:gravity="center"/>
-
-            <Button
-                android:id="@+id/EnterpriseActivity_complete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginRight="16dp"
-                android:text="完成"
-                android:gravity="right|center_vertical"
-                android:textSize="13sp"/>
-        </FrameLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@color/systemGrayBackground"/>
-
-
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="认证方式: 银行卡认证"
-            android:layout_marginLeft="15dp"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:id="@+id/AddSignatureActivity_nav"
+                 android:layout_width="match_parent"
+                 android:layout_height="48dp">
+        <Button
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="12dp"
-            android:layout_marginBottom="13dp"
-            android:textSize="12sp"
-            android:textColor="@color/systemBlack"/>
-
+            android:background="@drawable/ic_arrow_back"
+            android:id="@+id/EnterpriseActivity_backButton" />
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:text="企业证件信息"
-            android:paddingLeft="15dp"
-            android:paddingTop="20dp"
-            android:paddingBottom="11dp"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            android:background="@color/systemGrayBackground"/>
+            android:id="@+id/AddSignatureActivity_middleMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="实名认证"
+            android:layout_marginLeft="72dp"
+            android:layout_marginTop="12dp"
+            android:textSize="20sp"
+            android:textColor="@color/systemBlack"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/EnterpriseActivity_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="16dp"
+            android:text="完成"
+            android:gravity="right|center_vertical"
+            android:textSize="13sp"/>
+    </FrameLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/systemGrayBackground"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="企业名称"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="认证方式: 银行卡认证"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="13dp"
+                android:textSize="12sp"
+                android:textColor="@color/systemBlack"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="企业证件信息"
                 android:paddingLeft="15dp"
-                android:gravity="center_vertical"
-                android:textSize="15sp"/>
-
-            <Button
-                android:id="@+id/EnterpriseActivity_enterprise_delete"
-                android:layout_width="13dp"
-                android:layout_height="13dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"
-                android:layout_centerVertical="true"
-                android:background="@drawable/enterprise_delete"/>
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30.5dp"
-            android:text="请输入营业执照上的企业名称"
-            android:textSize="12sp"
-            android:textColor="@android:color/holo_red_light"
-            android:background="@color/systemGrayBackground"
-            android:paddingLeft="40dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="10dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="企业对公银行账号"
-            android:layout_marginLeft="15dp"
-            android:gravity="center_vertical"
-            android:textSize="15sp"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="79dp"
-            android:background="@color/systemGrayBackground">
-
-
-            <Button
-                android:id="@+id/EnterpriseActivity_three_certificate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="三证合一"
-                android:paddingBottom="3dp"
-                android:paddingTop="3dp"
-                android:background="@drawable/button_radius"
-                android:textColor="@color/systemBlue"
-                android:layout_centerInParent="true"
-                />
-
-
-            <Button
-                android:id="@+id/EnterpriseActivity_enterprise_certificate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="企业三证"
-                android:paddingBottom="3dp"
-                android:paddingTop="3dp"
-                android:background="@drawable/button_radius_background"
-                android:textColor="@color/systemWhite"
-                android:layout_centerInParent="true"
-                android:layout_toLeftOf="@+id/EnterpriseActivity_three_certificate"
-                android:layout_marginRight="15dp"
-                />
-
-            <Button
-                android:id="@+id/EnterpriseActivity_five_certificate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="五证合一"
-                android:paddingBottom="3dp"
-                android:paddingTop="3dp"
-                android:background="@drawable/button_radius"
-                android:textColor="@color/systemBlue"
-                android:layout_centerInParent="true"
-                android:layout_toRightOf="@+id/EnterpriseActivity_three_certificate"
-                android:layout_marginRight="15dp"
-                android:layout_marginLeft="15dp"/>
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="营业执照注册号"
-            android:paddingLeft="15dp"
-            android:gravity="center_vertical"
-            android:textSize="15sp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@color/systemGrayBackground"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:text="证件执照副本图片"
-                android:layout_marginLeft="15dp"
-                android:textSize="15sp"
-                />
+                android:paddingTop="20dp"
+                android:paddingBottom="11dp"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:background="@color/systemGrayBackground"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="95dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="19dp">
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/button_radius"/>
-
-                <Button
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/enterprise_add"/>
-
-            </RelativeLayout>
-
-        </LinearLayout>
-
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="10dp"
-            android:background="@color/systemGrayBackground"/>
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:text="组织机构代码"
-            android:paddingLeft="15dp"
-            android:gravity="center_vertical"
-            android:textSize="15sp"/>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="10dp"
-            android:background="@color/systemGrayBackground"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:text="组织机构代码证"
-                android:layout_marginLeft="15dp"
-                android:textSize="15sp"
-                />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="95dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="19dp">
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/button_radius"/>
-
-                <Button
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/enterprise_add"/>
-            </RelativeLayout>
-        </LinearLayout>
-
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="10dp"
-            android:background="@color/systemGrayBackground"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:text="税务登记证"
-                android:layout_marginLeft="15dp"
-                android:textSize="15sp"
-                />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="95dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="19dp">
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/button_radius"/>
-
-                <Button
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/enterprise_add"/>
-            </RelativeLayout>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="法人代表信息"
-            android:textSize="15sp"
-            android:paddingTop="15dp"
-            android:paddingLeft="15dp"
-            android:background="@color/systemGrayBackground"/>
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="法人代表姓名"
-                android:paddingLeft="15dp"
-                android:gravity="center_vertical"
-                android:textSize="15sp"/>
-
-            <Button
-                android:id="@+id/EnterpriseActivity_person_name_delete"
-                android:layout_width="13dp"
-                android:layout_height="13dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"
-                android:layout_centerVertical="true"
-                android:background="@drawable/enterprise_delete"/>
-        </RelativeLayout>
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@color/systemGrayBackground"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="法人代表身份证"
-                android:paddingLeft="15dp"
-                android:gravity="center_vertical"
-                android:textSize="15sp"/>
-
-            <Button
-                android:id="@+id/EnterpriseActivity_person_idNum_delete"
-                android:layout_width="13dp"
-                android:layout_height="13dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"
-                android:layout_centerVertical="true"
-                android:background="@drawable/enterprise_delete"/>
-        </RelativeLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:text="法人手持证件照"
-                android:layout_marginLeft="15dp"
-                android:textSize="15sp"
-                />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="95dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="10dp">
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/button_radius"/>
-
-                <Button
-                    android:id="@+id/enterprise_person_front_add"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/enterprise_add"/>
-
+                android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/EnterpriseActivity_enterprise_name_input_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="企业名称"
+                    android:paddingLeft="15dp"
+                    android:gravity="center_vertical"
+                    android:textSize="15sp"/>
+                <EditText
+                    android:id="@+id/EnterpriseActivity_enterprise_name_input"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="上传正面证件照"
-                    android:textSize="10sp"
-                    android:textColor="@color/systemRed"
-                    android:layout_below="@+id/enterprise_person_front_add"
-                    android:layout_marginTop="5dp"
-                    android:layout_centerHorizontal="true"
-                    android:background="@color/systemGrayBackground"/>
+                    android:hint="请输入企业名称"
+                    android:background="@null"
+                    android:layout_toRightOf="@+id/EnterpriseActivity_enterprise_name_input_left"
+                    android:layout_centerVertical="true"
+                    android:textSize="14sp"
+                    android:paddingLeft="30dp"
+                    android:textColorHint="@color/systemGrayBackground"/>
+                <!--
+                <Button
+                    android:id="@+id/EnterpriseActivity_enterprise_name_delete"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/enterprise_delete"/>
+                 -->
             </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30.5dp"
+                android:text="请输入营业执照上的企业名称"
+                android:textSize="12sp"
+                android:textColor="@android:color/holo_red_light"
+                android:background="@color/systemGrayBackground"
+                android:paddingLeft="40dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="10dp"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="95dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="19dp">
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/button_radius"/>
-
-                <Button
-                    android:id="@+id/enterprise_person_back_add"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/enterprise_add"/>
-
+                android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/EnterpriseActivity_enterprise_bankNum_input_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="企业对公银行账号"
+                    android:paddingLeft="15dp"
+                    android:gravity="center_vertical"
+                    android:textSize="15sp"/>
+                <EditText
+                    android:id="@+id/EnterpriseActivity_enterprise_bankNum_input"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="上传反面证件照"
-                    android:textSize="10sp"
-                    android:textColor="@color/systemRed"
-                    android:layout_below="@+id/enterprise_person_back_add"
-                    android:layout_marginTop="5dp"
-                    android:layout_centerHorizontal="true"
-                    android:background="@color/systemGrayBackground"/>
+                    android:hint="请输入企业对公银行账号"
+                    android:background="@null"
+                    android:layout_toRightOf="@+id/EnterpriseActivity_enterprise_bankNum_input_left"
+                    android:layout_centerVertical="true"
+                    android:textSize="14sp"
+                    android:paddingLeft="30dp"
+                    android:textColorHint="@color/systemGrayBackground"/>
+                <!--
+                <Button
+                    android:id="@+id/EnterpriseActivity_enterprise_bankNum_delete"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/enterprise_delete"/>
+                 -->
             </RelativeLayout>
-        </LinearLayout>
 
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="10dp"
-            android:background="@color/systemGrayBackground"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="79dp"
+                android:background="@color/systemGrayBackground">
+                <Button
+                    android:id="@+id/EnterpriseActivity_three_certificate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="三证合一"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp"
+                    android:background="@drawable/button_radius"
+                    android:textColor="@color/systemBlue"
+                    android:layout_centerInParent="true"
+                    />
+                <Button
+                    android:id="@+id/EnterpriseActivity_enterprise_certificate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="企业三证"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp"
+                    android:background="@drawable/button_radius_background"
+                    android:textColor="@color/systemWhite"
+                    android:layout_centerInParent="true"
+                    android:layout_toLeftOf="@+id/EnterpriseActivity_three_certificate"
+                    android:layout_marginRight="15dp"
+                    />
+                <Button
+                    android:id="@+id/EnterpriseActivity_five_certificate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="五证合一"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp"
+                    android:background="@drawable/button_radius"
+                    android:textColor="@color/systemBlue"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/EnterpriseActivity_three_certificate"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"/>
+            </RelativeLayout>
 
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            <!--
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
-                android:text="法人代表手机号"
+                android:text="营业执照注册号"
                 android:paddingLeft="15dp"
                 android:gravity="center_vertical"
                 android:textSize="15sp"/>
+            -->
 
-            <Button
-                android:id="@+id/EnterpriseActivity_person_phone_delete"
-                android:layout_width="13dp"
-                android:layout_height="13dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"
-                android:layout_centerVertical="true"
-                android:background="@drawable/enterprise_delete"/>
-        </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/sysSepreateColor"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/systemGrayBackground"/>
 
-
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="证件执照副本图片"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="15sp"
+                    />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="95dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="19dp">
+                    <ImageView
+                        android:id="@+id/addViceLicense_image"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/systemWhite">
+                        android:layout_height="match_parent"
+                        android:background="@drawable/button_radius"/>
+                    <Button
+                        android:id="@+id/addViceLicense_button"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/enterprise_add"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:background="@color/systemGrayBackground"/>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/EnterpriseActivity_enterprise_code_input_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="组织机构代码"
+                    android:paddingLeft="15dp"
+                    android:gravity="center_vertical"
+                    android:textSize="15sp"/>
+                <EditText
+                    android:id="@+id/EnterpriseActivity_enterprise_code_input"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入组织机构代码"
+                    android:background="@null"
+                    android:layout_toRightOf="@+id/EnterpriseActivity_enterprise_code_input_left"
+                    android:layout_centerVertical="true"
+                    android:textSize="14sp"
+                    android:paddingLeft="30dp"
+                    android:textColorHint="@color/systemGrayBackground"/>
+                <!--
+                <Button
+                    android:id="@+id/EnterpriseActivity_enterprise_code_delete"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/enterprise_delete"/>
+                 -->
+            </RelativeLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:background="@color/systemGrayBackground"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="组织机构代码证"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="15sp"
+                    />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="95dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="19dp">
+                    <ImageView
+                        android:id="@+id/add_enterprise_code_iamge"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/button_radius"/>
+                    <Button
+                        android:id="@+id/add_enterprise_code_button"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/enterprise_add"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:background="@color/systemGrayBackground"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="税务登记证"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="15sp"
+                    />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="95dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="19dp">
+                    <ImageView
+                        android:id="@+id/add_taxi_register_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/button_radius"/>
+                    <Button
+                        android:id="@+id/add_taxi_register_button"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/enterprise_add"/>
+                </RelativeLayout>
+            </LinearLayout>
+
             <TextView
-                android:id="@+id/EnterpriseActivity"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="法人代表信息"
+                android:textSize="15sp"
+                android:paddingTop="15dp"
+                android:paddingLeft="15dp"
+                android:background="@color/systemGrayBackground"/>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/EnterpriseActivity_law_name_input_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="法人代表姓名"
+                    android:paddingLeft="15dp"
+                    android:gravity="center_vertical"
+                    android:textSize="15sp"/>
+                <EditText
+                    android:id="@+id/EnterpriseActivity_law_name_input"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入法人代表姓名"
+                    android:background="@null"
+                    android:layout_toRightOf="@+id/EnterpriseActivity_law_name_input_left"
+                    android:layout_centerVertical="true"
+                    android:textSize="14sp"
+                    android:paddingLeft="30dp"
+                    android:textColorHint="@color/systemGrayBackground"/>
+                <!--
+                <Button
+                    android:id="@+id/EnterpriseActivity_law_name_delete"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/enterprise_delete"/>
+                 -->
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/systemGrayBackground"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/EnterpriseActivity_law_idNum_input_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="法人代表身份证"
+                    android:paddingLeft="15dp"
+                    android:gravity="center_vertical"
+                    android:textSize="15sp"/>
+                <EditText
+                    android:id="@+id/EnterpriseActivity_law_idNum_input"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入法人代表身份证"
+                    android:background="@null"
+                    android:layout_toRightOf="@+id/EnterpriseActivity_law_idNum_input_left"
+                    android:layout_centerVertical="true"
+                    android:textSize="14sp"
+                    android:paddingLeft="30dp"
+                    android:textColorHint="@color/systemGrayBackground"/>
+                <!--
+                <Button
+                    android:id="@+id/EnterpriseActivity_law_idNum_delete"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/enterprise_delete"/>
+                 -->
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/systemGrayBackground"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/register_password"
-                android:layout_marginLeft="16dp"
-                android:layout_centerVertical="true"
-                android:text="验  证  码"/>
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="法人手持证件照"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="15sp"
+                    />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="95dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="10dp">
+                    <ImageView
+                        android:id="@+id/enterprise_person_front_add_imge"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/button_radius"/>
+                    <Button
+                        android:id="@+id/enterprise_person_front_add"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/enterprise_add"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="上传正面证件照"
+                        android:textSize="10sp"
+                        android:textColor="@color/systemGrayBackground"
+                        android:layout_below="@+id/enterprise_person_front_add"
+                        android:layout_marginTop="5dp"
+                        android:layout_centerHorizontal="true"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="95dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="19dp">
+                    <ImageView
+                        android:id="@+id/enterprise_person_back_add_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/button_radius"/>
+                    <Button
+                        android:id="@+id/enterprise_person_back_add"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/enterprise_add"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="上传反面证件照"
+                        android:textSize="10sp"
+                        android:textColor="@color/systemGrayBackground"
+                        android:layout_below="@+id/enterprise_person_back_add"
+                        android:layout_marginTop="5dp"
+                        android:layout_centerHorizontal="true"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
 
 
-            <com.lvgou.qdd.view.SmsCoeView
-                android:id="@+id/EnterpriseActivity_smsCode"
+            <View
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/EnterpriseActivity"
-                android:layout_marginLeft="25dp"></com.lvgou.qdd.view.SmsCoeView>
-        </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="@color/sysSepreateColor"/>
-
-
-    </LinearLayout>
+                android:layout_height="10dp"
+                android:background="@color/systemGrayBackground"/>
 
 
 
-</ScrollView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/EnterpriseActivity_law_phone_input_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="法人代表手机号"
+                    android:paddingLeft="15dp"
+                    android:gravity="center_vertical"
+                    android:textSize="15sp"/>
+                <EditText
+                    android:id="@+id/EnterpriseActivity_law_phone_input"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="请输入法人代表手机号"
+                    android:background="@null"
+                    android:layout_toRightOf="@+id/EnterpriseActivity_law_phone_input_left"
+                    android:layout_centerVertical="true"
+                    android:textSize="14sp"
+                    android:paddingLeft="30dp"
+                    android:textColorHint="@color/systemGrayBackground"/>
+                <!--
+                <Button
+                    android:id="@+id/EnterpriseActivity_law_phone_delete"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/enterprise_delete"/>
+                 -->
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/sysSepreateColor"/>
+
+
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/systemWhite">
+                <TextView
+                    android:id="@+id/EnterpriseActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/register_password"
+                    android:layout_marginLeft="16dp"
+                    android:layout_centerVertical="true"
+                    android:text="验  证  码"/>
+
+
+                <com.lvgou.qdd.view.SmsCoeView
+                    android:id="@+id/EnterpriseActivity_smsCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/EnterpriseActivity"
+                    android:layout_marginLeft="25dp"></com.lvgou.qdd.view.SmsCoeView>
+            </RelativeLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@color/sysSepreateColor"/>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+</LinearLayout>

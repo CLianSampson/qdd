@@ -53,6 +53,7 @@ public class UserVerifyActivity extends BaseActivity implements SmsCoeView.ISmsC
     protected void childImpl(Bundle savedInstanceState) {
         setContentView(R.layout.activity_user_verify);
 
+        //让键盘回收
         praentView = (LinearLayout) findViewById(R.id.UserVerifyActivity_parent);
         praentView.setOnClickListener(new View.OnClickListener() {
             @Override
