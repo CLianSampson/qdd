@@ -84,6 +84,8 @@ public class SignatureAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.listitem_signature_list_activity, null);
 
             ImageView icon = (ImageView) convertView.findViewById(R.id.SignatureListActivity_listitem_icon);
+            icon.setScaleType(ImageView.ScaleType.FIT_XY);
+
             String url = URLConst.URL_COMMON + (((Map<String,String>) (personalList.get(position-1)))).get("path");
             VolleyRequest request = new VolleyRequest();request.downPicture(mContext,icon,url);
 
@@ -115,6 +117,8 @@ public class SignatureAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.listitem_signature_list_activity, null);
 
             ImageView icon = (ImageView) convertView.findViewById(R.id.SignatureListActivity_listitem_icon);
+            icon.setScaleType(ImageView.ScaleType.FIT_XY);
+
             String url = URLConst.URL_COMMON + ((Map<String,String>) enterpriseList.get(position-personalList.size()-2)).get("path");
             VolleyRequest request = new VolleyRequest();
             request.downPicture(mContext,icon,url);

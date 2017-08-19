@@ -80,11 +80,11 @@ public class EnterpriseActivity extends BaseActivity implements SmsCoeView.ISmsC
     private ImageView addIdNumFrontImage;
     private ImageView addIdNumBackImage;
 
-    private String viceLicernseImagePath;
-    private String enterpriseCodeImagePath;
-    private String taxiRegisterImagePath;
-    private String idNumFrontImagePath;
-    private String idNumBackImagePath;
+    private String viceLicernseImagePath = "";
+    private String enterpriseCodeImagePath = "";
+    private String taxiRegisterImagePath = "";
+    private String idNumFrontImagePath = "";
+    private String idNumBackImagePath = "";
 
     private SmsCoeView smsCoeView;
 
@@ -165,10 +165,10 @@ public class EnterpriseActivity extends BaseActivity implements SmsCoeView.ISmsC
         fiveToOne = (Button) findViewById(R.id.EnterpriseActivity_five_certificate);
 
         addViceLicernseImage = (ImageView) findViewById(R.id.addViceLicense_image);
-        addEnterpriseCodeImage = (ImageView) findViewById(R.id.addViceLicense_image);
-        addTaxiRegisterImage = (ImageView) findViewById(R.id.addViceLicense_image);
-        addIdNumFrontImage = (ImageView) findViewById(R.id.addViceLicense_image);
-        addIdNumBackImage = (ImageView) findViewById(R.id.addViceLicense_image);
+        addEnterpriseCodeImage = (ImageView) findViewById(R.id.add_enterprise_code_iamge);
+        addTaxiRegisterImage = (ImageView) findViewById(R.id.add_taxi_register_image);
+        addIdNumFrontImage = (ImageView) findViewById(R.id.enterprise_person_front_add_imge);
+        addIdNumBackImage = (ImageView) findViewById(R.id.enterprise_person_back_add_image);
 
         //设置bitmap铺满imageView大小
         addViceLicernseImage.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -188,45 +188,40 @@ public class EnterpriseActivity extends BaseActivity implements SmsCoeView.ISmsC
         addViceLicernseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openAlbum();
+                openAlbum(VICE_LICENSE_CODE);
                 pictureStatus = 1;
-
             }
         });
 
         addEnterpriseCodeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openAlbum();
+                openAlbum(ENTERPRISE_CODE);
                 pictureStatus = 2;
-
             }
         });
 
         addTaxiRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openAlbum();
+                openAlbum(TAXI_REGISTER_CODE);
                 pictureStatus = 3;
-
             }
         });
 
         addIdNumFrontButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openAlbum();
+                openAlbum(IDNUM_FRONT_CODE);
                 pictureStatus = 4;
-
             }
         });
 
         addIdNumBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openAlbum();
+                openAlbum(IDNUM_BACK_CODE);
                 pictureStatus = 5;
-
             }
         });
 
@@ -280,10 +275,10 @@ public class EnterpriseActivity extends BaseActivity implements SmsCoeView.ISmsC
     }
 
     //打开相册
-    private void openAlbum(){
+    private void openAlbum(int code){
         Intent albumIntent = new Intent(Intent.ACTION_PICK, null);
         albumIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-        startActivityForResult(albumIntent, VICE_LICENSE_CODE);
+        startActivityForResult(albumIntent, code);
     }
 
     @Override
@@ -299,25 +294,26 @@ public class EnterpriseActivity extends BaseActivity implements SmsCoeView.ISmsC
                     break;
                 case ENTERPRISE_CODE:
                     pictureStatus = 2;
-                    addEnterpriseCodeImage.setImageBitmap(setImageViewAfterAblum(data));
+                    addEnterpriseCodeImage.setImageBitmap(bitmap);
                     break;
                 case TAXI_REGISTER_CODE:
                     pictureStatus = 3;
-                    addTaxiRegisterImage.setImageBitmap(setImageViewAfterAblum(data));
+                    addTaxiRegisterImage.setImageBitmap(bitmap);
                     break;
                 case IDNUM_FRONT_CODE:
                     pictureStatus = 4;
-                    addIdNumFrontImage.setImageBitmap(setImageViewAfterAblum(data));
+                    addIdNumFrontImage.setImageBitmap(bitmap);
                     break;
                 case IDNUM_BACK_CODE:
                     pictureStatus = 5;
-                    addIdNumBackImage.setImageBitmap(setImageViewAfterAblum(data));
+                    addIdNumBackImage.setImageBitmap(bitmap);
                     break;
 
                 default:
                     break;
             }
 
+            //上传照片
             uploadPicture(bitmap);
         }catch (Exception e){
             Log.i("exception",e.toString());
@@ -339,7 +335,7 @@ public class EnterpriseActivity extends BaseActivity implements SmsCoeView.ISmsC
         }
         //                    Bitmap photoBmp = getBitmapFormUri(this, Uri.fromFile(file));
         Bitmap photoBmp = getBitmapFormUri(this, originalUri);
-        addViceLicernseImage.setImageBitmap(photoBmp);
+//        addViceLicernseImage.setImageBitmap(photoBmp);
 
         int degree = getBitmapDegree(file.getAbsolutePath());
         /**
@@ -545,6 +541,22 @@ public class EnterpriseActivity extends BaseActivity implements SmsCoeView.ISmsC
     @Override
     protected void netRequest() {
         super.netRequest();
+
+        //防止上传volley报错
+        if (null == viceLicernseImagePath){
+            viceLicernseImagePath = "";
+        }
+        if (null == enterpriseCodeImagePath){
+            enterpriseCodeImagePath = "";
+        }
+        if (null == taxiRegisterImagePath){
+            taxiRegisterImagePath = "";
+        }
+        if (null == idNumFrontImagePath){
+            idNumFrontImagePath = "";
+        }if (null == idNumBackImagePath){
+            idNumBackImagePath = "";
+        }
 
         request.url = URLConst.URL_ENTERPRISE_VERIFY + TokenUtil.token;
         final Map<String,String> map = new HashMap<>();

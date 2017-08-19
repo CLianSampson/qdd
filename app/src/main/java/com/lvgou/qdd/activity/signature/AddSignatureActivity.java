@@ -194,8 +194,17 @@ public class AddSignatureActivity extends BaseActivity {
 
     @Override
     protected void netRequest() {
+
 //        Bitmap bitmap = ((BitmapDrawable)imageSign.getDrawable()).getBitmap();
         Bitmap bitmap = mView.cachebBitmap;
+
+
+
+//        imageSign.setDrawingCacheEnabled(true);
+//        Bitmap bitmap = Bitmap.createBitmap(imageSign.getDrawingCache());  //获取到Bitmap的图片
+//        imageSign.setDrawingCacheEnabled(false);
+
+
         Logger.getInstance(getApplicationContext()).info("手写签名的数据是: "  + bitmap);
         UploadApi.uploadImg(bitmap,new ResponseListener<String>() {
             @Override
