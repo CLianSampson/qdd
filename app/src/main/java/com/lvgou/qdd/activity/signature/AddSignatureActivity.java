@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.lvgou.qdd.R;
 import com.lvgou.qdd.activity.BaseActivity;
+import com.lvgou.qdd.http.URLConst;
 import com.lvgou.qdd.http.upload.ResponseListener;
 import com.lvgou.qdd.http.upload.UploadApi;
 import com.lvgou.qdd.util.Logger;
@@ -210,7 +211,7 @@ public class AddSignatureActivity extends BaseActivity {
                 Log.v("zgy","===========onResponse========="+response) ;
                 Toast.makeText(AddSignatureActivity.this,"上传成功",Toast.LENGTH_SHORT).show();
             }
-        },getApplicationContext()) ;
+        },getApplicationContext(), URLConst.URL_ADD_SIGNATURE) ;
 
 
     }

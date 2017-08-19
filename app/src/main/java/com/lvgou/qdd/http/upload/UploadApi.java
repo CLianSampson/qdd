@@ -8,7 +8,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 
 import com.android.volley.Request;
-import com.lvgou.qdd.http.URLConst;
 import com.lvgou.qdd.util.TokenUtil;
 
 import java.util.ArrayList;
@@ -24,10 +23,10 @@ public class UploadApi {
      * @param bitmap 需要上传的图片
      * @param listener 请求回调
      */
-    public static void uploadImg(Bitmap bitmap, ResponseListener listener, Context context){
+    public static void uploadImg(Bitmap bitmap, ResponseListener listener, Context context, String url){
         List<FormImage> imageList = new ArrayList<FormImage>() ;
         imageList.add(new FormImage(bitmap)) ;
-        Request request = new PostUploadRequest(URLConst.URL_ADD_SIGNATURE + TokenUtil.token,imageList,listener) ;
+        Request request = new PostUploadRequest(url + TokenUtil.token,imageList,listener) ;
         VolleyUtil.getRequestQueue(context).add(request) ;
     }
 }
