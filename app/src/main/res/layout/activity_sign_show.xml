@@ -99,6 +99,96 @@
     </View>
     <!--  以下为驳回撤销按钮     -->
 
+    <!-- 以下为个人签署 -->
+    <LinearLayout
+        android:id="@+id/SignShowActivity_signtType_person"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="2dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/systemWhite">
+        <TextView
+            android:id="@+id/SignShowActivity_signByPerson_person"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="代表个人签署"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="@drawable/button_radius_withoutborder_gray_backgroung"
+            android:gravity="center"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/systemWhite"/>
+
+        <TextView
+            android:id="@+id/SignShowActivity_signCancel_person"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="@drawable/button_radius_withoutborder_gray_backgroung"
+            android:gravity="center"/>
+    </LinearLayout>
+    <!-- 以上为个人签署 -->
+
+
+
+    <!-- 以下为企业授权签署 -->
+    <LinearLayout
+        android:id="@+id/SignShowActivity_signtType_enterprise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="2dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/systemWhite">
+        <TextView
+            android:id="@+id/SignShowActivity_signByPerson_enterprise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="代表个人签署"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="@drawable/button_radius_withoutborder_gray_backgroung"
+            android:gravity="center"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/systemWhite"/>
+        <TextView
+            android:id="@+id/SignShowActivity_signByEnterprise_enterprise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="代表企业签署"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="@color/systemBlue"
+            android:background="@drawable/button_radius_withoutborder_gray_backgroung"
+            android:gravity="center"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/systemWhite"/>
+        <TextView
+            android:id="@+id/SignShowActivity_signCancel_enterprise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="@drawable/button_radius_withoutborder_gray_backgroung"
+            android:gravity="center"/>
+    </LinearLayout>
+    <!-- 以上为个人签署 -->
+
 
 
     <Button

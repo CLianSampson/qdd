@@ -14,4 +14,9 @@ public interface Constant {
     public static int NOT_PASS_VERIFY = 3;// 审核不通过
 
 
+
+    public static int NOT_AUTH = 1; //未授权
+    public static int HAVE_AUTH = 2; //授权
+
+
 }

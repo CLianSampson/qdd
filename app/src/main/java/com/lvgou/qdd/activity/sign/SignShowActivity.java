@@ -50,7 +50,20 @@ public class SignShowActivity extends BaseActivity {
 
     private Button cancelSignButton;  //撤销按钮
 
+    /*************************个人授权**********************/
+    private TextView signByPersonPerson; //代表个人签署
+    private TextView signCanceButtonPerson; //取消签署
+    /*************************个人授权**********************/
+
+    /*************************企业授权**********************/
+    private TextView signByEnterpriseEnterprise; //代表个人签署
+    private TextView signByEnterprise;  //代表企业签署
+    private TextView signCanceButtonenterprise; //取消签署
+    /*************************企业授权**********************/
+
     private int orderStatus;  //1：待我签署 2：待他人签署 3：已完成 4：过期未签署
+
+    private int authState; //授权状态 ,默认为1未授权
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +74,8 @@ public class SignShowActivity extends BaseActivity {
     @Override
     protected void childImpl(Bundle savedInstanceState) {
         setContentView(R.layout.activity_sign_show);
+
+        authState = 2;
 
         //获取合同id
         signId = getIntent().getStringExtra("signId");
@@ -94,10 +109,77 @@ public class SignShowActivity extends BaseActivity {
         sepreateView = findViewById(R.id.SignShowActivity_sepreate);
         cancelSignButton = (Button) findViewById(R.id.SignShowActivity_cancel_sign_button);
 
+        /**********个人授权***************/
+        signByPersonPerson = (TextView) findViewById(R.id.SignShowActivity_signByPerson_person);
+        signCanceButtonPerson = (TextView) findViewById(R.id.SignShowActivity_signCancel_person);
+        /**********个人授权***************/
+
+
+        /**********企业授权***************/
+        signByEnterpriseEnterprise = (TextView) findViewById(R.id.SignShowActivity_signByPerson_enterprise);
+        signByEnterprise = (TextView) findViewById(R.id.SignShowActivity_signByEnterprise_enterprise);
+        signCanceButtonenterprise = (TextView) findViewById(R.id.SignShowActivity_signCancel_enterprise);
+        /**********企业授权***************/
+
+
+
+
+
+
+        final RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.SignShowActivity_layout);
+        final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.SignShowActivity_linerlayout);
+
+        final LinearLayout signLinearLayoutPerson = (LinearLayout) findViewById(R.id.SignShowActivity_signtType_person); //个人授权
+        final LinearLayout signLinearLayoutEnterprise = (LinearLayout) findViewById(R.id.SignShowActivity_signtType_enterprise); //企业授权
+        //首先移除签署选择类型
+        relativeLayout.removeView(signLinearLayoutPerson);
+        relativeLayout.removeView(signLinearLayoutEnterprise);
+
+
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        signButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (authState == 1){
+                    //添加个人选择签署类型按钮
+                    relativeLayout.addView(signLinearLayoutPerson);
+                }else {
+                    //添加企业选择签署类型按钮
+                    relativeLayout.addView(signLinearLayoutEnterprise);
+                }
+
+                //移除签署和取消签署
+                relativeLayout.removeView(cancelSignButton);
+                relativeLayout.removeView(linearLayout);
+                relativeLayout.removeView(sepreateView);
+
+            }
+        });
+
+
+        signCanceButtonPerson.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                relativeLayout.removeView(signLinearLayoutPerson);
+
+                relativeLayout.addView(linearLayout);
+                relativeLayout.addView(sepreateView);
+            }
+        });
+
+        signCanceButtonenterprise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                relativeLayout.removeView(signLinearLayoutEnterprise);
+
+                relativeLayout.addView(linearLayout);
+                relativeLayout.addView(sepreateView);
             }
         });
 
@@ -117,8 +199,8 @@ public class SignShowActivity extends BaseActivity {
             }
         });
 
-        final RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.SignShowActivity_layout);
-        final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.SignShowActivity_linerlayout);
+
+
         switch (orderStatus){
             case 1:
                 //待我签署
@@ -141,10 +223,19 @@ public class SignShowActivity extends BaseActivity {
                 relativeLayout.removeView(linearLayout);
                 relativeLayout.removeView(sepreateView);
                 break;
+            case 5:
+                //已驳回
+                relativeLayout.removeView(cancelSignButton);
+                relativeLayout.removeView(linearLayout);
+                relativeLayout.removeView(sepreateView);
+            default:
+                break;
 
         }
-
     }
+
+
+
 
     private void setListView(){
         linkedList = new LinkedList<>();
@@ -230,4 +321,10 @@ public class SignShowActivity extends BaseActivity {
     }
 
     //取消合同
+
+
+    //签合同
+    private void signSign(){
+
+    }
 }
