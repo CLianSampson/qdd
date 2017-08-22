@@ -68,14 +68,13 @@ public class SignShowActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     protected void childImpl(Bundle savedInstanceState) {
         setContentView(R.layout.activity_sign_show);
 
-        authState = 2;
+        authState = 1;
 
         //获取合同id
         signId = getIntent().getStringExtra("signId");
@@ -180,6 +179,16 @@ public class SignShowActivity extends BaseActivity {
 
                 relativeLayout.addView(linearLayout);
                 relativeLayout.addView(sepreateView);
+            }
+        });
+
+
+        signByPersonPerson.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),ChoosePersonSignatureActivity.class);
+                intent.putExtra("signId",signId);
+                startActivity(intent);
             }
         });
 
@@ -327,4 +336,7 @@ public class SignShowActivity extends BaseActivity {
     private void signSign(){
 
     }
+
+
+
 }

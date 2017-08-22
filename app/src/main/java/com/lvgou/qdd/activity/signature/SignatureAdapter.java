@@ -74,6 +74,7 @@ public class SignatureAdapter extends BaseAdapter {
 
             TextView textView = (TextView) convertView.findViewById(R.id.SignatureListActivity_listitem_tag);
             textView.setText("企业签章");
+
             return convertView;
 
 
@@ -109,6 +110,12 @@ public class SignatureAdapter extends BaseAdapter {
                 }
             });
 
+            ImageView choose = (ImageView) convertView.findViewById(R.id.choose_person_signature_choose);
+            choose.setVisibility(View.INVISIBLE);
+
+            ImageView unchoose = (ImageView) convertView.findViewById(R.id.choose_person_signature_unchoose);
+            unchoose.setVisibility(View.INVISIBLE);
+
             return convertView;
 
 
@@ -126,6 +133,12 @@ public class SignatureAdapter extends BaseAdapter {
             Button deleteButton = (Button) convertView.findViewById(R.id.SignatureListActivity_delete_button);
             deleteButton.setVisibility(View.INVISIBLE);
 
+
+            ImageView choose = (ImageView) convertView.findViewById(R.id.choose_person_signature_choose);
+            choose.setVisibility(View.INVISIBLE);
+
+            ImageView unchoose = (ImageView) convertView.findViewById(R.id.choose_person_signature_unchoose);
+            unchoose.setVisibility(View.INVISIBLE);
 
             return convertView;
 

@@ -136,6 +136,12 @@
         </activity>
         <activity android:name=".activity.verify.EnterpriseActivity">
         </activity>
+        <activity android:name=".activity.sign.ChoosePersonSignatureActivity">
+        </activity>
+        <activity android:name=".activity.sign.SetPositionActivity">
+        </activity>
+        <activity android:name=".activity.sign.SignMobileVerifyActivity">
+        </activity>
     </application>
 
 </manifest>

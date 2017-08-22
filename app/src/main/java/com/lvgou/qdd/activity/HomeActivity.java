@@ -487,13 +487,13 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
             StorageUtil.storeData(getApplicationContext(),StorageUtil.VERIFY_STATE,verifyState+"");
 
             return;
+        }else if (requestCode == Constant.GO_HOME_ACTIVITY_AFTER_REFUSE_SIGN){
+            //反向回调成功
+            Logger.getInstance(getApplicationContext()).info("反向回调成功");
+            pageNo=0;
+            signList.clear();
+            netRequest();
         }
-
-        //反向回调成功
-        Logger.getInstance(getApplicationContext()).info("反向回调成功");
-        pageNo=0;
-        signList.clear();
-        netRequest();
     }
 
     @Override
@@ -511,7 +511,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
                 startActivityForResult(intent,0);
             }
         }
-
     }
 
     //获取认证状态
@@ -551,7 +550,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
 
                 //存储认证状态
                 StorageUtil.storeData(getApplicationContext(),StorageUtil.VERIFY_STATE,verifyState+"");
-
             }
 
             @Override
