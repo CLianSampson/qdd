@@ -20,6 +20,8 @@ import com.lvgou.qdd.util.Logger;
 import com.lvgou.qdd.util.StringUtil;
 import com.lvgou.qdd.util.ToastUtil;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -45,9 +47,7 @@ public class SmsCoeView extends RelativeLayout {
 
     private  static  int flag = 60;
 
-
-
-
+    public String urlSignGetSmsCode;  //签合同时获取短信验证码的url
 
     //View类有三个构造方法，你在继承时，至少要覆写其中一个，以便创建你的自定义View。
 //    这三个构造方法分别是一个参数，两个参数和三个参数的。
@@ -153,7 +153,15 @@ public class SmsCoeView extends RelativeLayout {
     private void getSmsCodeByNet(){
         VolleyRequest request = new VolleyRequest();
 
+        if (StringUtil.isNullOrBlank(urlSignGetSmsCode)){
+
+        }else {
+            getSignSmsCode();
+            return;
+        }
+
         request.url = URLConst.URL_SMS  + "mobile=" + phone;
+
         request.setCallback(new RequestCallback() {
             @Override
             public void sucess(String response) {
@@ -173,5 +181,37 @@ public class SmsCoeView extends RelativeLayout {
         Logger.getInstance(activity.getApplicationContext()).info("获取短信验证码的url : " + request.url);
         request.getRequest(activity.getApplicationContext());
     }
+
+
+    private void getSignSmsCode(){
+        VolleyRequest request = new VolleyRequest();
+
+        request.url = urlSignGetSmsCode ;
+        final Map<String,String> map = new HashMap<>();
+        map.put("mobile",phone);
+
+        Logger.getInstance(activity.getApplicationContext()).info("签合同时获取验证码参数是 :" + map.toString());
+
+        request.setCallback(new RequestCallback() {
+            @Override
+            public void sucess(String response) {
+                Logger.getInstance(activity.getApplicationContext()).info("签合同时获取验证码成功");
+
+                JSONObject map = JSON.parseObject(response,JSONObject.class);
+                ToastUtil.showToast(activity.getApplicationContext(),"短信验证码已发送");
+
+            }
+
+            @Override
+            public void fail(String response) {
+
+
+            }
+        });
+        Logger.getInstance(activity.getApplicationContext()).info("签合同时获取验证码：" + request.url);
+        request.postRequest(activity.getApplicationContext(),map);
+    }
+
+
 
 }

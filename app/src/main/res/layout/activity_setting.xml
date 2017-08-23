@@ -37,8 +37,10 @@
         android:background="@color/systemGrayBackground"/>
 
     <RelativeLayout
+        android:id="@+id/SettingActivity_account"
         android:layout_width="match_parent"
-        android:layout_height="54dp">
+        android:layout_height="54dp"
+        android:focusableInTouchMode="true">
 
         <TextView
             android:layout_width="wrap_content"
@@ -50,7 +52,6 @@
             android:textColor="#333333"/>
 
         <Button
-            android:id="@+id/SettingActivity_account"
             android:layout_width="14dp"
             android:layout_height="14dp"
             android:layout_alignParentRight="true"
@@ -69,8 +70,10 @@
 
 
     <RelativeLayout
+        android:id="@+id/SettingActivity_security"
         android:layout_width="match_parent"
-        android:layout_height="54dp">
+        android:layout_height="54dp"
+        android:focusableInTouchMode="true">
 
         <TextView
             android:layout_width="wrap_content"
@@ -82,7 +85,6 @@
             android:textColor="#333333"/>
 
         <Button
-            android:id="@+id/SettingActivity_security"
             android:layout_width="14dp"
             android:layout_height="14dp"
             android:layout_alignParentRight="true"
@@ -101,8 +103,10 @@
 
 
     <RelativeLayout
+        android:id="@+id/SettingActivity_about"
         android:layout_width="match_parent"
-        android:layout_height="54dp">
+        android:layout_height="54dp"
+        android:focusableInTouchMode="true">
 
         <TextView
             android:layout_width="wrap_content"
@@ -114,7 +118,6 @@
             android:textColor="#333333"/>
 
         <Button
-            android:id="@+id/SettingActivity_about"
             android:layout_width="14dp"
             android:layout_height="14dp"
             android:layout_alignParentRight="true"

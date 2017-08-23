@@ -30,6 +30,8 @@ public class SetPositionActivity extends BaseActivity {
 
     private String signId;
 
+    private String signStatus;
+
     private Button backButton;
 
     private Button signDetailButton;
@@ -65,6 +67,8 @@ public class SetPositionActivity extends BaseActivity {
 
         //获取合同id
         signId = getIntent().getStringExtra("signId");
+        //获取合同签署方式(个人签署或企业签署)
+        signStatus = getIntent().getStringExtra("signStatus");
 
         setView();
 
@@ -269,7 +273,7 @@ public class SetPositionActivity extends BaseActivity {
         addArry.add(personalSignature);
 
         Map<String,Object>  paramasDic = new HashMap<String, Object>();
-        int signStatus = 0;
+
         paramasDic.put("status",signStatus);
         paramasDic.put("id",signId);
         paramasDic.put("add",addArry);
@@ -307,7 +311,7 @@ public class SetPositionActivity extends BaseActivity {
         request.setCallback(new RequestCallback() {
             @Override
             public void sucess(String response) {
-                Logger.getInstance(getApplicationContext()).info("获取签章列表成功");
+                Logger.getInstance(getApplicationContext()).info("获取用户手机号成功");
 
                 JSONObject jsonObject = JSON.parseObject(response,JSONObject.class);
                 JSONObject data = (JSONObject)jsonObject.get("data");
@@ -317,6 +321,8 @@ public class SetPositionActivity extends BaseActivity {
 
                 Intent intent = new Intent(getApplicationContext(),SignMobileVerifyActivity.class);
                 intent.putExtra("phone",mobile);
+                intent.putExtra("signId",signId);
+                intent.putExtra("signStatus",signStatus);
                 startActivity(intent);
             }
 
@@ -325,7 +331,7 @@ public class SetPositionActivity extends BaseActivity {
                 gotoLoginActivity();
             }
         });
-        Logger.getInstance(getApplicationContext()).info("获取签章列表：" + request.url);
+        Logger.getInstance(getApplicationContext()).info("获取用户手机号：" + request.url);
         request.getRequest(getApplicationContext());
     }
 

@@ -13,6 +13,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.lvgou.qdd.util.Logger;
+import com.lvgou.qdd.util.StringUtil;
 import com.lvgou.qdd.util.ToastUtil;
 
 import java.util.Map;
@@ -84,7 +85,12 @@ public class VolleyRequest {
                      callback.sucess(response);
                  }else {
                      ResponseFailObject responseFailObject = JSON.parseObject(response,ResponseFailObject.class);
-                     ToastUtil.showToast(context,(String) responseFailObject.getInfo());
+                     if (StringUtil.isNullOrBlank(responseFailObject.getInfo())){
+                         ToastUtil.showToast(context,"请求失败");
+                         return;
+                     }
+
+                     ToastUtil.showToast(context,responseFailObject.getInfo());
 
                      Logger.getInstance(context).error("token auth result is : " + responseFailObject.getInfo());
 
@@ -107,7 +113,6 @@ public class VolleyRequest {
                 return params;
             }
         };
-
 
         mQueue.add(request);
     }

@@ -110,7 +110,7 @@ public class EnterpriseActivity extends BaseActivity implements SmsCoeView.ISmsC
     protected void childImpl(Bundle savedInstanceState) {
         setContentView(R.layout.activity_enterprise);
 
-
+        //回收键盘
         parentView = (LinearLayout) findViewById(R.id.EnterpriseActivity_scrollView);
         parentView.setOnClickListener(new View.OnClickListener() {
             @Override

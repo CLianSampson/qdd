@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:text="确定"
         android:textColor="@color/systemWhite"
-        android:background="@drawable/button_radius_background"
+        android:background="@color/systemBlue"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"/>
 

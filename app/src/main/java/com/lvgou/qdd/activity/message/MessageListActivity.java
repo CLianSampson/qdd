@@ -23,6 +23,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import static com.lvgou.qdd.util.Constant.GO_MESSAGE_ACTIVITY_AFTER_MESSAGE_READ;
+
 public class MessageListActivity extends BaseActivity {
 
     private Button backButton;
@@ -59,15 +61,53 @@ public class MessageListActivity extends BaseActivity {
 
     private void setPullToRefreshListView(){
         pullToRefreshListView = (PullToRefreshListView) findViewById(R.id.MessageListActivity_pull_to_refresh_listview);
-        //        pullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);//两端刷新
+        pullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);//两端刷新
         //        pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);//上拉刷新
-        pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);//下拉刷新
-        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+//        pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);//下拉刷新
+//        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+//            @Override
+//            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+//                refreshView.getLoadingLayoutProxy().setRefreshingLabel("正在加载");
+//                refreshView.getLoadingLayoutProxy().setPullLabel("上拉加载更多");
+//                refreshView.getLoadingLayoutProxy().setReleaseLabel("释放开始加载");
+//
+//                netRequest();
+//            }
+//        });
+
+        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
-            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+
+                refreshView.getLoadingLayoutProxy().setRefreshingLabel("正在刷新");
+                refreshView.getLoadingLayoutProxy().setPullLabel("下拉刷新");
+                refreshView.getLoadingLayoutProxy().setReleaseLabel("释放开始刷新");
+
+                pullToRefreshListView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pullToRefreshListView.onRefreshComplete();
+                    }
+                }, 1000);
+
+                messageList.clear();
+
+                pageNo = 0;
+                netRequest();
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
                 refreshView.getLoadingLayoutProxy().setRefreshingLabel("正在加载");
                 refreshView.getLoadingLayoutProxy().setPullLabel("上拉加载更多");
                 refreshView.getLoadingLayoutProxy().setReleaseLabel("释放开始加载");
+
+                pullToRefreshListView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pullToRefreshListView.onRefreshComplete();
+                    }
+                }, 1000);
 
                 netRequest();
             }
@@ -93,7 +133,7 @@ public class MessageListActivity extends BaseActivity {
 
                 Intent intent = new Intent(getApplicationContext(),MessageDetailActivity.class);
                 intent.putExtra("messageId",message.getId());
-                startActivity(intent);
+                startActivityForResult(intent,GO_MESSAGE_ACTIVITY_AFTER_MESSAGE_READ);
             }
         });
     }
@@ -139,4 +179,20 @@ public class MessageListActivity extends BaseActivity {
         adapter.notifyDataSetChanged();
         pullToRefreshListView.onRefreshComplete();
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Logger.getInstance(getApplicationContext()).info("回调成功。。。。。。");
+
+        if (requestCode == GO_MESSAGE_ACTIVITY_AFTER_MESSAGE_READ){
+            pageNo = 0;
+            netRequest();
+        }
+    }
+
+
+
 }

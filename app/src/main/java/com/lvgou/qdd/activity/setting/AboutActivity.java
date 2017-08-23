@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import com.lvgou.qdd.R;
 import com.lvgou.qdd.activity.BaseActivity;
@@ -12,9 +13,9 @@ public class AboutActivity extends BaseActivity {
 
     private Button backButton;
 
-    private Button helpButton;
+    private RelativeLayout helpButton;
 
-    private Button commentButton;
+    private RelativeLayout commentButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class AboutActivity extends BaseActivity {
             }
         });
 
-        helpButton = (Button) findViewById(R.id.AboutActivity_help);
+        helpButton = (RelativeLayout) findViewById(R.id.AboutActivity_help);
         helpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +45,7 @@ public class AboutActivity extends BaseActivity {
         });
 
 
-        commentButton = (Button) findViewById(R.id.AboutActivity_comment);
+        commentButton = (RelativeLayout) findViewById(R.id.AboutActivity_comment);
         commentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

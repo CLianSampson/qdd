@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONObject;
@@ -82,7 +81,7 @@ public class OrderListAdapter extends BaseAdapter {
         if (orderStatus.intValue() == 0){
             convertView = inflater.inflate(R.layout.list_item_order_list_activity, null);
 
-            holder.gotoPayButton = (Button) convertView.findViewById(R.id.OrderListActivity_goto_pay);
+            holder.gotoPayButton = (TextView) convertView.findViewById(R.id.OrderListActivity_goto_pay);
 
             holder.gotoPayButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -128,12 +127,8 @@ public class OrderListAdapter extends BaseAdapter {
         holder.orderIdTextView.setText("订单编号:  " + (String) jsonObject.get("orderid"));
         holder.orderTimeTextView.setText("下单时间:  " + (String) jsonObject.get("ctime"));
 
-
         return convertView;
-
     }
-
-
 
     static class ViewHolder{
         TextView typeTextView;
@@ -143,7 +138,10 @@ public class OrderListAdapter extends BaseAdapter {
         TextView orderIdTextView;
         TextView orderTimeTextView;
 
-        Button gotoPayButton;
+        TextView gotoPayButton;
 
     }
+
+
+
 }

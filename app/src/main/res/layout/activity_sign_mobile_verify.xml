@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context="com.lvgou.qdd.activity.sign.SignMobileVerifyActivity">
 
 
@@ -43,16 +45,92 @@
         android:text="为了确保合同签署身份主体性，需要在您手机上进行验证"
         android:textSize="12sp"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"/>
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/systemBlack"/>
 
-
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="验证码将发送你手机: 187 7109 8004"
-        android:textSize="12sp"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"/>
+        android:layout_marginTop="15dp">
+        <TextView
+            android:id="@+id/SignMobileVerifyActivity_phone_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="验证码将发送你手机:  "
+            android:textSize="12sp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/systemBlack"/>
 
+        <TextView
+            android:id="@+id/SignMobileVerifyActivity_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_toRightOf="@+id/SignMobileVerifyActivity_phone_left"
+            android:textSize="15sp"
+            android:textColor="@color/systemBlue"
+            android:layout_centerVertical="true">
+        </TextView>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/sysSepreateColor"
+        android:layout_marginTop="15dp"/>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/systemWhite">
+        <TextView
+            android:id="@+id/SignMobileVerifyActivity_verifycode_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/register_password"
+            android:layout_marginLeft="16dp"
+            android:layout_centerVertical="true"
+            android:text="验证码"/>
+
+
+        <com.lvgou.qdd.view.SmsCoeView
+            android:id="@+id/SignMobileVerifyActivity_smsCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/SignMobileVerifyActivity_verifycode_left"
+            android:layout_marginLeft="25dp"></com.lvgou.qdd.view.SmsCoeView>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/sysSepreateColor"/>
+
+
+    <Button
+        android:id="@+id/SignMobileVerifyActivity_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="127dp"
+        android:layout_gravity="center"
+        android:text="确定"
+        android:textSize="18sp"
+        android:textColor="@color/systemWhite"
+        android:background="@drawable/button_radius_background"/>
+
+    <Button
+        android:id="@+id/SignMobileVerifyActivity_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:text="取消"
+        android:textSize="18sp"
+        android:textColor="@color/systemBlue"
+        android:background="@drawable/button_radius"/>
 
 </LinearLayout>

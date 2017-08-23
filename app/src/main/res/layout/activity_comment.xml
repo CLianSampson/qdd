@@ -63,12 +63,26 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
+            <!--
             <Button
                 android:id="@+id/CommentActivity_default"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="默认"
                 android:textColor="@color/systemWhite"
+                android:background="@drawable/button_radius_background"/>
+            -->
+            <TextView
+                android:id="@+id/CommentActivity_default"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="    默认    "
+                android:textColor="@color/systemWhite"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:clickable="true"
                 android:background="@drawable/button_radius_background"/>
         </LinearLayout>
 
@@ -78,6 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
+            <!--
             <Button
                 android:id="@+id/CommentActivity_sign"
                 android:layout_width="wrap_content"
@@ -85,19 +100,18 @@
                 android:text="合同问题"
                 android:background="@drawable/button_radius"
                 android:textColor="@color/systemBlue"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <Button
-                android:id="@+id/CommentActivity_pay"
+            -->
+            <TextView
+                android:id="@+id/CommentActivity_sign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="支付问题"
+                android:text="合同问题"
                 android:background="@drawable/button_radius"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:clickable="true"
                 android:textColor="@color/systemBlue"/>
         </LinearLayout>
 
@@ -106,12 +120,56 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
+            <!--
+            <Button
+                android:id="@+id/CommentActivity_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="支付问题"
+                android:background="@drawable/button_radius"
+                android:textColor="@color/systemBlue"/>
+            -->
+
+            <TextView
+                android:id="@+id/CommentActivity_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="支付问题"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:clickable="true"
+                android:background="@drawable/button_radius"
+                android:textColor="@color/systemBlue"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <!--
             <Button
                 android:id="@+id/CommentActivity_shop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="套餐问题"
                 android:background="@drawable/button_radius"
+                android:textColor="@color/systemBlue"/>
+            -->
+            <TextView
+                android:id="@+id/CommentActivity_shop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="套餐问题"
+                android:background="@drawable/button_radius"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:clickable="true"
                 android:textColor="@color/systemBlue"/>
         </LinearLayout>
 

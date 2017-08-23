@@ -81,6 +81,8 @@ public interface URLConst {
     //判断用户是否授权
     public static String URL_IS_AUTH="https://www.qiandd.com/mobile/Contract/auth/token/";
 
+    //驳回合同
+    public static String URL_REJECT_SIGN="https://www.qiandd.com/mobile/Contract/reject/token/";
 
     //撤销合同
     public static String URL_REFUSE_SIGN="https://www.qiandd.com/mobile/Contract/repeal/token/";
@@ -90,6 +92,10 @@ public interface URLConst {
 
     //获取用户手机号
     public static String URL_GET_USER_PHONE="https://www.qiandd.com/mobile/Contract/change/token/";
+
+    //获取签合同时短信验证码
+    public static String URL_SIGN_GET_SMS_CODE="https://www.qiandd.com/mobile/Contract/sms/token/";
+
 
     //验证手机验证码
     public static String URL_VERIFY_MOBILE_CODE="https://www.qiandd.com/mobile/Contract/refre_post/token/";

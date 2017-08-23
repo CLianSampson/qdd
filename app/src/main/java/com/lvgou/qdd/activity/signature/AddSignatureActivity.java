@@ -56,7 +56,10 @@ public class AddSignatureActivity extends BaseActivity {
         completeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bitmap imageBitmap = mView.getCachebBitmap();
+                imageSign.setImageBitmap(imageBitmap);
 
+                netRequest();
             }
         });
         completeButton.setBackgroundColor(Color.TRANSPARENT);
@@ -110,7 +113,7 @@ public class AddSignatureActivity extends BaseActivity {
         private void init() {
             paint = new Paint();
             paint.setAntiAlias(true);
-            paint.setStrokeWidth(3);
+            paint.setStrokeWidth(10);
             paint.setStyle(Paint.Style.STROKE);
             paint.setColor(Color.BLACK);
             path = new Path();

@@ -22,6 +22,7 @@ import com.lvgou.qdd.activity.BaseActivity;
 import com.lvgou.qdd.http.RequestCallback;
 import com.lvgou.qdd.http.URLConst;
 import com.lvgou.qdd.http.VolleyRequest;
+import com.lvgou.qdd.util.Constant;
 import com.lvgou.qdd.util.Logger;
 import com.lvgou.qdd.util.ToastUtil;
 import com.lvgou.qdd.util.TokenUtil;
@@ -76,6 +77,7 @@ public class ChoosePersonSignatureActivity extends BaseActivity {
 
                 Intent intent = new Intent(getApplicationContext(),SetPositionActivity.class);
                 intent.putExtra("signId",signId);
+                intent.putExtra("signStatus", Constant.SIGN_BY_PERSON+"");
                 startActivity(intent);
             }
         });

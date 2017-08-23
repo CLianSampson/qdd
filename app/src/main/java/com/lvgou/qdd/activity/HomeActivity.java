@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
@@ -58,12 +59,10 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
     private HomeActivity mContext;
 
     private Button waitForMeButton;
-
     private Button waitOtherButton;
-
     private Button completeButton;
-
     private Button timeOutButton;
+    private Button haveRefuseButton;
 
     private int orderStatus;  //1：待我签署 2：待他人签署 3：已完成 4：过期未签署
 
@@ -77,6 +76,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
 
     private UserIcon userIcon;
     private int verifyState; //认证状态
+
+    private TextView noDataView;  //没有数据
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,8 +112,10 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
         completeButton.setOnClickListener(this);
         timeOutButton =(Button) findViewById(R.id.timeOutButton);
         timeOutButton.setOnClickListener(this);
+        haveRefuseButton = (Button) findViewById(R.id.haveRefuse);
+        haveRefuseButton.setOnClickListener(this);
 
-
+        noDataView = (TextView) findViewById(R.id.HomeActivity_noData);
     }
 
 
@@ -155,6 +158,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
               waitOtherButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
               completeButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
               timeOutButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
+              haveRefuseButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
 
               //设置字体颜色
               waitForMeButton.setTextColor(getResources().getColorStateList(R.color.systemBlue));
@@ -162,6 +166,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
               waitOtherButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
               completeButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
               timeOutButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
+              haveRefuseButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
 
               break;
           case R.id.waitOtherButton:
@@ -173,6 +178,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
               waitForMeButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
               completeButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
               timeOutButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
+              haveRefuseButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
 
               //设置字体颜色
               waitOtherButton.setTextColor(getResources().getColorStateList(R.color.systemBlue));
@@ -180,6 +186,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
               waitForMeButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
               completeButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
               timeOutButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
+              haveRefuseButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
 
               break;
 
@@ -192,6 +199,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
               waitOtherButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
               waitForMeButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
               timeOutButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
+              haveRefuseButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
 
               //设置字体颜色
               completeButton.setTextColor(getResources().getColorStateList(R.color.systemBlue));
@@ -199,6 +207,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
               waitOtherButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
               waitForMeButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
               timeOutButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
+              haveRefuseButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
 
               break;
           case R.id.timeOutButton:
@@ -210,6 +219,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
               waitOtherButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
               completeButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
               waitForMeButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
+              haveRefuseButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
 
               //设置字体颜色
               timeOutButton.setTextColor(getResources().getColorStateList(R.color.systemBlue));
@@ -217,8 +227,28 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
               waitOtherButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
               completeButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
               waitForMeButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
+              haveRefuseButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
 
               break;
+
+          case R.id.haveRefuse:
+              orderStatus = 5;
+              changeOrderStatus();
+
+              haveRefuseButton.setBackgroundResource(R.drawable.shape_nav_indicator);
+
+              timeOutButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
+              waitOtherButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
+              completeButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
+              waitForMeButton.setBackgroundResource(R.drawable.shape_nav_no_indicator);
+
+              //设置字体颜色
+              haveRefuseButton.setTextColor(getResources().getColorStateList(R.color.systemBlue));
+              timeOutButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
+              waitOtherButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
+              completeButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
+              waitForMeButton.setTextColor(getResources().getColorStateList(R.color.systemBlack));
+
 
       }
     }
@@ -334,19 +364,62 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
 
     private void setPullToRefreshListView(){
         pullToRefreshListView = (PullToRefreshListView) findViewById(R.id.HomeActivity_pull_to_refresh_listview);
-        //        pullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);//两端刷新
-        //        pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);//上拉刷新
-        pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);//下拉刷新
-        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+        pullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);//两端刷新
+        //pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);//上拉刷新
+        //pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);//下拉刷新
+
+        //        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+//            @Override
+//            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+//                refreshView.getLoadingLayoutProxy().setRefreshingLabel("正在加载");
+//                refreshView.getLoadingLayoutProxy().setPullLabel("上拉加载更多");
+//                refreshView.getLoadingLayoutProxy().setReleaseLabel("释放开始加载");
+//
+//                netRequest();
+//            }
+//        });
+
+
+        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
-            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+
+                refreshView.getLoadingLayoutProxy().setRefreshingLabel("正在刷新");
+                refreshView.getLoadingLayoutProxy().setPullLabel("下拉刷新");
+                refreshView.getLoadingLayoutProxy().setReleaseLabel("释放开始刷新");
+
+                pullToRefreshListView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pullToRefreshListView.onRefreshComplete();
+                    }
+                }, 1000);
+
+
+                signList.clear();
+
+                pageNo = 0;
+                netRequest();
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
                 refreshView.getLoadingLayoutProxy().setRefreshingLabel("正在加载");
                 refreshView.getLoadingLayoutProxy().setPullLabel("上拉加载更多");
                 refreshView.getLoadingLayoutProxy().setReleaseLabel("释放开始加载");
 
+                pullToRefreshListView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pullToRefreshListView.onRefreshComplete();
+                    }
+                }, 1000);
+
                 netRequest();
             }
         });
+
+
 
         signList = new LinkedList<Map<String,Object>>();
 
@@ -435,6 +508,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
                 case 4:
                     status = "过期未签署";
                     break;
+                case 5:
+                    status = "已驳回";
+                    break;
                 default:
                     break;
 
@@ -465,6 +541,11 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener ,
             signList.addLast(map);
         }
 
+        if (signList.size() != 0){
+            noDataView.setVisibility(View.INVISIBLE);
+        }else {
+            noDataView.setVisibility(View.VISIBLE);
+        }
 
         //通知程序数据集已经改变，如果不做通知，那么将不会刷新mListItems的集合
         adapter.notifyDataSetChanged();

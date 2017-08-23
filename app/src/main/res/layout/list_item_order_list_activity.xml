@@ -115,6 +115,7 @@
        android:layout_width="match_parent"
        android:layout_height="wrap_content">
 
+       <!--
        <Button
            android:id="@+id/OrderListActivity_goto_pay"
            android:layout_width="wrap_content"
@@ -127,6 +128,26 @@
            android:layout_marginBottom="14dp"
            android:layout_alignParentRight="true"
            android:layout_marginRight="30dp"
+           />
+        -->
+
+       <TextView
+           android:id="@+id/OrderListActivity_goto_pay"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:background="@drawable/button_radius_background"
+           android:text="去付款"
+           android:textColor="@color/systemWhite"
+           android:textSize="13sp"
+           android:layout_marginTop="11.5dp"
+           android:layout_marginBottom="14dp"
+           android:paddingTop="7dp"
+           android:paddingBottom="7dp"
+           android:paddingLeft="10dp"
+           android:paddingRight="10dp"
+           android:layout_alignParentRight="true"
+           android:layout_marginRight="30dp"
+           android:clickable="true"
            />
 
    </RelativeLayout>

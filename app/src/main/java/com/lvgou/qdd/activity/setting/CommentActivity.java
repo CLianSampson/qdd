@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -13,6 +14,7 @@ import com.lvgou.qdd.activity.BaseActivity;
 import com.lvgou.qdd.http.RequestCallback;
 import com.lvgou.qdd.http.URLConst;
 import com.lvgou.qdd.util.Logger;
+import com.lvgou.qdd.util.StringUtil;
 import com.lvgou.qdd.util.ToastUtil;
 import com.lvgou.qdd.util.TokenUtil;
 
@@ -25,13 +27,13 @@ public class CommentActivity extends BaseActivity {
 
     private Button commitButton;
 
-    private Button defaultButton;
+    private TextView defaultButton;
 
-    private Button signButton;
+    private TextView signButton;
 
-    private Button payButton;
+    private TextView payButton;
 
-    private Button shopButton;
+    private TextView shopButton;
 
     private EditText editText;
 
@@ -64,11 +66,16 @@ public class CommentActivity extends BaseActivity {
         commitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (StringUtil.isNullOrBlank(editText.getText().toString())){
+                    ToastUtil.showToast(getApplicationContext(),"输入内容不能为空");
+                    return;
+                }
+
                 netRequest();
             }
         });
 
-        defaultButton = (Button) findViewById(R.id.CommentActivity_default);
+        defaultButton = (TextView) findViewById(R.id.CommentActivity_default);
         defaultButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +95,7 @@ public class CommentActivity extends BaseActivity {
         });
 
 
-        signButton = (Button) findViewById(R.id.CommentActivity_sign);
+        signButton = (TextView) findViewById(R.id.CommentActivity_sign);
         signButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,7 +115,7 @@ public class CommentActivity extends BaseActivity {
         });
 
 
-        shopButton = (Button) findViewById(R.id.CommentActivity_shop);
+        shopButton = (TextView) findViewById(R.id.CommentActivity_shop);
         shopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,7 +135,7 @@ public class CommentActivity extends BaseActivity {
         });
 
 
-        payButton = (Button) findViewById(R.id.CommentActivity_pay);
+        payButton = (TextView) findViewById(R.id.CommentActivity_pay);
         payButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

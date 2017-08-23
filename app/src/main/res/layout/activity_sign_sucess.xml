@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lvgou.qdd.activity.sign.SignSucessActivity">
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:id="@+id/SetPositionActivity_nav"
+                 android:layout_width="match_parent"
+                 android:layout_height="48dp">
+        <Button
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/ic_arrow_back"
+            android:id="@+id/SignSucessActivity_backButton" />
+        <TextView
+            android:id="@+id/SignShowActivity_middleMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="签署完成"
+            android:layout_marginLeft="72dp"
+            android:layout_marginTop="12dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+    </FrameLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/systemGrayBackground"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sign_sucess"
+        android:layout_marginTop="45dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="合同签署完成"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/systemBlack"
+        android:textSize="18sp"
+        android:layout_marginTop="14dp"/>
+
+    <TextView
+        android:id="@+id/SignSucessActivity_remainTimes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="您的套餐剩余次数"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="6dp"
+        android:textSize="14sp"
+        android:textColor="#888888"/>
+
+
+    <Button
+        android:id="@+id/SignSucessActivity_gohome"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="70dp"
+        android:layout_gravity="center"
+        android:text="返回首页"
+        android:textSize="18sp"
+        android:textColor="@color/systemWhite"
+        android:background="@drawable/button_radius_background"/>
+
+</LinearLayout>

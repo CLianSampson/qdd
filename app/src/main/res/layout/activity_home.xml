@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -12,15 +12,17 @@
         layout="@layout/navigation_xml"/>
 
     <View
+        android:id="@+id/sepreate"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/systemGrayBackground"/>
+        android:background="@color/systemGrayBackground"
+        android:layout_below="@+id/nav"/>
 
     <include android:id="@+id/navState"
-        layout="@layout/table_nav_state"
-        />
+        layout="@layout/table_nav_state"/>
 
     <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:layout_below="@+id/navState"
         android:id="@+id/HomeActivity_pull_to_refresh_listview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -32,8 +34,18 @@
         android:headerDividersEnabled="false"
         android:smoothScrollbar="true"
         android:background="@color/systemGrayBackground">
-
     </com.handmark.pulltorefresh.library.PullToRefreshListView>
 
+    <TextView
+        android:id="@+id/HomeActivity_noData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="暂无数据"
+        android:textSize="13sp"
+        android:textColor="@color/systemGray"
+        android:layout_below="@+id/navState"
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"/>
 
-</LinearLayout>
+
+</RelativeLayout>

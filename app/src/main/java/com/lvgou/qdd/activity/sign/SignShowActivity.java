@@ -306,7 +306,7 @@ public class SignShowActivity extends BaseActivity {
     private void  refuse(){
         super.netRequest();
 
-        request.url = URLConst.URL_REFUSE_SIGN + TokenUtil.token +"/id/" + signId;
+        request.url = URLConst.URL_REJECT_SIGN + TokenUtil.token +"/id/" + signId;
         request.setCallback(new RequestCallback() {
             @Override
             public void sucess(String response) {

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import com.lvgou.qdd.R;
 import com.lvgou.qdd.activity.BaseActivity;
@@ -16,11 +17,11 @@ public class SettingActivity extends BaseActivity {
 
     private Button logoutButton;
 
-    private Button account;
+    private RelativeLayout account;
 
-    private Button security;
+    private RelativeLayout security;
 
-    private Button about;
+    private RelativeLayout about;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +36,9 @@ public class SettingActivity extends BaseActivity {
         backButton = (Button) findViewById(R.id.SettingActivity_backButton);
         logoutButton = (Button) findViewById(R.id.SettingActivity_logout);
 
-        account = (Button) findViewById(R.id.SettingActivity_account);
-        security = (Button) findViewById(R.id.SettingActivity_security);
-        about = (Button) findViewById(R.id.SettingActivity_about);
+        account = (RelativeLayout) findViewById(R.id.SettingActivity_account);
+        security = (RelativeLayout) findViewById(R.id.SettingActivity_security);
+        about = (RelativeLayout) findViewById(R.id.SettingActivity_about);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

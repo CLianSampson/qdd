@@ -32,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="请输入账号"
+            android:textColorHint="@color/systemGrayBackground"
             android:textSize="13sp"
             android:background="@null"
             android:layout_marginLeft="20dp"/>
@@ -64,6 +65,7 @@
             android:layout_height="wrap_content"
             android:hint="请输入密码"
             android:textSize="13sp"
+            android:textColorHint="@color/systemGrayBackground"
             android:background="@null"
             android:inputType="textPassword"
             android:layout_marginLeft="20dp"/>

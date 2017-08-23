@@ -142,6 +142,8 @@
         </activity>
         <activity android:name=".activity.sign.SignMobileVerifyActivity">
         </activity>
+        <activity android:name=".activity.sign.SignSucessActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -33,7 +33,7 @@ public class FormImage {
 
     public String getFileName() {
         //测试，直接写死文件的名字
-        return "test.png";
+        return "testt.png";
     }
     //对图片进行二进制转换
     public byte[] getValue() {

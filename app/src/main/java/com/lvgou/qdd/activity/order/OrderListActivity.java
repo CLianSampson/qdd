@@ -144,13 +144,52 @@ public class OrderListActivity extends BaseActivity {
     private void setPullToRefreshListView(){
         pullToRefreshListView = (PullToRefreshListView) findViewById(R.id.OrderListActivity_listView);
 
-        pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);//下拉刷新
-        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+//        pullToRefreshListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);//上拉加载刷新
+        pullToRefreshListView.setMode(PullToRefreshBase.Mode.BOTH);
+//        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+//            @Override
+//            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+//                refreshView.getLoadingLayoutProxy().setRefreshingLabel("正在加载");
+//                refreshView.getLoadingLayoutProxy().setPullLabel("上拉加载更多");
+//                refreshView.getLoadingLayoutProxy().setReleaseLabel("释放开始加载");
+//
+//                netRequest();
+//            }
+//        });
+
+        pullToRefreshListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             @Override
-            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+
+                refreshView.getLoadingLayoutProxy().setRefreshingLabel("正在刷新");
+                refreshView.getLoadingLayoutProxy().setPullLabel("下拉刷新");
+                refreshView.getLoadingLayoutProxy().setReleaseLabel("释放开始刷新");
+
+                pullToRefreshListView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pullToRefreshListView.onRefreshComplete();
+                    }
+                }, 1000);
+
+                linkedList.clear();
+
+                pageNo = 0;
+                netRequest();
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
                 refreshView.getLoadingLayoutProxy().setRefreshingLabel("正在加载");
                 refreshView.getLoadingLayoutProxy().setPullLabel("上拉加载更多");
                 refreshView.getLoadingLayoutProxy().setReleaseLabel("释放开始加载");
+
+                pullToRefreshListView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        pullToRefreshListView.onRefreshComplete();
+                    }
+                }, 1000);
 
                 netRequest();
             }
