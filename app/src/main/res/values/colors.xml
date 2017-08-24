@@ -16,4 +16,7 @@
 
     <color name="sysSepreateColor">#CCCCCC</color>
 
+
+    <color name="systemDefaultBackgroung">#F5F5F5</color>
+
 </resources>

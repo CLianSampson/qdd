@@ -164,6 +164,7 @@ public class HttpsHelper {
                 "name=\"sign\";filename=\"" +
                 "12345.png" + "\"" + LINE_END);
         dos.writeBytes(LINE_END);
+
 //        int len;
 //        InputStream ins = new FileInputStream(new File(filename));
 //        byte[] buffer = new byte[1024];
@@ -172,6 +173,8 @@ public class HttpsHelper {
 //        }
 
         byte[] bytes = getValue(bitmap);
+        Log.i("uploadBitmap", bytes.length+"");
+
         dos.write(bytes, 0, bytes.length);
 
 
@@ -187,15 +190,26 @@ public class HttpsHelper {
             while ((ch = ins.read()) != -1) {
                 b.append((char) ch);
             }
+            Log.i("uploadBitmap", b.toString());
+        }else {
+            Log.e("uploadBitmap",responseCode+"");
+            InputStream ins = connection.getInputStream();
+            int ch;
+            StringBuffer b = new StringBuffer();
+            while ((ch = ins.read()) != -1) {
+                b.append((char) ch);
+            }
             Log.i("bbb", b.toString());
         }
+
         return responseCode;
     }
 
     //对图片进行二进制转换
     public static byte[] getValue(Bitmap bitmap) {
         ByteArrayOutputStream bos = new ByteArrayOutputStream() ;
-        bitmap.compress(Bitmap.CompressFormat.JPEG,80,bos) ;
+//        bitmap.compress(Bitmap.CompressFormat.JPEG,80,bos) ;
+        bitmap.compress(Bitmap.CompressFormat.PNG,10,bos) ;
         return bos.toByteArray();
     }
 

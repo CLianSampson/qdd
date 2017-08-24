@@ -2,6 +2,7 @@ package com.lvgou.qdd.http;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.alibaba.fastjson.JSON;
@@ -28,6 +29,8 @@ public class VolleyRequest {
     private RequestQueue mQueue;
 
     public  static String url = "http://192.168.1.228:8080/LiveVideo/chenlian";
+
+    private String TAG = "VolleyRequest";
 
     public void setCallback(RequestCallback callback){
         this.callback=callback;
@@ -150,6 +153,8 @@ public class VolleyRequest {
     }
 
     public void downPicture(final Context context, ImageView imageView,String url){
+        Log.i(TAG,"下载图片  url ：" + url);
+
         mQueue = Volley.newRequestQueue(context);
 
         ImageLoader imageLoader = new ImageLoader(mQueue, new ImageLoader.ImageCache() {

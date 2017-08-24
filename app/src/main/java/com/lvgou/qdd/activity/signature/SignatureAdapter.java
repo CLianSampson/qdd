@@ -61,90 +61,138 @@ public class SignatureAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
 
+        ViewHolder holder;
+
+        holder = new SignatureAdapter.ViewHolder();
 
         if (position == 0){
-            convertView = inflater.inflate(R.layout.listitem_signature_list_activity_tag, null);
+            if (null == convertView){
+                convertView = inflater.inflate(R.layout.listitem_signature_list_activity_tag, null);
 
-            TextView textView = (TextView) convertView.findViewById(R.id.SignatureListActivity_listitem_tag);
-            textView.setText("个人签章");
-            return convertView;
+                holder.textView = (TextView) convertView.findViewById(R.id.SignatureListActivity_listitem_tag);
+                holder.textView.setText("个人签章");
 
-        }else if (position == personalList.size()+1){
-            convertView = inflater.inflate(R.layout.listitem_signature_list_activity_tag, null);
-
-            TextView textView = (TextView) convertView.findViewById(R.id.SignatureListActivity_listitem_tag);
-            textView.setText("企业签章");
-
-            return convertView;
-
-
-        }else if (position>0 && position<personalList.size()+1){
-            final int index = position;
-
-            //个人签章图片
-            convertView = inflater.inflate(R.layout.listitem_signature_list_activity, null);
-
-            ImageView icon = (ImageView) convertView.findViewById(R.id.SignatureListActivity_listitem_icon);
-            icon.setScaleType(ImageView.ScaleType.FIT_XY);
-
-            String url = URLConst.URL_COMMON + (((Map<String,String>) (personalList.get(position-1)))).get("path");
-            VolleyRequest request = new VolleyRequest();request.downPicture(mContext,icon,url);
-
-            Button deleteButton = (Button) convertView.findViewById(R.id.SignatureListActivity_delete_button);
-            if (position == 1){
-               deleteButton.setVisibility(View.INVISIBLE);
+                convertView.setTag(holder);
+                return convertView;
+            }else {
+//                holder = (ViewHolder) convertView.getTag();
+//                holder.textView.setText("个人签章");
+                return convertView;
             }
 
-            deleteButton.setOnClickListener(new View.OnClickListener() {
-               @Override
-               public void onClick(View v) {
-                    deleteSignature((((Map<String,String>) (personalList.get(index-1)))).get("id"));
-               }
-            });
 
-            icon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Log.i("########","click");
-                    setDefaultSignature((((Map<String,String>) (personalList.get(index-1)))).get("id"));
+
+        }else if (position == personalList.size()+1){
+            if (null == convertView){
+                convertView = inflater.inflate(R.layout.listitem_signature_list_activity_tag, null);
+
+                holder.textView = (TextView) convertView.findViewById(R.id.SignatureListActivity_listitem_tag);
+                holder.textView.setText("企业签章");
+
+                convertView.setTag(holder);
+                return convertView;
+            }else {
+//                holder = (ViewHolder) convertView.getTag();
+                return convertView;
+            }
+
+        }else if (position>0 && position<personalList.size()+1){
+
+            if (null == convertView){
+                final int index = position;
+
+                //个人签章图片
+                convertView = inflater.inflate(R.layout.listitem_signature_list_activity, null);
+
+                holder.icon = (ImageView) convertView.findViewById(R.id.SignatureListActivity_listitem_icon);
+                holder.icon.setScaleType(ImageView.ScaleType.FIT_XY);
+
+                String url = URLConst.URL_COMMON + (((Map<String,String>) (personalList.get(position-1)))).get("path");
+                VolleyRequest request = new VolleyRequest();
+                request.downPicture(mContext, holder.icon,url);
+
+                holder.deleteButton = (Button) convertView.findViewById(R.id.SignatureListActivity_delete_button);
+                if (position == 1){
+                    holder.deleteButton.setVisibility(View.INVISIBLE);
                 }
-            });
 
-            ImageView choose = (ImageView) convertView.findViewById(R.id.choose_person_signature_choose);
-            choose.setVisibility(View.INVISIBLE);
+                holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        deleteSignature((((Map<String,String>) (personalList.get(index-1)))).get("id"));
+                    }
+                });
 
-            ImageView unchoose = (ImageView) convertView.findViewById(R.id.choose_person_signature_unchoose);
-            unchoose.setVisibility(View.INVISIBLE);
+                holder.icon.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.i("########","click");
+                        setDefaultSignature((((Map<String,String>) (personalList.get(index-1)))).get("id"));
+                    }
+                });
 
-            return convertView;
+                holder.choose = (ImageView) convertView.findViewById(R.id.choose_person_signature_choose);
+                holder.choose.setVisibility(View.INVISIBLE);
+
+                holder.unchoose = (ImageView) convertView.findViewById(R.id.choose_person_signature_unchoose);
+                holder.unchoose.setVisibility(View.INVISIBLE);
+
+                convertView.setTag(holder);
+                return convertView;
+            }else {
+//                holder = (ViewHolder) convertView.getTag();
+                return convertView;
+            }
+
+
 
 
         }else {
-            //企业签章图片  if (position > personalList.size()+1)
-            convertView = inflater.inflate(R.layout.listitem_signature_list_activity, null);
+            if (null == convertView){
+                //企业签章图片  if (position > personalList.size()+1)
+                convertView = inflater.inflate(R.layout.listitem_signature_list_activity, null);
 
-            ImageView icon = (ImageView) convertView.findViewById(R.id.SignatureListActivity_listitem_icon);
-            icon.setScaleType(ImageView.ScaleType.FIT_XY);
+                holder.icon = (ImageView) convertView.findViewById(R.id.SignatureListActivity_listitem_icon);
+                holder.icon.setScaleType(ImageView.ScaleType.FIT_XY);
 
-            String url = URLConst.URL_COMMON + ((Map<String,String>) enterpriseList.get(position-personalList.size()-2)).get("path");
-            VolleyRequest request = new VolleyRequest();
-            request.downPicture(mContext,icon,url);
+                String url = URLConst.URL_COMMON + ((Map<String,String>) enterpriseList.get(position-personalList.size()-2)).get("path");
+                VolleyRequest request = new VolleyRequest();
+                request.downPicture(mContext, holder.icon,url);
 
-            Button deleteButton = (Button) convertView.findViewById(R.id.SignatureListActivity_delete_button);
-            deleteButton.setVisibility(View.INVISIBLE);
+                holder.deleteButton = (Button) convertView.findViewById(R.id.SignatureListActivity_delete_button);
+                holder.deleteButton.setVisibility(View.INVISIBLE);
 
 
-            ImageView choose = (ImageView) convertView.findViewById(R.id.choose_person_signature_choose);
-            choose.setVisibility(View.INVISIBLE);
+                holder.choose = (ImageView) convertView.findViewById(R.id.choose_person_signature_choose);
+                holder.choose.setVisibility(View.INVISIBLE);
 
-            ImageView unchoose = (ImageView) convertView.findViewById(R.id.choose_person_signature_unchoose);
-            unchoose.setVisibility(View.INVISIBLE);
+                holder.unchoose = (ImageView) convertView.findViewById(R.id.choose_person_signature_unchoose);
+                holder.unchoose.setVisibility(View.INVISIBLE);
 
-            return convertView;
+                convertView.setTag(holder);
+                return convertView;
+
+            }else {
+//                holder = (ViewHolder) convertView.getTag();
+                return convertView;
+            }
+
 
         }
+    }
+
+
+    static class ViewHolder{
+        TextView textView;
+
+        ImageView icon;
+        Button deleteButton;
+        ImageView choose;
+        ImageView unchoose;
 
     }
+
+
 
     //删除签章
     private  void  deleteSignature(String signatureId){
@@ -209,5 +257,7 @@ public class SignatureAdapter extends BaseAdapter {
         Logger.getInstance(mContext).info("设置默认签章：" + request.url);
         request.getRequest(mContext);
     }
+
+
 
 }

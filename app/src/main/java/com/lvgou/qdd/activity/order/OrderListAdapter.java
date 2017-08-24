@@ -117,7 +117,6 @@ public class OrderListAdapter extends BaseAdapter {
         if (null!=createTime && null!=endTime){
             long timeInterval = endTime.getTime() - createTime.getTime();
             day =  timeInterval/(24*60*60*1000);
-
         }
 
         holder.typeTextView.setText("套餐类型:  " + (String) jsonObject.get("name"));

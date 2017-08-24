@@ -128,6 +128,7 @@ public class SetPositionActivity extends BaseActivity {
     private void setListView(){
         linkedList = new LinkedList<>();
         adapter = new SignShowAdapter(getApplicationContext(),linkedList);
+        adapter.signId = signId;
         listView.setAdapter(adapter);
     }
 

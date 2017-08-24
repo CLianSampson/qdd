@@ -249,6 +249,7 @@ public class SignShowActivity extends BaseActivity {
     private void setListView(){
         linkedList = new LinkedList<>();
         adapter = new SignShowAdapter(getApplicationContext(),linkedList);
+        adapter.signId = signId;
         listView.setAdapter(adapter);
     }
 
@@ -336,7 +337,6 @@ public class SignShowActivity extends BaseActivity {
     private void signSign(){
 
     }
-
 
 
 }
