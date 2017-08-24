@@ -48,6 +48,7 @@
         android:background="@color/systemGrayBackground"></View>
 
     <!-- 以下为获取二进制图片所用 -->
+    <!--
     <ImageView
         android:id="@+id/iv_sign"
         android:layout_width="fill_parent"
@@ -55,6 +56,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="3dp"
         android:background="@color/systemWhite" />
+    -->
     <!-- 以下为获取二进制图片所用 -->
 
 

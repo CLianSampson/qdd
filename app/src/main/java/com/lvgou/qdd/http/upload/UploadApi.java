@@ -8,7 +8,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 
 import com.android.volley.Request;
-import com.lvgou.qdd.util.TokenUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,7 @@ public class UploadApi {
     public static void uploadImg(Bitmap bitmap, ResponseListener listener, Context context, String url){
         List<FormImage> imageList = new ArrayList<FormImage>() ;
         imageList.add(new FormImage(bitmap)) ;
-        Request request = new PostUploadRequest(url + TokenUtil.token,imageList,listener) ;
+        Request request = new PostUploadRequest(url,imageList,listener) ;
         VolleyUtil.getRequestQueue(context).add(request) ;
     }
 }

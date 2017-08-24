@@ -125,8 +125,15 @@ public class PostUploadRequest extends Request<String> {
             e.printStackTrace();
         }
         Log.v("zgy","=====formImage====\n"+bos.toString()) ;
-        return bos.toByteArray();
+        byte[] bytes = bos.toByteArray();
+        try {
+            bos.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return bytes;
     }
+
     //Content-Type: multipart/form-data; boundary=----------8888888888888
     @Override
     public String getBodyContentType() {

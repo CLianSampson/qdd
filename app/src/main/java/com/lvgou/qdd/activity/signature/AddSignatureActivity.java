@@ -8,28 +8,21 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.android.volley.VolleyError;
 import com.lvgou.qdd.R;
 import com.lvgou.qdd.activity.BaseActivity;
-import com.lvgou.qdd.http.URLConst;
-import com.lvgou.qdd.http.upload.ResponseListener;
-import com.lvgou.qdd.http.upload.UploadApi;
-import com.lvgou.qdd.util.Logger;
+import com.lvgou.qdd.http.httpsUpload.UploadBitmap;
 
 public class AddSignatureActivity extends BaseActivity {
 
     private Button backButton;
     private Button completeButton;
 
-    private ImageView imageSign;
+//    private ImageView imageSign;
     private PaintView mView;
 
     @Override
@@ -56,8 +49,6 @@ public class AddSignatureActivity extends BaseActivity {
         completeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bitmap imageBitmap = mView.getCachebBitmap();
-                imageSign.setImageBitmap(imageBitmap);
 
                 netRequest();
             }
@@ -66,7 +57,7 @@ public class AddSignatureActivity extends BaseActivity {
 
 
         //签名所用
-        imageSign = (ImageView) findViewById(R.id.iv_sign);
+//        imageSign = (ImageView) findViewById(R.id.iv_sign);
         FrameLayout frameLayout = (FrameLayout) findViewById(R.id.tablet_view);
 
         mView = new PaintView(this);
@@ -87,8 +78,6 @@ public class AddSignatureActivity extends BaseActivity {
 
             @Override
             public void onClick(View v) {
-                Bitmap imageBitmap = mView.getCachebBitmap();
-                imageSign.setImageBitmap(imageBitmap);
 
                 netRequest();
             }
@@ -198,33 +187,49 @@ public class AddSignatureActivity extends BaseActivity {
     @Override
     protected void netRequest() {
 
-//        Bitmap bitmap = ((BitmapDrawable)imageSign.getDrawable()).getBitmap();
-        Bitmap bitmap = mView.cachebBitmap;
+        final Bitmap bitmap = mView.cachebBitmap;
+
+        final String url = "https://192.168.1.100:8443/http/upload";
+
+        //final String url = URLConst.URL_ADD_SIGNATURE + TokenUtil.token ;
+
+//        Logger.getInstance(getApplicationContext()).info("手写签名的数据是: "  + bitmap);
+//        UploadApi.uploadImg(bitmap,new ResponseListener<String>() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Log.v("zgy","===========VolleyError========="+error) ;
+//                Toast.makeText(AddSignatureActivity.this,"上传失败",Toast.LENGTH_SHORT).show() ;
+//            }
+//
+//            @Override
+//            public void onResponse(String response) {
+//                Log.v("zgy","===========onResponse========="+response) ;
+//                Toast.makeText(AddSignatureActivity.this,"上传成功",Toast.LENGTH_SHORT).show();
+//            }
+//        },getApplicationContext(), url) ;
 
 
 
-//        imageSign.setDrawingCacheEnabled(true);
-//        Bitmap bitmap = Bitmap.createBitmap(imageSign.getDrawingCache());  //获取到Bitmap的图片
-//        imageSign.setDrawingCacheEnabled(false);
+//        Thread thread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                FileImageUpload.uploadFile(bitmap, url);
+//
+//            }
+//        });
+//
+//        thread.start();
 
-
-        Logger.getInstance(getApplicationContext()).info("手写签名的数据是: "  + bitmap);
-        UploadApi.uploadImg(bitmap,new ResponseListener<String>() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.v("zgy","===========VolleyError========="+error) ;
-                Toast.makeText(AddSignatureActivity.this,"上传失败",Toast.LENGTH_SHORT).show() ;
-            }
-
-            @Override
-            public void onResponse(String response) {
-//                response = response.substring(response.indexOf("img src="));
-//                response = response.substring(8,response.indexOf("/>")) ;
-                Log.v("zgy","===========onResponse========="+response) ;
-                Toast.makeText(AddSignatureActivity.this,"上传成功",Toast.LENGTH_SHORT).show();
-            }
-        },getApplicationContext(), URLConst.URL_ADD_SIGNATURE) ;
-
+        httpsUpload(bitmap);
 
     }
+
+    private void httpsUpload(Bitmap bitmap){
+        final String url = "https://192.168.1.100:8443/http/upload";
+
+//        String path = "/sdcard/DCIM/Camera/20150429_115313.jpg";
+        UploadBitmap uploadBitmap = new UploadBitmap(bitmap, url);
+        uploadBitmap.start();
+    }
+
 }
