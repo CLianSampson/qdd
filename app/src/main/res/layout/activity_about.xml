@@ -118,5 +118,23 @@
         android:layout_height="1dp"
         android:background="@color/systemGrayBackground"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/systemGray"
+        android:text="版权所有@2012-2017 京ICP证130317号"
+        android:layout_gravity="center"
+        android:layout_marginTop="150dp"
+        android:textSize="10sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/systemGray"
+        android:text="北京市律购信息技术有限责任公司"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:textSize="10sp"/>
+
 
 </LinearLayout>

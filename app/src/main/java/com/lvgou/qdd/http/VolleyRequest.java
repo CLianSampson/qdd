@@ -1,6 +1,7 @@
 package com.lvgou.qdd.http;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.util.Log;
 import android.widget.ImageView;
@@ -182,4 +183,24 @@ public class VolleyRequest {
     }
 
 
+    private static String JSESSIONID; //定义一个静态的字段，保存sessionID
+
+    //如果参数 响应头 中有SET_COOKIT，说明是第一次连接，需要根据SET_COOKIT建立新的Cookit保存在sharePreference中
+    public void setCookieFromHeader(Map<String, String> responseHeaders) {
+
+        Map<String, String> responseHeaders
+
+        if (responseHeaders.containsKey(SET_COOKIE)
+                && responseHeaders.get(SET_COOKIE).startsWith(JSESSIONID)) {
+            String cookie = responseHeaders.get(SET_COOKIE);
+            if (cookie.length() > 0) {
+                String[] splitCookie = cookie.split(";");
+                String[] splitSessionId = splitCookie[0].split("=");
+                cookie = splitSessionId[1];
+                SharedPreferences.Editor prefEditor = preferences.edit();
+                prefEditor.putString(JSESSIONID, cookie);
+                prefEditor.apply();
+            }
+        }
+    }
 }

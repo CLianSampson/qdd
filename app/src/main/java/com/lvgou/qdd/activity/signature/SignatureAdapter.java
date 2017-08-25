@@ -246,7 +246,6 @@ public class SignatureAdapter extends BaseAdapter {
                 activity.adapter.notifyDataSetChanged();
 
                 activity.netRequest();
-
             }
 
             @Override
