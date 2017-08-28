@@ -1,4 +1,4 @@
-package com.lvgou.qdd.http.upload;
+package com.lvgou.qdd.http.volleyUpload;
 
 /**
  * Created by sampson on 2017/7/31.

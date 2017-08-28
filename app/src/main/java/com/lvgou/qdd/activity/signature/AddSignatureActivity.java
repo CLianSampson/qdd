@@ -20,9 +20,9 @@ import com.lvgou.qdd.R;
 import com.lvgou.qdd.activity.BaseActivity;
 import com.lvgou.qdd.http.URLConst;
 import com.lvgou.qdd.http.httpsUpload.UploadBitmap;
-import com.lvgou.qdd.http.imageUpload.FileImageUpload;
-import com.lvgou.qdd.http.upload.ResponseListener;
-import com.lvgou.qdd.http.upload.UploadApi;
+import com.lvgou.qdd.http.httpUpload.FileImageUpload;
+import com.lvgou.qdd.http.volleyUpload.ResponseListener;
+import com.lvgou.qdd.http.volleyUpload.UploadApi;
 import com.lvgou.qdd.util.Logger;
 import com.lvgou.qdd.util.TokenUtil;
 

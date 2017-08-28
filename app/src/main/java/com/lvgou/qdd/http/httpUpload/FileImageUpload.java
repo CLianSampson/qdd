@@ -1,4 +1,4 @@
-package com.lvgou.qdd.http.imageUpload;
+package com.lvgou.qdd.http.httpUpload;
 
 import android.graphics.Bitmap;
 import android.util.Log;
