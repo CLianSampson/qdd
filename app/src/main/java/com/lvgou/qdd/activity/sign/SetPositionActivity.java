@@ -27,6 +27,8 @@ import java.util.List;
 import java.util.Map;
 
 public class SetPositionActivity extends BaseActivity {
+    private static final String TAG = "SetPositionActivity";
+
 
     private String signId;
 
@@ -50,6 +52,8 @@ public class SetPositionActivity extends BaseActivity {
     private int screenHeight;
     private int lastX, lastY;
 
+
+    private View sepreateView;
 
 
     // ListView读取屏幕上当前可见Item的索引
@@ -120,6 +124,8 @@ public class SetPositionActivity extends BaseActivity {
         setDrag();
 
 //        setListViewListener();
+
+        sepreateView = (View) findViewById(R.id.SetPositionActivity_sepreate);
     }
 
 
@@ -199,15 +205,27 @@ public class SetPositionActivity extends BaseActivity {
                             left = right - v.getWidth();
                         }
 
-                        if (top < 25+48+5) {
-                            top = 25+48+5;
+                        //change by chenlian on 2017-08-28
+//                        if (top < 25+48+5) {
+//                            top = 25+48+5;
+//                            bottom = top + v.getHeight();
+//                        }
+
+                        if (top < sepreateView.getBottom()){
+                            top = sepreateView.getBottom();
                             bottom = top + v.getHeight();
                         }
 
-                        if (bottom > screenHeight) {
-                            bottom = screenHeight;
+//                        if (bottom > screenHeight) {
+//                            bottom = screenHeight;
+//                            top = bottom - v.getHeight();
+//                        }
+
+                        if (bottom > confirmButton.getTop()) {
+                            bottom = confirmButton.getTop();
                             top = bottom - v.getHeight();
                         }
+
                         v.layout(left, top, right, bottom);
 
                         lastX = (int) event.getRawX();

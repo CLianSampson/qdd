@@ -85,4 +85,6 @@ public class ForgetAndSetPasswordActivity extends BaseActivity implements SmsCoe
     public void getSmsCode() {
         smsCoeView.phone = phoneInput.getText().toString();
     }
+
+
 }

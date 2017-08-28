@@ -19,6 +19,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.android.volley.Request;
@@ -40,6 +41,8 @@ import java.util.LinkedList;
  * thread as well.
  */
 public class ImageLoader {
+    private static final String TAG = "ImageLoader";
+
     /** RequestQueue for dispatching ImageRequests onto. */
     private final RequestQueue mRequestQueue;
 
@@ -214,6 +217,7 @@ public class ImageLoader {
 
         // Try to look up the request in the cache of remote images.
         Bitmap cachedBitmap = mCache.getBitmap(cacheKey);
+        Log.i(TAG,"获取 cachedBitmap is : " + cachedBitmap);
         if (cachedBitmap != null) {
             // Return the cached bitmap.
             ImageContainer container = new ImageContainer(cachedBitmap, requestUrl, null, null);

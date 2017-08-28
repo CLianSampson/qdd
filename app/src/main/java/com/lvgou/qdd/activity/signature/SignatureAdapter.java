@@ -49,14 +49,159 @@ public class SignatureAdapter extends BaseAdapter {
         Log.i("++++++",enterpriseList.size()+"");
         return personalList.size() + enterpriseList.size() + 2;
     }
+
     @Override
     public Object getItem(int position) {
         return null;
     }
+
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
+
+    @Override
+    public int getItemViewType(int position) {//第一项和第二项属于一类，剩下的属于一类
+        if (position == 0){
+           return 0;
+        }else if (position == personalList.size()+1){
+           return 1;
+
+        }else if (position>0 && position<personalList.size()+1){
+            return 2;
+        }else{
+            return 3;
+        }
+    }
+
+    @Override
+    public int getViewTypeCount() {//表示我共有两种item要显示，
+        return 4;
+    }
+
+
+
+//    @Override
+//    public View getView(int position, View convertView, ViewGroup parent) {
+//        LayoutInflater inflater = LayoutInflater.from(mContext);
+//
+//        ViewHolder holder;
+//
+//        holder = new SignatureAdapter.ViewHolder();
+//
+//        int type = getItemViewType(position);
+//
+//        if (position == 0){
+//            if (null == convertView){
+//                convertView = inflater.inflate(R.layout.listitem_signature_list_activity_tag, null);
+//
+//                holder.textView = (TextView) convertView.findViewById(R.id.SignatureListActivity_listitem_tag);
+//                holder.textView.setText("个人签章");
+//
+//                convertView.setTag(holder);
+//                return convertView;
+//            }else {
+////                holder = (ViewHolder) convertView.getTag();
+////                holder.textView.setText("个人签章");
+//                return convertView;
+//            }
+//        }else if (position == personalList.size()+1){
+//            if (null == convertView){
+//                convertView = inflater.inflate(R.layout.listitem_signature_list_activity_tag, null);
+//
+//                holder.textView = (TextView) convertView.findViewById(R.id.SignatureListActivity_listitem_tag);
+//                holder.textView.setText("企业签章");
+//
+//                convertView.setTag(holder);
+//                return convertView;
+//            }else {
+////                holder = (ViewHolder) convertView.getTag();
+//                return convertView;
+//            }
+//
+//        }else if (position>0 && position<personalList.size()+1){
+//            if (null == convertView){
+//                final int index = position;
+//
+//                //个人签章图片
+//                convertView = inflater.inflate(R.layout.listitem_signature_list_activity, null);
+//
+//                holder.icon = (ImageView) convertView.findViewById(R.id.SignatureListActivity_listitem_icon);
+//                holder.icon.setScaleType(ImageView.ScaleType.FIT_XY);
+//
+//                String url = URLConst.URL_COMMON + (((Map<String,String>) (personalList.get(position-1)))).get("path");
+//                VolleyRequest request = new VolleyRequest();
+//                request.downPicture(mContext, holder.icon,url);
+//
+//                holder.deleteButton = (Button) convertView.findViewById(R.id.SignatureListActivity_delete_button);
+//                if (position == 1){
+//                    holder.deleteButton.setVisibility(View.INVISIBLE);
+//                }
+//
+//                holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        deleteSignature((((Map<String,String>) (personalList.get(index-1)))).get("id"));
+//                    }
+//                });
+//
+//                holder.icon.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Log.i("########","click");
+//                        setDefaultSignature((((Map<String,String>) (personalList.get(index-1)))).get("id"));
+//                    }
+//                });
+//
+//                holder.choose = (ImageView) convertView.findViewById(R.id.choose_person_signature_choose);
+//                holder.choose.setVisibility(View.INVISIBLE);
+//
+//                holder.unchoose = (ImageView) convertView.findViewById(R.id.choose_person_signature_unchoose);
+//                holder.unchoose.setVisibility(View.INVISIBLE);
+//
+//                convertView.setTag(holder);
+//                return convertView;
+//            }else {
+////                holder = (ViewHolder) convertView.getTag();
+//                return convertView;
+//            }
+//        }else {
+//            if (null == convertView){
+//                //企业签章图片  if (position > personalList.size()+1)
+//                convertView = inflater.inflate(R.layout.listitem_signature_list_activity, null);
+//
+//                holder.icon = (ImageView) convertView.findViewById(R.id.SignatureListActivity_listitem_icon);
+//                holder.icon.setScaleType(ImageView.ScaleType.FIT_XY);
+//
+//                String url = URLConst.URL_COMMON + ((Map<String,String>) enterpriseList.get(position-personalList.size()-2)).get("path");
+//                VolleyRequest request = new VolleyRequest();
+//                request.downPicture(mContext, holder.icon,url);
+//
+//                holder.deleteButton = (Button) convertView.findViewById(R.id.SignatureListActivity_delete_button);
+//                holder.deleteButton.setVisibility(View.INVISIBLE);
+//
+//
+//                holder.choose = (ImageView) convertView.findViewById(R.id.choose_person_signature_choose);
+//                holder.choose.setVisibility(View.INVISIBLE);
+//
+//                holder.unchoose = (ImageView) convertView.findViewById(R.id.choose_person_signature_unchoose);
+//                holder.unchoose.setVisibility(View.INVISIBLE);
+//
+//                convertView.setTag(holder);
+//                return convertView;
+//
+//            }else {
+////                holder = (ViewHolder) convertView.getTag();
+//                return convertView;
+//            }
+//
+//
+//        }
+//    }
+
+
+
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
@@ -65,8 +210,10 @@ public class SignatureAdapter extends BaseAdapter {
 
         holder = new SignatureAdapter.ViewHolder();
 
+        int type = getItemViewType(position);
+
         if (position == 0){
-            if (null == convertView){
+
                 convertView = inflater.inflate(R.layout.listitem_signature_list_activity_tag, null);
 
                 holder.textView = (TextView) convertView.findViewById(R.id.SignatureListActivity_listitem_tag);
@@ -74,16 +221,9 @@ public class SignatureAdapter extends BaseAdapter {
 
                 convertView.setTag(holder);
                 return convertView;
-            }else {
-//                holder = (ViewHolder) convertView.getTag();
-//                holder.textView.setText("个人签章");
-                return convertView;
-            }
-
-
 
         }else if (position == personalList.size()+1){
-            if (null == convertView){
+
                 convertView = inflater.inflate(R.layout.listitem_signature_list_activity_tag, null);
 
                 holder.textView = (TextView) convertView.findViewById(R.id.SignatureListActivity_listitem_tag);
@@ -91,14 +231,10 @@ public class SignatureAdapter extends BaseAdapter {
 
                 convertView.setTag(holder);
                 return convertView;
-            }else {
-//                holder = (ViewHolder) convertView.getTag();
-                return convertView;
-            }
+
 
         }else if (position>0 && position<personalList.size()+1){
 
-            if (null == convertView){
                 final int index = position;
 
                 //个人签章图片
@@ -139,16 +275,9 @@ public class SignatureAdapter extends BaseAdapter {
 
                 convertView.setTag(holder);
                 return convertView;
-            }else {
-//                holder = (ViewHolder) convertView.getTag();
-                return convertView;
-            }
-
-
-
 
         }else {
-            if (null == convertView){
+
                 //企业签章图片  if (position > personalList.size()+1)
                 convertView = inflater.inflate(R.layout.listitem_signature_list_activity, null);
 
@@ -172,14 +301,9 @@ public class SignatureAdapter extends BaseAdapter {
                 convertView.setTag(holder);
                 return convertView;
 
-            }else {
-//                holder = (ViewHolder) convertView.getTag();
-                return convertView;
-            }
-
-
         }
     }
+
 
 
     static class ViewHolder{
@@ -189,7 +313,6 @@ public class SignatureAdapter extends BaseAdapter {
         Button deleteButton;
         ImageView choose;
         ImageView unchoose;
-
     }
 
 
@@ -214,7 +337,6 @@ public class SignatureAdapter extends BaseAdapter {
                 activity.adapter.notifyDataSetChanged();
 
                 activity.netRequest();
-
             }
 
             @Override
@@ -256,7 +378,6 @@ public class SignatureAdapter extends BaseAdapter {
         Logger.getInstance(mContext).info("设置默认签章：" + request.url);
         request.getRequest(mContext);
     }
-
 
 
 }

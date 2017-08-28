@@ -38,7 +38,6 @@ public class SignatureListActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -131,4 +130,5 @@ public class SignatureListActivity extends BaseActivity {
 
         netRequest();
     }
+
 }

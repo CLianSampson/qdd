@@ -37,8 +37,6 @@ public class VerifyCodeView extends RelativeLayout {
 
         imageView = (ImageView) view.findViewById(R.id.verifyCodeImage);
 
-
-
         changeBitton = (Button) findViewById(R.id.changeVerifyCode);
         changeBitton.setBackgroundColor(Color.TRANSPARENT);
         changeBitton.setOnClickListener(new OnClickListener() {
@@ -58,16 +56,14 @@ public class VerifyCodeView extends RelativeLayout {
             @Override
             public void sucess(String response) {
                 Logger.getInstance(activity.getApplicationContext()).info("获取图片验证码成功");
-
             }
 
             @Override
             public void fail(String response) {
-
             }
         });
         Logger.getInstance(activity.getApplicationContext()).info("获取图片验证码的url : " + request.url);
-        request.downPicture(activity.getApplicationContext(),imageView,request.url);
+        request.downPictureNoCache(activity.getApplicationContext(),imageView,request.url);
     }
 
 }

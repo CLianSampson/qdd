@@ -304,9 +304,39 @@ public class VolleyRequest {
 
         mQueue = Volley.newRequestQueue(context);
 
+//        ImageLoader imageLoader = new ImageLoader(mQueue, new ImageLoader.ImageCache() {
+//            @Override
+//            public void putBitmap(String url, Bitmap bitmap) {
+//
+//            }
+//
+//            @Override
+//            public Bitmap getBitmap(String url) {
+//                return null;
+//            }
+//        });
+
+        ImageLoader imageLoader = new ImageLoader(mQueue, new BitmapCache());
+
+        //第二和第三个参数分别设置默认图片  和 加载失败的参数
+        //ImageLoader.ImageListener listener = ImageLoader.getImageListener(imageView,
+        //                R.drawable.message_read, R.drawable.message_unread);
+        ImageLoader.ImageListener listener = ImageLoader.getImageListener(imageView,
+                0, 0);
+
+        imageLoader.get(url,listener);
+    }
+
+
+    public void downPictureNoCache(final Context context, ImageView imageView, String url){
+        Log.i(TAG,"下载图片  url ：" + url);
+
+        mQueue = Volley.newRequestQueue(context);
+
         ImageLoader imageLoader = new ImageLoader(mQueue, new ImageLoader.ImageCache() {
             @Override
             public void putBitmap(String url, Bitmap bitmap) {
+
             }
 
             @Override
@@ -314,6 +344,8 @@ public class VolleyRequest {
                 return null;
             }
         });
+
+//        ImageLoader imageLoader = new ImageLoader(mQueue, new BitmapCache());
 
         //第二和第三个参数分别设置默认图片  和 加载失败的参数
         //ImageLoader.ImageListener listener = ImageLoader.getImageListener(imageView,
