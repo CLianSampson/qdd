@@ -256,7 +256,8 @@ public class VolleyRequest {
             public void onErrorResponse(VolleyError error) {
                 Logger.getInstance(context).error(error.toString());
 
-                ToastUtil.showToast(context,error.toString());
+//                ToastUtil.showToast(context,error.toString());
+                ToastUtil.showToast(context,"网络有问题，请稍后重试");
             }
         }){
             @Override
