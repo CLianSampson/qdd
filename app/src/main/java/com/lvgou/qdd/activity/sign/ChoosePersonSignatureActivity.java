@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.lvgou.qdd.R;
 import com.lvgou.qdd.activity.BaseActivity;
 import com.lvgou.qdd.http.RequestCallback;
@@ -74,10 +75,14 @@ public class ChoosePersonSignatureActivity extends BaseActivity {
                     ToastUtil.showToast(getApplicationContext(),"签名为空");
                 }
 
+                //获取签章id
+                JSONObject jsonObject = (JSONObject) personalList.get(0);
+                String signatureId = (String) jsonObject.get("id");
 
                 Intent intent = new Intent(getApplicationContext(),SetPositionActivity.class);
                 intent.putExtra("signId",signId);
                 intent.putExtra("signStatus", Constant.SIGN_BY_PERSON+"");
+                intent.putExtra("signatureId",signatureId);
                 startActivity(intent);
             }
         });
@@ -169,7 +174,7 @@ public class ChoosePersonSignatureActivity extends BaseActivity {
         }
         @Override
         public long getItemId(int position) {
-            return 0;
+            return position;
         }
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
@@ -181,7 +186,6 @@ public class ChoosePersonSignatureActivity extends BaseActivity {
                 TextView textView = (TextView) convertView.findViewById(R.id.SignatureListActivity_listitem_tag);
                 textView.setText("个人签章");
                 return convertView;
-
             }else{
                 //个人签章图片
                 convertView = inflater.inflate(R.layout.listitem_signature_list_activity, null);
@@ -215,7 +219,6 @@ public class ChoosePersonSignatureActivity extends BaseActivity {
                 return convertView;
             }
         }
-
     }
 
 

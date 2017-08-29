@@ -15,6 +15,7 @@ import com.lvgou.qdd.http.URLConst;
 import com.lvgou.qdd.util.Logger;
 import com.lvgou.qdd.util.StorageUtil;
 import com.lvgou.qdd.util.StringUtil;
+import com.lvgou.qdd.util.ToastUtil;
 import com.lvgou.qdd.util.TokenUtil;
 
 import java.util.HashMap;
@@ -71,12 +72,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
             default:
                 break;
-
         }
     }
 
 
     private void login(){
+        if (StringUtil.isNullOrBlank(accoutEditText.getText().toString())
+                || StringUtil.isNullOrBlank(passwordEditText.getText().toString())){
+            ToastUtil.showToast(getApplicationContext(),"输入内容不能为空");
+            return;
+        }
+
         netRequest();
     }
 
@@ -86,8 +92,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
         final Map<String,String> map = new HashMap<>();
 
-        map.put("username","18771098004");
-        map.put("password","1234567");
+//        map.put("username","18771098004");
+//        map.put("password","123456");
 
 //        map.put("username","wangnanqiao@qiandd.com");
 //        map.put("password","lingxi0502");
@@ -95,8 +101,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         final String account = accoutEditText.getText().toString();
         String password = passwordEditText.getText().toString();
 
-//        map.put("username",account);
-//        map.put("password",password);
+        map.put("username",account);
+        map.put("password",password);
 
 
         request.url = URLConst.URL_LOGIN;

@@ -1,6 +1,5 @@
 package com.lvgou.qdd.activity.shopping;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,8 +25,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
-
 
 
 public class ShoppingActivity extends BaseActivity {

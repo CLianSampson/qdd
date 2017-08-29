@@ -51,7 +51,7 @@
             android:id="@+id/ShoppingActivity_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="套餐类型:  个人套餐A"
+            android:text="套餐类型:"
             android:textSize="13sp"
             android:paddingLeft="20dp"
             android:paddingTop="22dp"/>
@@ -84,16 +84,15 @@
             android:id="@+id/ShoppingActivity_totalTimes"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="总次数: 10次"
+            android:text="总次数:"
             android:textSize="12sp"
             android:layout_marginLeft="20dp"
             android:gravity="center"/>
-
         <TextView
             android:id="@+id/ShoppingActivity_remianTimes"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="剩余次数:  10次"
+            android:text="剩余次数:"
             android:textSize="12sp"
             android:layout_toRightOf="@+id/ShoppingActivity_totalTimes"
             android:layout_marginLeft="20dp"

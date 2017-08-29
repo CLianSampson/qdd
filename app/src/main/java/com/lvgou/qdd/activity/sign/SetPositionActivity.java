@@ -30,7 +30,9 @@ public class SetPositionActivity extends BaseActivity {
     private static final String TAG = "SetPositionActivity";
 
 
-    private String signId;
+    private String signId; //合同id
+
+    private String signatureId; //签章id
 
     private String signStatus;
 
@@ -71,6 +73,8 @@ public class SetPositionActivity extends BaseActivity {
 
         //获取合同id
         signId = getIntent().getStringExtra("signId");
+        //签章id
+        signatureId = getIntent().getStringExtra("signatureId");
         //获取合同签署方式(个人签署或企业签署)
         signStatus = getIntent().getStringExtra("signStatus");
 
@@ -283,7 +287,7 @@ public class SetPositionActivity extends BaseActivity {
         String yPosition = (int)yPrecent + "";
         String pageNumStr = listView.getLastVisiblePosition() + 1 + "";
 
-        personalSignature.put("signid",signId);
+        personalSignature.put("signid",signatureId);
         personalSignature.put("num",pageNumStr);
         personalSignature.put("posX",xPosition);
         personalSignature.put("posY",yPosition);
@@ -353,7 +357,5 @@ public class SetPositionActivity extends BaseActivity {
         Logger.getInstance(getApplicationContext()).info("获取用户手机号：" + request.url);
         request.getRequest(getApplicationContext());
     }
-
-
 
 }

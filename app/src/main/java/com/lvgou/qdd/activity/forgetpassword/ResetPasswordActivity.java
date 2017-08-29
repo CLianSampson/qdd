@@ -20,11 +20,8 @@ import java.util.Map;
 public class ResetPasswordActivity extends BaseActivity {
 
     private Button backButton;
-
     private Button nextButton;
-
     private EditText passwordText;
-
     private EditText repasswordText;
 
     @Override
@@ -72,28 +69,26 @@ public class ResetPasswordActivity extends BaseActivity {
         map.put("verify",getIntent().getStringExtra("verifyCode"));
 
 
-        Logger.getInstance(getApplicationContext()).info("忘记密码参数是 :" + map.toString());
+        Logger.getInstance(getApplicationContext()).info("重设密码参数是 :" + map.toString());
 
         request.setCallback(new RequestCallback() {
             @Override
             public void sucess(String response) {
-                Logger.getInstance(getApplicationContext()).info("忘记密码成功");
+                Logger.getInstance(getApplicationContext()).info("重设密码成功");
 
                 JSONObject map = JSON.parseObject(response,JSONObject.class);
                 JSONObject data = (JSONObject) map.get("data");
 
-                startActivity(new Intent(getApplicationContext(),ResetPasswordActivity.class));
+                startActivity(new Intent(getApplicationContext(),SetPasswordSucessActivity.class));
             }
 
             @Override
             public void fail(String response) {
-
                 gotoLoginActivity();
             }
         });
-        Logger.getInstance(getApplicationContext()).info("忘记密码：" + request.url);
+        Logger.getInstance(getApplicationContext()).info("重设密码：" + request.url);
         request.postRequest(getApplicationContext(),map);
-
     }
 
 
