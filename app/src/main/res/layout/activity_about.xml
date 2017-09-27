@@ -131,7 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/systemGray"
-        android:text="北京市律购信息技术有限责任公司"
+        android:text="北京市好一点文化传播有限责任公司"
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         android:textSize="10sp"/>
